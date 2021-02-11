@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>파이썬 비동기 프로그래밍</title>
+  <meta name="description" content="동기 vs 비동기 코드 비교  동기 프로그래밍          코드 ```python import requests import time      ">
+  
+  <meta name="author" content="kjb4494">
+  <meta name="copyright" content="&copy; kjb4494 2021">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/.min.css"> -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="동기 vs 비동기 코드 비교  동기 프로그래밍          코드 ```python import requests import time      " />
+  <meta property="og:url" content="http://localhost:4000/python/2021/02/12/asynchronous-programming.html">
+  <meta property="og:site_name" content="늒네의 개발일지" />
+  <meta property="og:title" content="파이썬 비동기 프로그래밍" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/imgs/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="파이썬 비동기 프로그래밍">
+  <meta name="twitter:description" content="동기 vs 비동기 코드 비교  동기 프로그래밍          코드 ```python import requests import time      ">
+  <meta name="twitter:image" content="http://localhost:4000/assets/imgs/logo.png">
+  <meta name="twitter:url" content="http://localhost:4000/python/2021/02/12/asynchronous-programming.html">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/python/2021/02/12/asynchronous-programming.html">
+	<link rel="alternate" type="application/rss+xml" title="늒네의 개발일지" href="http://localhost:4000/feed.xml" />
+	
+	<!-- Tooltips -->
+	<script type="text/javascript">
+		window.tooltips = []
+	</script>
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/imgs/logo.png" alt="늒네의 개발일지">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">파이썬 비동기 프로그래밍</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">February 12, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/python">Python</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="동기-vs-비동기-코드-비교">동기 vs 비동기 코드 비교</h3>
+<ul>
+  <li>동기 프로그래밍
+    <ol>
+      <li>코드
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">import</span> <span class="nn">requests</span>
+ <span class="kn">import</span> <span class="nn">time</span>
+
+
+ <span class="k">def</span> <span class="nf">get_google_response</span><span class="p">():</span>
+     <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+     <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://www.google.com'</span><span class="p">)</span>
+     <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+
+ <span class="k">def</span> <span class="nf">normal_code</span><span class="p">():</span>
+     <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+         <span class="n">status_code</span><span class="p">,</span> <span class="n">taken_time</span> <span class="o">=</span> <span class="n">get_google_response</span><span class="p">()</span>
+         <span class="k">print</span><span class="p">(</span><span class="n">status_code</span><span class="p">,</span> <span class="s">': '</span><span class="p">,</span> <span class="n">taken_time</span><span class="p">)</span>
+     <span class="k">print</span><span class="p">(</span><span class="s">'total: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
+
+
+ <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+     <span class="n">normal_code</span><span class="p">()</span>
+</code></pre></div>        </div>
+      </li>
+      <li>결과
+        <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 200 :  0.3122532367706299
+ 200 :  0.34461331367492676
+ 200 :  0.36156463623046875
+ 200 :  0.3558688163757324
+ 200 :  0.35318613052368164
+ 200 :  0.37262439727783203
+ 200 :  0.3737161159515381
+ 200 :  0.3346893787384033
+ 200 :  0.39562082290649414
+ 200 :  0.35920214653015137
+ 200 :  0.35454726219177246
+ 200 :  0.35430455207824707
+ 200 :  0.3461928367614746
+ 200 :  0.3401949405670166
+ 200 :  0.3195078372955322
+ 200 :  0.3500397205352783
+ 200 :  0.3499133586883545
+ 200 :  0.32646942138671875
+ 200 :  0.34032320976257324
+ 200 :  0.3709850311279297
+ total: 7.015817165374756
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+  <li>비동기 프로그래밍
+    <ol>
+      <li>코드
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">import</span> <span class="nn">requests</span>
+ <span class="kn">import</span> <span class="nn">time</span>
+ <span class="kn">import</span> <span class="nn">asyncio</span>
+
+
+ <span class="k">async</span> <span class="k">def</span> <span class="nf">get_google_response</span><span class="p">(</span><span class="n">loop</span><span class="p">):</span>
+     <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+     <span class="n">res</span> <span class="o">=</span> <span class="k">await</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_in_executor</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="s">'https://www.google.com'</span><span class="p">)</span>
+     <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+
+ <span class="k">def</span> <span class="nf">async_code</span><span class="p">():</span>
+     <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+     <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+     <span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_google_response</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+     <span class="n">completed_tasks</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">tasks</span><span class="p">))</span>
+     <span class="k">for</span> <span class="n">done</span> <span class="ow">in</span> <span class="n">completed_tasks</span><span class="p">:</span>
+         <span class="n">status_code</span><span class="p">,</span> <span class="n">taken_time</span> <span class="o">=</span> <span class="n">done</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+         <span class="k">print</span><span class="p">(</span><span class="n">status_code</span><span class="p">,</span> <span class="s">': '</span><span class="p">,</span> <span class="n">taken_time</span><span class="p">)</span>
+     <span class="k">print</span><span class="p">(</span><span class="s">'total: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
+     <span class="n">loop</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+ <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+     <span class="n">async_code</span><span class="p">()</span>
+</code></pre></div>        </div>
+      </li>
+      <li>결과
+        <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 200 :  0.29973459243774414
+ 200 :  0.2707829475402832
+ 200 :  0.2817347049713135
+ 200 :  0.32273435592651367
+ 200 :  0.31773948669433594
+ 200 :  0.3037395477294922
+ 200 :  0.5270824432373047
+ 200 :  0.32169365882873535
+ 200 :  0.3247337341308594
+ 200 :  0.489962100982666
+ 200 :  0.2887296676635742
+ 200 :  0.5300889015197754
+ 200 :  0.31470251083374023
+ 200 :  0.2817227840423584
+ 200 :  0.5450804233551025
+ 200 :  0.31772708892822266
+ 200 :  0.2817366123199463
+ 200 :  0.2977299690246582
+ 200 :  0.29676270484924316
+ 200 :  0.3117361068725586
+ total: 0.5750386714935303
+</code></pre></div>        </div>
+        <hr />
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="처리-결과를-기다리기-싫다">처리 결과를 기다리기 싫다.</h3>
+<p>위 코드는 구글 사이트에 요청을 보내 응답을 받는 것을 20번 반복해 각 요청-응답 시간과 총 소요시간을 출력하는 코드다.</p>
+
+<p>동기식으로 처리했을 때는 하나의 요청-응답이 끝나야 다음 요청-응답을 진행하기 때문에 총 소요시간이 모든 작업 시간을 합한 값과 비슷하게 나왔다.</p>
+
+<p>하지만 비동기식으로 처리했을 때는 각 요청 작업이 응답을 기다리지 않고 바로 다음 요청 작업을 수행하기 때문에 총 소요시간이 확연하게 줄어든 것을 볼 수 있다.</p>
+
+<h3 id="코루틴">코루틴</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="k">def</span> <span class="nf">get_google_response</span><span class="p">(</span><span class="n">loop</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="k">await</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_in_executor</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="s">'https://www.google.com'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+</code></pre></div></div>
+<p>파이썬에서 비동기식 프로그래밍을 할 때는 함수 앞에 async를 붙인다. 그래야 이 함수가 코루틴이 된다.</p>
+
+<p>원래 파이썬은 지원하는 특정 함수만 코루틴으로써 사용할 수 있다. 코루틴이 아닌 일반 함수를 코루틴처럼 실행할 수 있게 만드는 것이 loop.run_in_executor() 이다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+<span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_google_response</span><span class="p">(</span><span class="n">loop</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="n">completed_tasks</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">tasks</span><span class="p">))</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">close</span>
+</code></pre></div></div>
+<p>비동기식 작업에는 기다림이 없고 막히면 다음 작업을 실행한다. 해당 코드는 그런 루프를 만드는 과정이다.</p>
+
+<h3 id="키워드를-요구하는-매개변수를-전달해야할-때는">키워드를 요구하는 매개변수를 전달해야할 때는?</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">get_google_response</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">stream</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">requests_wrapper</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://www.google.com'</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="k">await</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_in_executor</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">requests_wrapper</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+
+<span class="k">def</span> <span class="nf">async_code</span><span class="p">():</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_google_response</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+    <span class="n">completed_tasks</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">tasks</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">done</span> <span class="ow">in</span> <span class="n">completed_tasks</span><span class="p">:</span>
+        <span class="n">status_code</span><span class="p">,</span> <span class="n">taken_time</span> <span class="o">=</span> <span class="n">done</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">status_code</span><span class="p">,</span> <span class="s">': '</span><span class="p">,</span> <span class="n">taken_time</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'total: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">async_code</span><span class="p">()</span>
+</code></pre></div></div>
+<p>코루틴에 wrapper 함수를 내장해 키워드 매개변수를 전달해주면 된다.</p>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/async">async</a>
+</section>
+
+
+
+<!-- <section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section> -->
+
+<!-- <section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section> -->
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/python/2021/02/12/args-and-kwargs.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">파이썬의 *args와 **kwargs 매개변수</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+		</span>
+	</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">늒네의 개발일지</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:rlagnltn1357@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">rlagnltn1357@gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/kjb4494" title="">
+              <i class="fa fa-github"></i>
+              <span class="username">kjb4494</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <!-- <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">초보 개발자의 기록 보관소
+</p>
+    </div> -->
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<script src="//unpkg.com/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="//unpkg.com/tippy.js@5.2.1/dist/tippy-bundle.iife.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+	// Enable tooltips via Tippy.js
+	if (Array.isArray(window.tooltips)) {
+		window.tooltips.forEach(function(tooltip) {
+			var selector = tooltip[0];
+			var config = tooltip[1];
+			tippy(selector, config);
+		})
+	}
+});
+
+</script>
+
+
+
+
+
+
+  </body>
+
+</html>
