@@ -6,9 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Posts</title>
-  <meta name="description" content="초보 개발자의 기록 보관소
-">
+  <title>Python Anaconda 설치하기</title>
+  <meta name="description" content="Windows10  Miniconda 설치하기환경 변수에 추가하기 체크  설치 후 파워쉘에서 사용할 수 있도록 초기화      conda init powershell        만약 내 문서 경로에 한글이 있을 경우,      이런식으로 이상한 경로로 폴더를 만들어 프로필을 생성...">
   
   <meta name="author" content="kjb4494">
   <meta name="copyright" content="&copy; kjb4494 2021">
@@ -42,11 +41,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="초보 개발자의 기록 보관소
-" />
-  <meta property="og:url" content="http://localhost:4000/posts/">
+  <meta property="og:description" content="Windows10  Miniconda 설치하기환경 변수에 추가하기 체크  설치 후 파워쉘에서 사용할 수 있도록 초기화      conda init powershell        만약 내 문서 경로에 한글이 있을 경우,      이런식으로 이상한 경로로 폴더를 만들어 프로필을 생성..." />
+  <meta property="og:url" content="http://localhost:4000/python/2021/02/11/install-conda.html">
   <meta property="og:site_name" content="늒네의 개발일지" />
-  <meta property="og:title" content="Posts" />
+  <meta property="og:title" content="Python Anaconda 설치하기" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://localhost:4000/assets/imgs/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -57,18 +55,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Posts">
-  <meta name="twitter:description" content="초보 개발자의 기록 보관소
-">
+  <meta name="twitter:title" content="Python Anaconda 설치하기">
+  <meta name="twitter:description" content="Windows10  Miniconda 설치하기환경 변수에 추가하기 체크  설치 후 파워쉘에서 사용할 수 있도록 초기화      conda init powershell        만약 내 문서 경로에 한글이 있을 경우,      이런식으로 이상한 경로로 폴더를 만들어 프로필을 생성...">
   <meta name="twitter:image" content="http://localhost:4000/assets/imgs/logo.png">
-  <meta name="twitter:url" content="http://localhost:4000/posts/">
+  <meta name="twitter:url" content="http://localhost:4000/python/2021/02/11/install-conda.html">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/posts/">
+  <link rel="canonical" href="http://localhost:4000/python/2021/02/11/install-conda.html">
 	<link rel="alternate" type="application/rss+xml" title="늒네의 개발일지" href="http://localhost:4000/feed.xml" />
 	
 	<!-- Tooltips -->
@@ -135,94 +132,138 @@
 
 
     <div class="page-content">
-        <div class="wrapper">
-<div class="page">
+        <div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">Posts</h1>
-  </header>
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Python Anaconda 설치하기</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
 
-  <span class="page-divider">
+<div class="wrapper">
+
+ <span class="page-divider">
   <span class="one"></span>
   <span class="two"></span>
 </span>
+ 
 
-
-  <article class="post-content">
+<section class="post-meta">
+  <div class="post-date">February 11, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/python">Python</a>
     
   
-  <button type="button" onclick="window.location.href='#github' ">Github (1)</button>
+  </div>
+</section>
 
-  
-  <button type="button" onclick="window.location.href='#life' ">Life (1)</button>
+<article class="post-content">
+  <h3 id="windows10">Windows10</h3>
+<ul>
+  <li><a href="https://docs.conda.io/en/latest/miniconda.html"><em>Miniconda 설치하기</em></a>
+<img src="/assets/imgs/posts/python/install-conda-001.png" alt="사진" />
+환경 변수에 추가하기 체크</li>
+  <li>설치 후 파워쉘에서 사용할 수 있도록 초기화
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda init powershell
+</code></pre></div>    </div>
+    <p>만약 내 문서 경로에 한글이 있을 경우,
+  <img src="/assets/imgs/posts/python/install-conda-002.png" alt="사진" />
+  <img src="/assets/imgs/posts/python/install-conda-003.png" alt="사진" />
+  이런식으로 이상한 경로로 폴더를 만들어 프로필을 생성할 때가 있다.
+  이럴 경우엔 저 이상한 경로로 되어 있는 폴더 안의 내용물을 직접 내문서로 옮겨준다.<br />
+  가장 좋은 방법은 그냥 윈도우 설치할 때 마이크로소프트 계정 연동하지 말고 로컬 계정으로 만들었다가 나중에 연결하는 식으로 계정 만드는게 좋은듯…(위 사진은 옛날에 찍어놓은 스크린샷 ㅎㅎ…)</p>
+  </li>
+  <li>많이 쓰는 명령어 모음
+    <ul>
+      <li>가상환경 조회
+        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda <span class="nb">env </span>list
+</code></pre></div>        </div>
+      </li>
+      <li>가상환경 실행
+        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  activate &lt;env_name&gt;
+</code></pre></div>        </div>
+      </li>
+      <li>가상환경 종료
+        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  deactivate
+</code></pre></div>        </div>
+      </li>
+      <li>conda 가상환경 내 package 목록/버전 확인
+        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda list <span class="nt">-n</span> &lt;env_name&gt;
+</code></pre></div>        </div>
+      </li>
+      <li>특정 conda 가상환경을 복제해 새로운 가상환경을 생성
+        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda create <span class="nt">--name</span> &lt;new_env_name&gt; <span class="nt">--clone</span> &lt;old_env_name&gt;
+</code></pre></div>        </div>
+      </li>
+      <li>가상환경 제거
+        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda remove <span class="nt">--name</span> &lt;env_name&gt; <span class="nt">--all</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
 
-  
-  <button type="button" onclick="window.location.href='#python' ">Python (1)</button>
+<hr />
+
+<h3 id="잡담">잡담</h3>
+<p>wsl2 ubuntu 환경에서 gpu 리소스를 사용해보려고 windows10 preview 버전을 설치했다가 몇 달 지나지않아 잦은 버그에 이기지 못하고 밀어버리고 말았다 ㅠㅠ…</p>
+
+<p>stable 버전 os로 재설치할 겸, 완전 초기화하고 개발환경을 다시 구성하려니 귀찮음이 몰려온다.</p>
+
+<p>그래도 컴퓨터가 깨끗해졌다는 생각에 만족 :) ㅋ</p>
+
+</article>
 
 
-<hr>
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/python,">python,</a>,&nbsp;<a href="/tag/anaconda">anaconda</a>
+</section>
 
 
-  
-  <h2 id="github">Github</h2>
+
+<!-- <section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section> -->
+
+<!-- <section class="share">
+  <span>Share: </span>
   
     
-  
+    
+    
+    
+    
+    
+    
     
   
-  <ul class="posts-list">
-  
-    <li>
-      <strong>
-        <a href="/github/2021/02/10/create-github-blog.html">깃허브로 블로그 만들기</a>
-      </strong>
-      <span class="post-date">- 10 February 2021</span>
-    </li>
-  
-  </ul>
-  <hr>
+</section> -->
 
-  
-  <h2 id="life">Life</h2>
-  
-    
-  
-    
-  
-  <ul class="posts-list">
-  
-    <li>
-      <strong>
-        <a href="/life/2021/02/11/daily-life.html">2021년 2월 11일</a>
-      </strong>
-      <span class="post-date">- 11 February 2021</span>
-    </li>
-  
-  </ul>
-  <hr>
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/life/2021/02/11/daily-life.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">2021년 2월 11일</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+		</span>
+	</section>
 
-  
-  <h2 id="python">Python</h2>
-  
-    
-  
-    
-  
-  <ul class="posts-list">
-  
-    <li>
-      <strong>
-        <a href="/python/2021/02/11/install-conda.html">Python Anaconda 설치하기</a>
-      </strong>
-      <span class="post-date">- 11 February 2021</span>
-    </li>
-  
-  </ul>
-  
 
-<br>
 
-  </article>
 
 </div>
 </div>

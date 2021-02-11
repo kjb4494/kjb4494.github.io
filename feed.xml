@@ -6,9 +6,44 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 10 Feb 2021 21:48:31 +0900</pubDate>
-    <lastBuildDate>Wed, 10 Feb 2021 21:48:31 +0900</lastBuildDate>
+    <pubDate>Thu, 11 Feb 2021 23:19:11 +0900</pubDate>
+    <lastBuildDate>Thu, 11 Feb 2021 23:19:11 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Python Anaconda 설치하기</title>
+        <description>&lt;h3 id=&quot;windows10&quot;&gt;Windows10&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;https://docs.conda.io/en/latest/miniconda.html&quot;&gt;&lt;em&gt;Miniconda 설치하기&lt;/em&gt;&lt;/a&gt; &lt;img src=&quot;/assets/imgs/posts/python/install-conda-001.png&quot; alt=&quot;사진&quot; /&gt; 환경 변수에 추가하기 체크&lt;/li&gt; &lt;li&gt;설치 후 파워쉘에서 사용할 수 있도록 초기화 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; conda init powershell &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;...</description>
+        <pubDate>Thu, 11 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/python/2021/02/11/install-conda.html</link>
+        <guid isPermaLink="true">http://localhost:4000/python/2021/02/11/install-conda.html</guid>
+        
+        <category>python,</category>
+        
+        <category>anaconda</category>
+        
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>2021년 2월 11일</title>
+        <description>&lt;p&gt;오늘부터 설연휴다…&lt;br /&gt;
+근데 코로나 때문에 집에 박혀있기로 함 ㅠㅠ&lt;br /&gt;
+그래도 건강을 위해서 하루에 20분 이상이라도 걸어야겠다 ㅋㅋ…&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/imgs/posts/daily-life/2021-02-11-001.jpg&quot; alt=&quot;사진&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 11 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/life/2021/02/11/daily-life.html</link>
+        <guid isPermaLink="true">http://localhost:4000/life/2021/02/11/daily-life.html</guid>
+        
+        <category>life</category>
+        
+        
+        <category>life</category>
+        
+      </item>
     
       <item>
         <title>깃허브로 블로그 만들기</title>
