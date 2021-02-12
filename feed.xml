@@ -6,9 +6,41 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 12 Feb 2021 01:41:17 +0900</pubDate>
-    <lastBuildDate>Fri, 12 Feb 2021 01:41:17 +0900</lastBuildDate>
+    <pubDate>Fri, 12 Feb 2021 13:38:12 +0900</pubDate>
+    <lastBuildDate>Fri, 12 Feb 2021 13:38:12 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Python logging</title>
+        <description>&lt;h3 id=&quot;로깅-예제-코드&quot;&gt;로깅 예제 코드&lt;/h3&gt; &lt;ol&gt; &lt;li&gt;코드 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;logging&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;urllib.request&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;urlopen&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;urllib.error&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span...</description>
+        <pubDate>Fri, 12 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/python/2021/02/12/logging.html</link>
+        <guid isPermaLink="true">http://localhost:4000/python/2021/02/12/logging.html</guid>
+        
+        <category>python</category>
+        
+        <category>logging</category>
+        
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>파이썬을 이용한 웹 크롤링</title>
+        <description>&lt;h3 id=&quot;들어가기-전&quot;&gt;들어가기 전…&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;/python/2021/02/12/logging.html&quot;&gt;Python logging&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;/python/2021/02/12/asynchronous-programming.html&quot;&gt;파이썬 비동기 프로그래밍&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;p&gt;비동기 프로그래밍과 로깅에 관련된 코드가 포함됨.&lt;/p&gt; &lt;h3 id=&quot;크롤러&quot;&gt;크롤러&lt;/h3&gt; &lt;p&gt;크롤링(crawling) 혹은 스크레이핑(scraping)은 웹 페이지를 그대로 가져와서 거기서...</description>
+        <pubDate>Fri, 12 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/python/2021/02/12/crawling.html</link>
+        <guid isPermaLink="true">http://localhost:4000/python/2021/02/12/crawling.html</guid>
+        
+        <category>python</category>
+        
+        <category>crawling</category>
+        
+        
+        <category>python</category>
+        
+      </item>
     
       <item>
         <title>파이썬 비동기 프로그래밍</title>

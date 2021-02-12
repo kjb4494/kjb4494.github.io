@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>파이썬을 이용한 웹 크롤링</title>
+  <meta name="description" content="들어가기 전…      Python logging    파이썬 비동기 프로그래밍  ">
+  
+  <meta name="author" content="kjb4494">
+  <meta name="copyright" content="&copy; kjb4494 2021">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/.min.css"> -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="들어가기 전…      Python logging    파이썬 비동기 프로그래밍  " />
+  <meta property="og:url" content="http://localhost:4000/python/2021/02/12/crawling.html">
+  <meta property="og:site_name" content="늒네의 개발일지" />
+  <meta property="og:title" content="파이썬을 이용한 웹 크롤링" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/imgs/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="파이썬을 이용한 웹 크롤링">
+  <meta name="twitter:description" content="들어가기 전…      Python logging    파이썬 비동기 프로그래밍  ">
+  <meta name="twitter:image" content="http://localhost:4000/assets/imgs/logo.png">
+  <meta name="twitter:url" content="http://localhost:4000/python/2021/02/12/crawling.html">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/python/2021/02/12/crawling.html">
+	<link rel="alternate" type="application/rss+xml" title="늒네의 개발일지" href="http://localhost:4000/feed.xml" />
+	
+	<!-- Tooltips -->
+	<script type="text/javascript">
+		window.tooltips = []
+	</script>
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/imgs/logo.png" alt="늒네의 개발일지">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">파이썬을 이용한 웹 크롤링</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">February 12, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/python">Python</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="들어가기-전">들어가기 전…</h3>
+<blockquote>
+  <ul>
+    <li><a href="/python/2021/02/12/logging.html">Python logging</a></li>
+    <li><a href="/python/2021/02/12/asynchronous-programming.html">파이썬 비동기 프로그래밍</a></li>
+  </ul>
+</blockquote>
+
+<p>비동기 프로그래밍과 로깅에 관련된 코드가 포함됨.</p>
+
+<h3 id="크롤러">크롤러</h3>
+<p>크롤링(crawling) 혹은 스크레이핑(scraping)은 웹 페이지를 그대로 가져와서 거기서 데이터를 추출해 내는 행위다. 크롤링하는 소프트웨어는 크롤러(crawler)라고 부른다.</p>
+
+<h3 id="내가-크롤링-하려는-것">내가 크롤링 하려는 것</h3>
+<p><a href="https://namu.wiki/w/Europa%20Universalis%20IV"><em>유로파 유니버셜리스4</em></a> 라는 게임에 등장하는 국가들의 Flag를 추출해 다운받아볼 것이다.</p>
+<blockquote>
+  <ul>
+    <li><a href="https://eu4.paradoxwikis.com/Countries"><em>Crawling Target Link</em></a></li>
+  </ul>
+</blockquote>
+
+<p><del>유로파 유니버셜리스4는 중세시대 말기부터 산업혁명까지 국가를 운영하는 게임인데 꽤 재밌다 ㅎㅎ..</del></p>
+
+<h3 id="계획">계획</h3>
+<p>먼저 크롤링을 위해 requests, bs4 라이브러리 설치가 필요하다. requests 말고 파이썬 내장 모듈인 urllib를 써도 되긴하지만 좋은 라이브러리가 있으니까…</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>requests
+pip <span class="nb">install </span>bs4
+</code></pre></div></div>
+<p><img src="/assets/imgs/posts/python/crawling-001.png" alt="사진" />
+크롤링 목표가 되는 table과 <a href="https://eu4.paradoxwikis.com/images/thumb/0/0e/Rebels.png/50px-Rebels.png"><em>image url</em></a>이다.</p>
+
+<p>해당 웹 페이지의 HTML 코드를 긁어서 목표로 하는 Table 요소를 찾아 그 안의 img src 들을 수집해 다운받을 것이다.</p>
+
+<h3 id="코딩">코딩</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">requests.adapters</span> <span class="kn">import</span> <span class="n">HTTPAdapter</span>
+<span class="kn">from</span> <span class="nn">urllib3.util.retry</span> <span class="kn">import</span> <span class="n">Retry</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="o">=</span> <span class="s">"[</span><span class="si">%(levelname)</span><span class="s">s][ </span><span class="si">%(filename)</span><span class="s">s: </span><span class="si">%(funcName)</span><span class="s">s() ] </span><span class="si">%(message)</span><span class="s">s"</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="n">FORMAT</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_country_info</span><span class="p">(</span><span class="n">with_img_url</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://eu4.paradoxwikis.com/Countries'</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="nb">ConnectionError</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">'wiki connect fail... please check your network.'</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">req</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">'wiki connect fail... status is not 200.'</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">()</span>
+
+    <span class="n">html</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s">'html.parser'</span><span class="p">)</span>
+    <span class="n">country_table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span>
+        <span class="s">'table'</span><span class="p">,</span>
+        <span class="p">{</span><span class="s">'class'</span><span class="p">:</span> <span class="p">[</span><span class="s">'wikitable'</span><span class="p">,</span> <span class="s">'sortable'</span><span class="p">,</span> <span class="s">'jquery-tablesorter'</span><span class="p">]}</span>
+    <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">trs</span> <span class="o">=</span> <span class="n">country_table</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'tr'</span><span class="p">)</span>
+    <span class="n">tr_tds</span> <span class="o">=</span> <span class="n">trs</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">image_src_base</span> <span class="o">=</span> <span class="s">'https://eu4.paradoxwikis.com'</span>
+    <span class="n">country_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">tr_td</span> <span class="ow">in</span> <span class="n">tr_tds</span><span class="p">:</span>
+        <span class="n">tds</span> <span class="o">=</span> <span class="n">tr_td</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'td'</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">raw_country_info</span><span class="p">,</span> <span class="n">raw_country_tag</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">tds</span>
+
+        <span class="n">country_name</span> <span class="o">=</span> <span class="n">raw_country_info</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'a'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">country_tag</span> <span class="o">=</span> <span class="n">raw_country_tag</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">img_src</span> <span class="o">=</span> <span class="n">image_src_base</span> <span class="o">+</span> <span class="n">raw_country_info</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">img</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">'src'</span><span class="p">]</span>
+        <span class="n">img_name</span> <span class="o">=</span> <span class="n">img_src</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'/'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">with_img_url</span><span class="p">:</span>
+            <span class="n">country_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s">'country_name'</span><span class="p">:</span> <span class="n">country_name</span><span class="p">,</span>
+                <span class="s">'country_tag'</span><span class="p">:</span> <span class="n">country_tag</span><span class="p">,</span>
+                <span class="s">'img_src'</span><span class="p">:</span> <span class="n">img_src</span><span class="p">,</span>
+                <span class="s">'img_name'</span><span class="p">:</span> <span class="n">img_name</span>
+            <span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">country_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s">'country_name'</span><span class="p">:</span> <span class="n">country_name</span><span class="p">,</span>
+                <span class="s">'country_tag'</span><span class="p">:</span> <span class="n">country_tag</span><span class="p">,</span>
+                <span class="s">'img_name'</span><span class="p">:</span> <span class="n">img_name</span>
+            <span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">country_list</span>
+
+
+<span class="k">def</span> <span class="nf">image_download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">return</span>
+
+    <span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+    <span class="n">retry</span> <span class="o">=</span> <span class="n">Retry</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">backoff_factor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">adapter</span> <span class="o">=</span> <span class="n">HTTPAdapter</span><span class="p">(</span><span class="n">max_retries</span><span class="o">=</span><span class="n">retry</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s">'https://'</span><span class="p">,</span> <span class="n">adapter</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">out_file</span><span class="p">:</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span> <span class="n">out_file</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">response</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">'{} Downloaded'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">async_requester</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_in_executor</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main_code</span><span class="p">():</span>
+    <span class="n">country_infos</span> <span class="o">=</span> <span class="n">get_country_info</span><span class="p">(</span><span class="n">with_img_url</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">img_root_dir</span> <span class="o">=</span> <span class="s">'country_flags/'</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">img_root_dir</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">img_root_dir</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">'* Create directory: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">img_root_dir</span><span class="p">))</span>
+
+    <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">country_info</span> <span class="ow">in</span> <span class="n">country_infos</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">country_info</span><span class="p">[</span><span class="s">'img_src'</span><span class="p">]</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">img_root_dir</span> <span class="o">+</span> <span class="n">country_info</span><span class="p">[</span><span class="s">'img_name'</span><span class="p">]</span>
+        <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">async_requester</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">image_download</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">path</span><span class="p">))</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">tasks</span><span class="p">))</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">'* finished!'</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">main_code</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>get_country_info() 함수는 Country 정보가 담긴 Table을 긁어 각 인스턴스의 데이터를 리스트로 정리해준다. with_img_url 매개변수를 이용해 img src url 정보를 가져올지말지 선택할 수 있게 했다.</p>
+
+<p>image_download() 함수는 url과 저장할 경로를 매개변수로 받아 웹상의 이미지 파일을 로컬로 다운받도록 해준다.</p>
+
+<p>async_requester()는 코루틴으로써 비동기적으로 request를 보낼 수 있게 해준다. 만약 동기적으로 대량의 파일을 다운받는다면 상당한 시간이 걸릴 것이다.</p>
+
+<p><img src="/assets/imgs/posts/python/crawling-002.png" alt="사진" /></p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[INFO][ eu4_contry_flag.py: main_code() ] * Create directory: country_flags/
+[INFO][ eu4_contry_flag.py: image_download() ] https://eu4.paradoxwikis.com/images/thumb/4/44/Auvergne.png/50px-Auvergne.png Downloaded
+.
+.
+.
+[INFO][ eu4_contry_flag.py: image_download() ] https://eu4.paradoxwikis.com/images/thumb/c/c6/Bengal.png/50px-Bengal.png Downloaded
+[INFO][ eu4_contry_flag.py: main_code() ] * finished!
+</code></pre></div></div>
+<p>원하는대로 결과물이 나왔다.</p>
+
+<h3 id="후기">후기</h3>
+<p>크롤러를 만드는 건 꽤 재밌다. 원하는 데이터를 마음껏 뽑을 수 있기 때문이다. 단, 위에서 사용한 방법은 javascript 등으로 동적 랜더링 하는 웹 데이터는 뽑아내지 못한다. 이 경우엔 selenium 라이브러리를 사용해 chromedriver로 동적 크롤링을 해야한다.</p>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/crawling">crawling</a>
+</section>
+
+
+
+<!-- <section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section> -->
+
+<!-- <section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section> -->
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/python/2021/02/12/asynchronous-programming.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">파이썬 비동기 프로그래밍</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+				<a href="/python/2021/02/12/logging.html">
+					<span class="page-number">Python logging</span>
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+			
+		</span>
+	</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">늒네의 개발일지</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:rlagnltn1357@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">rlagnltn1357@gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/kjb4494" title="">
+              <i class="fa fa-github"></i>
+              <span class="username">kjb4494</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <!-- <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">초보 개발자의 기록 보관소
+</p>
+    </div> -->
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<script src="//unpkg.com/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="//unpkg.com/tippy.js@5.2.1/dist/tippy-bundle.iife.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+	// Enable tooltips via Tippy.js
+	if (Array.isArray(window.tooltips)) {
+		window.tooltips.forEach(function(tooltip) {
+			var selector = tooltip[0];
+			var config = tooltip[1];
+			tippy(selector, config);
+		})
+	}
+});
+
+</script>
+
+
+
+
+
+
+  </body>
+
+</html>
