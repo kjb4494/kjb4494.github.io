@@ -139,6 +139,10 @@
 
 	
 
+	
+
+	
+
 
       </ul>
     </nav>
@@ -160,6 +164,72 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/python/2021/02/12/crawling.html">파이썬을 이용한 웹 크롤링</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>들어가기 전… Python logging 파이썬 비동기 프로그래밍 비동기 프로그래밍과 로깅에 관련된 코드가 포함됨. 크롤러 크롤링(crawling) 혹은 스크레이핑(scraping)은 웹 페이지를 그대로 가져와서 거기서 데이터를 추출해 내는 행위다. 크롤링하는 소프트웨어는 크롤러(crawler)라고 부른다. 내가 크롤링 하려는 것 유로파 유니버셜리스4 라는 게임에 등장하는 국가들의 Flag를 추출해 다운받아볼 것이다. Crawling Target Link 유로파 유니버셜리스4는 중세시대...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 12, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/python">Python</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/python/2021/02/12/asynchronous-programming.html">파이썬 비동기 프로그래밍</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>동기 vs 비동기 코드 비교 동기 프로그래밍 코드 import requests import time def get_google_response(): start = time.time() res = requests.get('https://www.google.com') return res.status_code, time.time() - start def normal_code(): start = time.time() for _ in range(20): status_code, taken_time = get_google_response() print(status_code, ': ', taken_time) print('total: {}'.format(time.time() - start)) if __name__ == '__main__':...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 12, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/python">Python</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/python/2021/02/12/args-and-kwargs.html">파이썬의 *args와 **kwargs 매개변수</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>예제 코드 def args_test(*args, **kwargs): print(args) print(kwargs) result = 0 for arg in args: if isinstance(arg, int): result += arg print(result) if __name__ == '__main__': args_test(1, 2, 1, 2, 7, '1', '64', 3.14, 9, 3, 6, 8, key1='a', key2='b', etc='c') 결과 (1, 2, 1, 2, 7, '1', '64', 3.14, 9,...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 12, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/python">Python</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -207,28 +277,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/github/2021/02/10/create-github-blog.html">깃허브로 블로그 만들기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>동기 배운 것, 앞으로 배워나갈 것들을 기록할 곳이 필요했다. 개인적으로 깃허브 마크다운이 친숙했다. 마음만 먹으면 마음대로 이것저것 갖다 붙일 수 있다. 코드를 깔끔하게 기록할 수 있다. 첫 포스팅을 하기까지… 나는 Centrarium 테마를 사용해 블로그를 개설했다. 금방 끝날 줄 알았는데 어째서인지 로컬에서는 잘 동작하던 pagination 기능이 깃허브에 배포되면 제대로 동작 하지않았다…...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 10, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/github">Github</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -244,12 +292,14 @@
       </a>
 			
 		
-		<span class="page-number">Page 2 of 2</span>
+		<span class="page-number">Page 2 of 3</span>
 		
-		<span class="fa-stack fa-lg">
-      <i class="fa fa-square fa-stack-2x"></i>
-      <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-    </span>
+		<a class="newer-posts" href="/page/3/">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
 		
 	</p>
 </nav>
@@ -280,6 +330,10 @@
 
 	
 	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
 	
 
 	

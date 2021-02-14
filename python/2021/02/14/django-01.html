@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Django 01편 - Hello World!</title>
+  <meta name="description" content="들어가기 전…      Python Anaconda 설치하기  ">
+  
+  <meta name="author" content="kjb4494">
+  <meta name="copyright" content="&copy; kjb4494 2021">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/.min.css"> -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="들어가기 전…      Python Anaconda 설치하기  " />
+  <meta property="og:url" content="http://localhost:4000/python/2021/02/14/django-01.html">
+  <meta property="og:site_name" content="늒네의 개발일지" />
+  <meta property="og:title" content="Django 01편 - Hello World!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/imgs/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Django 01편 - Hello World!">
+  <meta name="twitter:description" content="들어가기 전…      Python Anaconda 설치하기  ">
+  <meta name="twitter:image" content="http://localhost:4000/assets/imgs/logo.png">
+  <meta name="twitter:url" content="http://localhost:4000/python/2021/02/14/django-01.html">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/python/2021/02/14/django-01.html">
+	<link rel="alternate" type="application/rss+xml" title="늒네의 개발일지" href="http://localhost:4000/feed.xml" />
+	
+	<!-- Tooltips -->
+	<script type="text/javascript">
+		window.tooltips = []
+	</script>
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/imgs/logo.png" alt="늒네의 개발일지">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Django 01편 - Hello World!</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">February 14, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/python">Python</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="들어가기-전">들어가기 전…</h3>
+<blockquote>
+  <ul>
+    <li><a href="/python/2021/02/11/install-conda.html">Python Anaconda 설치하기</a></li>
+  </ul>
+</blockquote>
+
+<p>쾌적한 개발을 위해 Anaconda를 이용해 가상인터프리터를 사용한다.</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create <span class="nt">--name</span> django_env <span class="nv">python</span><span class="o">=</span>3.9
+conda activate django_env
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="django-시작하기">Django 시작하기</h3>
+<ul>
+  <li>django 설치하기
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  pip <span class="nb">install </span>django
+</code></pre></div>    </div>
+  </li>
+  <li>django 프로젝트 생성하기
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  django-admin startproject django_demo
+  <span class="nb">cd </span>django_demo
+</code></pre></div>    </div>
+    <p>django-admin 명령어로 만들어진 프로젝트 안에 manage.py가 있음</p>
+  </li>
+  <li>database migrate
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  python manage.py migrate
+</code></pre></div>    </div>
+  </li>
+  <li>run server
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  python manage.py runserver 8000
+</code></pre></div>    </div>
+    <p><img src="/assets/imgs/posts/python/django-01-001.png" alt="사진" /></p>
+
+    <p>성공적으로 django가 동작한다 :)</p>
+  </li>
+</ul>
+
+<h3 id="app을-달고-hello-world">app을 달고 hello world!</h3>
+<ul>
+  <li>apps 폴더 생성
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">mkdir </span>apps
+</code></pre></div>    </div>
+  </li>
+  <li>app 생성
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">mkdir </span>django_demo/apps/test_app
+  django-admin startapp test_app django_demo/apps/test_app
+</code></pre></div>    </div>
+    <blockquote>
+      <ul>
+        <li>생성할 app 이름은 test_app</li>
+        <li>레파지토리의 루트에서 실행한 명령어</li>
+      </ul>
+    </blockquote>
+
+    <p><img src="/assets/imgs/posts/python/django-01-002.png" alt="사진" /></p>
+
+    <p>파일구조는 이런식으로 된다.</p>
+  </li>
+  <li>settings.py 수정
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="s">'django.contrib.admin'</span><span class="p">,</span>
+      <span class="s">'django.contrib.auth'</span><span class="p">,</span>
+      <span class="s">'django.contrib.contenttypes'</span><span class="p">,</span>
+      <span class="s">'django.contrib.sessions'</span><span class="p">,</span>
+      <span class="s">'django.contrib.messages'</span><span class="p">,</span>
+      <span class="s">'django.contrib.staticfiles'</span><span class="p">,</span>
+      <span class="s">'apps.test_app'</span><span class="p">,</span>
+  <span class="p">]</span>
+</code></pre></div>    </div>
+    <p>INSTALLED_APPS에 생성한 app을 추가해준다.</p>
+  </li>
+  <li>views.py 수정
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+
+
+  <span class="c1"># Create your views here.
+</span>  <span class="k">def</span> <span class="nf">hello_world_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s">"Hello world"</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>testapp 폴더에 urls.py 생성
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+  <span class="kn">from</span> <span class="nn">apps.test_app</span> <span class="kn">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">test_app_views</span>
+
+  <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="n">path</span><span class="p">(</span><span class="s">'hello-world/'</span><span class="p">,</span> <span class="n">test_app_views</span><span class="o">.</span><span class="n">hello_world_view</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'hello_world'</span><span class="p">),</span>
+  <span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>프로젝트의 urls.py에 testapp urls 추가
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="s">"""django_demo URL Configuration
+
+  The `urlpatterns` list routes URLs to views. For more information please see:
+      https://docs.djangoproject.com/en/3.1/topics/http/urls/
+  Examples:
+  Function views
+      1. Add an import:  from my_app import views
+      2. Add a URL to urlpatterns:  path('', views.home, name='home')
+  Class-based views
+      1. Add an import:  from other_app.views import Home
+      2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+  Including another URLconf
+      1. Import the include() function: from django.urls import include, path
+      2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+  """</span>
+  <span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+  <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">include</span>
+
+  <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="n">path</span><span class="p">(</span><span class="s">'admin/'</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+      <span class="n">path</span><span class="p">(</span><span class="s">'test/'</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">'apps.test_app.urls'</span><span class="p">)),</span>
+  <span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>run server
+  <img src="/assets/imgs/posts/python/django-01-003.png" alt="사진" />
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  python manage.py runserver 8000
+</code></pre></div>    </div>
+    <p>딱히 데이터베이스를 추가하거나 한게 아니기 때문에 migrate는 필요없다. 그냥 서버 돌려주면 된다.</p>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="결과물-파일-구조">결과물 파일 구조</h3>
+<p><img src="/assets/imgs/posts/python/django-01-004.png" alt="사진" />
+여기까지의 파일 구조는 이렇다.</p>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/django">django</a>
+</section>
+
+
+
+<!-- <section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section> -->
+
+<!-- <section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section> -->
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/life/2021/02/14/daily-life.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">2021년 2월 14일</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+		</span>
+	</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">늒네의 개발일지</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:rlagnltn1357@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">rlagnltn1357@gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/kjb4494" title="">
+              <i class="fa fa-github"></i>
+              <span class="username">kjb4494</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <!-- <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">초보 개발자의 기록 보관소
+</p>
+    </div> -->
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<script src="//unpkg.com/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="//unpkg.com/tippy.js@5.2.1/dist/tippy-bundle.iife.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+	// Enable tooltips via Tippy.js
+	if (Array.isArray(window.tooltips)) {
+		window.tooltips.forEach(function(tooltip) {
+			var selector = tooltip[0];
+			var config = tooltip[1];
+			tippy(selector, config);
+		})
+	}
+});
+
+</script>
+
+
+
+
+
+
+  </body>
+
+</html>
