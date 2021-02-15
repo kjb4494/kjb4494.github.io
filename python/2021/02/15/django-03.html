@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Python Anaconda 설치하기</title>
-  <meta name="description" content="Windows10  Miniconda 설치하기환경 변수에 추가하기 체크  설치 후 파워쉘에서 사용할 수 있도록 초기화      conda init powershell        만약 내 문서 경로에 한글이 있을 경우,      이런식으로 이상한 경로로 폴더를 만들어 프로필을 생성...">
+  <title>Django 03편 - Logging</title>
+  <meta name="description" content="로깅 설정      Django Logging Documentation  ">
   
   <meta name="author" content="kjb4494">
   <meta name="copyright" content="&copy; kjb4494 2021">
@@ -41,10 +41,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="Windows10  Miniconda 설치하기환경 변수에 추가하기 체크  설치 후 파워쉘에서 사용할 수 있도록 초기화      conda init powershell        만약 내 문서 경로에 한글이 있을 경우,      이런식으로 이상한 경로로 폴더를 만들어 프로필을 생성..." />
-  <meta property="og:url" content="http://localhost:4000/python/2021/02/11/install-conda.html">
+  <meta property="og:description" content="로깅 설정      Django Logging Documentation  " />
+  <meta property="og:url" content="http://localhost:4000/python/2021/02/15/django-03.html">
   <meta property="og:site_name" content="늒네의 개발일지" />
-  <meta property="og:title" content="Python Anaconda 설치하기" />
+  <meta property="og:title" content="Django 03편 - Logging" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://localhost:4000/assets/imgs/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -55,17 +55,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Python Anaconda 설치하기">
-  <meta name="twitter:description" content="Windows10  Miniconda 설치하기환경 변수에 추가하기 체크  설치 후 파워쉘에서 사용할 수 있도록 초기화      conda init powershell        만약 내 문서 경로에 한글이 있을 경우,      이런식으로 이상한 경로로 폴더를 만들어 프로필을 생성...">
+  <meta name="twitter:title" content="Django 03편 - Logging">
+  <meta name="twitter:description" content="로깅 설정      Django Logging Documentation  ">
   <meta name="twitter:image" content="http://localhost:4000/assets/imgs/logo.png">
-  <meta name="twitter:url" content="http://localhost:4000/python/2021/02/11/install-conda.html">
+  <meta name="twitter:url" content="http://localhost:4000/python/2021/02/15/django-03.html">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/python/2021/02/11/install-conda.html">
+  <link rel="canonical" href="http://localhost:4000/python/2021/02/15/django-03.html">
 	<link rel="alternate" type="application/rss+xml" title="늒네의 개발일지" href="http://localhost:4000/feed.xml" />
 	
 	<!-- Tooltips -->
@@ -159,7 +159,7 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">Python Anaconda 설치하기</h1>
+      <h1 class="title">Django 03편 - Logging</h1>
       <!-- <p class="info">by <strong></strong></p> -->
     </header>
   </div>
@@ -174,7 +174,7 @@
  
 
 <section class="post-meta">
-  <div class="post-date">February 11, 2021</div>
+  <div class="post-date">February 15, 2021</div>
   <div class="post-categories">
   in 
     
@@ -185,66 +185,75 @@
 </section>
 
 <article class="post-content">
-  <h3 id="windows10">Windows10</h3>
+  <h3 id="로깅-설정">로깅 설정</h3>
+<blockquote>
+  <ul>
+    <li><a href="https://docs.djangoproject.com/en/3.1/topics/logging/"><em>Django Logging Documentation</em></a></li>
+  </ul>
+</blockquote>
+
 <ul>
-  <li><a href="https://docs.conda.io/en/latest/miniconda.html"><em>Miniconda 설치하기</em></a>
-<img src="/assets/imgs/posts/python/install-conda-001.png" alt="사진" />
-환경 변수에 추가하기 체크</li>
-  <li>설치 후 파워쉘에서 사용할 수 있도록 초기화
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda init powershell
+  <li>dev_settings.py에 로깅 설정 추가
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">LOGGING</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s">'version'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s">'disable_existing_loggers'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+      <span class="s">'formatters'</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">'debug_formatter'</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s">'format'</span><span class="p">:</span> <span class="s">'[</span><span class="si">%(levelname)</span><span class="s">s][</span><span class="si">%(pathname)</span><span class="s">s:</span><span class="si">%(funcName)</span><span class="s">s():</span><span class="si">%(lineno)</span><span class="s">d][</span><span class="si">%(asctime)</span><span class="s">s] "</span><span class="si">%(message)</span><span class="s">s"'</span><span class="p">,</span>
+              <span class="s">'datefmt'</span><span class="p">:</span> <span class="s">'</span><span class="si">%</span><span class="s">d/</span><span class="si">%</span><span class="s">b/</span><span class="si">%</span><span class="s">Y </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M:</span><span class="si">%</span><span class="s">S'</span>
+          <span class="p">},</span>
+      <span class="p">},</span>
+      <span class="s">'handlers'</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">'debug_console'</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s">'level'</span><span class="p">:</span> <span class="s">'DEBUG'</span><span class="p">,</span>
+              <span class="s">'class'</span><span class="p">:</span> <span class="s">'logging.StreamHandler'</span><span class="p">,</span>
+              <span class="s">'formatter'</span><span class="p">:</span> <span class="s">'debug_formatter'</span><span class="p">,</span>
+          <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="s">'loggers'</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">'debug'</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s">'level'</span><span class="p">:</span> <span class="s">'DEBUG'</span><span class="p">,</span>
+              <span class="s">'handlers'</span><span class="p">:</span> <span class="p">[</span><span class="s">'debug_console'</span><span class="p">]</span>
+          <span class="p">},</span>
+      <span class="p">},</span>
+  <span class="p">}</span>
 </code></pre></div>    </div>
-    <p>만약 내 문서 경로에 한글이 있을 경우,
-  <img src="/assets/imgs/posts/python/install-conda-002.png" alt="사진" />
-  <img src="/assets/imgs/posts/python/install-conda-003.png" alt="사진" />
-  이런식으로 이상한 경로로 폴더를 만들어 프로필을 생성할 때가 있다.
-  이럴 경우엔 저 이상한 경로로 되어 있는 폴더 안의 내용물을 직접 내문서로 옮겨준다.<br />
-  가장 좋은 방법은 그냥 윈도우 설치할 때 마이크로소프트 계정 연동하지 말고 로컬 계정으로 만들었다가 나중에 연결하는 식으로 계정 만드는게 좋은듯…(위 사진은 옛날에 찍어놓은 스크린샷 ㅎㅎ…)</p>
   </li>
-  <li>많이 쓰는 명령어 모음
-    <ul>
-      <li>가상환경 조회
-        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda <span class="nb">env </span>list
-</code></pre></div>        </div>
-      </li>
-      <li>가상환경 실행
-        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  activate &lt;env_name&gt;
-</code></pre></div>        </div>
-      </li>
-      <li>가상환경 종료
-        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  deactivate
-</code></pre></div>        </div>
-      </li>
-      <li>conda 가상환경 내 package 목록/버전 확인
-        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda list <span class="nt">-n</span> &lt;env_name&gt;
-</code></pre></div>        </div>
-      </li>
-      <li>특정 conda 가상환경을 복제해 새로운 가상환경을 생성
-        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda create <span class="nt">--name</span> &lt;new_env_name&gt; <span class="nt">--clone</span> &lt;old_env_name&gt;
-</code></pre></div>        </div>
-      </li>
-      <li>가상환경 제거
-        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda remove <span class="nt">--name</span> &lt;env_name&gt; <span class="nt">--all</span>
-</code></pre></div>        </div>
-      </li>
-    </ul>
+  <li>테스트 해보기
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">logging</span>
+  <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+
+  <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">'debug'</span><span class="p">)</span>
+
+
+  <span class="c1"># Create your views here.
+</span>  <span class="k">def</span> <span class="nf">hello_world_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+      <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'This is hello world log.'</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s">"Hello world"</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>dev_settings에서 추가한 debug logger를 이용해 hello world view에 logging을 해보자.</p>
+
+    <p><img src="/assets/imgs/posts/python/django-03-001.png" alt="사진" /></p>
+
+    <p>굳! hello world 페이지에 접속할 때 console 창에 로그가 잘 찍힌다.</p>
   </li>
 </ul>
 
-<hr />
+<h3 id="formatter-키워드">Formatter 키워드</h3>
+<blockquote>
+  <ul>
+    <li><a href="/python/2021/02/12/logging.html">Python logging</a></li>
+  </ul>
+</blockquote>
 
-<h3 id="잡담">잡담</h3>
-<p>wsl2 ubuntu 환경에서 gpu 리소스를 사용해보려고 windows10 preview 버전을 설치했다가 몇 달 지나지않아 잦은 버그에 이기지 못하고 밀어버리고 말았다 ㅠㅠ…</p>
-
-<p>stable 버전 os로 재설치할 겸, 완전 초기화하고 개발환경을 다시 구성하려니 귀찮음이 몰려온다.</p>
-
-<p>그래도 컴퓨터가 깨끗해졌다는 생각에 만족 :) ㅋ</p>
+<p>Python logging 글에서 정리한 Formatter Keyword 참고 ;)</p>
 
 </article>
 
 
 
 <section class="tags">
-  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/anaconda">anaconda</a>
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/django">django</a>
 </section>
 
 
@@ -270,19 +279,19 @@
 	<section class="post-navigation">
 		<span class="prev-post">
 			
-				<a href="/life/2021/02/11/daily-life.html">
+				<a href="/python/2021/02/15/django-02.html">
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
 					</span>
-					<span class="page-number">2021년 2월 11일</span>
+					<span class="page-number">Django 02편 - Dev&Prod 환경 분리하기</span>
 				</a>
 			
 		</span>
 		<span class="next-post">
 			
-				<a href="/python/2021/02/12/args-and-kwargs.html">
-					<span class="page-number">파이썬의 *args와 **kwargs 매개변수</span>
+				<a href="/gcp/2021/02/15/google-cloud-sdk.html">
+					<span class="page-number">Google Cloud SDK 설치하기</span>
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>

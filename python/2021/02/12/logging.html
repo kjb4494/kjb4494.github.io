@@ -144,6 +144,8 @@
 
 	
 
+	
+
 
       </ul>
     </nav>
@@ -226,6 +228,105 @@
 </ol>
 
 <p>로깅 설정 상세사항은 <a href="https://docs.python.org/ko/3/library/logging.html"><em>파이썬 공식문서</em></a>를 참고하자.</p>
+
+<h3 id="fommter">Fommter</h3>
+<blockquote>
+  <ul>
+    <li><a href="https://docs.python.org/3/library/logging.html#logrecord-attributes"><em>Fommatter Keyword</em></a></li>
+  </ul>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">이름</th>
+      <th style="text-align: left">포맷</th>
+      <th style="text-align: left">상세</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">asctime</td>
+      <td style="text-align: left">%(asctime)s</td>
+      <td style="text-align: left">날짜 시간, 밀리세컨드까지 출력</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">created</td>
+      <td style="text-align: left">%(created)f</td>
+      <td style="text-align: left">생성 시간 출력</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">filename</td>
+      <td style="text-align: left">%(filename)s</td>
+      <td style="text-align: left">파일명</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">funcnName</td>
+      <td style="text-align: left">%(funcName)s</td>
+      <td style="text-align: left">함수명</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">levelname</td>
+      <td style="text-align: left">%(levelname)s</td>
+      <td style="text-align: left">로그 레벨(DEBUG, INFO, WARNING, ERROR, CRITICAL)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">levelno</td>
+      <td style="text-align: left">%(levelno)s</td>
+      <td style="text-align: left">로그 레벨을 수치화해서 출력(10, 20, 30, …)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">lineno</td>
+      <td style="text-align: left">%(lineno)d</td>
+      <td style="text-align: left">소스의 라인 넘버</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">module</td>
+      <td style="text-align: left">%(module)s</td>
+      <td style="text-align: left">모듈 이름</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">msecs</td>
+      <td style="text-align: left">%(msecs)d</td>
+      <td style="text-align: left">로그 생성 시간에서 밀리세컨드 시간 부분만 출력</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">message</td>
+      <td style="text-align: left">%(message)s</td>
+      <td style="text-align: left">로그 메시지</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">name</td>
+      <td style="text-align: left">%(name)s</td>
+      <td style="text-align: left">로그 이름</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">pathname</td>
+      <td style="text-align: left">%(pathname)s</td>
+      <td style="text-align: left">소스 경로</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">process</td>
+      <td style="text-align: left">%(process)d</td>
+      <td style="text-align: left">프로세스(Process) ID</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">processName</td>
+      <td style="text-align: left">%(processName)s</td>
+      <td style="text-align: left">프로세스 이름</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">thread</td>
+      <td style="text-align: left">%(thread)d</td>
+      <td style="text-align: left">Thread ID</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">threadName</td>
+      <td style="text-align: left">%(threadName)s</td>
+      <td style="text-align: left">Thread Name</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="그냥-print-쓰면-되는거-아님">그냥 print() 쓰면 되는거 아님?</h3>
 <p>print() 함수도 콘솔에 로깅하는 방법이다. 하지만 logging 모듈보다 정보 표현이 한정적이며 협업 개발할 때 굉장히 거슬린다…(어느 모듈에서 썼는지도 모르겠는 쓸데없는 콘솔 로그가 계속 뜬다;;)</p>
@@ -324,6 +425,8 @@
 
 	
 	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
 	
 
 	

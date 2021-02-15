@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 15 Feb 2021 16:27:19 +0900</pubDate>
-    <lastBuildDate>Mon, 15 Feb 2021 16:27:19 +0900</lastBuildDate>
+    <pubDate>Mon, 15 Feb 2021 20:26:06 +0900</pubDate>
+    <lastBuildDate>Mon, 15 Feb 2021 20:26:06 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
@@ -35,6 +35,22 @@
         
         
         <category>gcp</category>
+        
+      </item>
+    
+      <item>
+        <title>Django 03편 - Logging</title>
+        <description>&lt;h3 id=&quot;로깅-설정&quot;&gt;로깅 설정&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;https://docs.djangoproject.com/en/3.1/topics/logging/&quot;&gt;&lt;em&gt;Django Logging Documentation&lt;/em&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;ul&gt; &lt;li&gt;dev_settings.py에 로깅 설정 추가 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;LOGGING&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'version'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;...</description>
+        <pubDate>Mon, 15 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/python/2021/02/15/django-03.html</link>
+        <guid isPermaLink="true">http://localhost:4000/python/2021/02/15/django-03.html</guid>
+        
+        <category>python</category>
+        
+        <category>django</category>
+        
+        
+        <category>python</category>
         
       </item>
     
@@ -150,22 +166,6 @@
         
         
         <category>life</category>
-        
-      </item>
-    
-      <item>
-        <title>파이썬을 이용한 웹 크롤링</title>
-        <description>&lt;h3 id=&quot;들어가기-전&quot;&gt;들어가기 전…&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;/python/2021/02/12/logging.html&quot;&gt;Python logging&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;/python/2021/02/12/asynchronous-programming.html&quot;&gt;파이썬 비동기 프로그래밍&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;p&gt;비동기 프로그래밍과 로깅에 관련된 코드가 포함됨.&lt;/p&gt; &lt;h3 id=&quot;크롤러&quot;&gt;크롤러&lt;/h3&gt; &lt;p&gt;크롤링(crawling) 혹은 스크레이핑(scraping)은 웹 페이지를 그대로 가져와서 거기서...</description>
-        <pubDate>Fri, 12 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/python/2021/02/12/crawling.html</link>
-        <guid isPermaLink="true">http://localhost:4000/python/2021/02/12/crawling.html</guid>
-        
-        <category>python</category>
-        
-        <category>crawling</category>
-        
-        
-        <category>python</category>
         
       </item>
     
