@@ -6,9 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>logging</title>
-  <meta name="description" content="초보 개발자의 기록 보관소
-">
+  <title>Google Cloud SQL</title>
+  <meta name="description" content="들어가기 전…      Google Cloud SDK 설치하기  ">
   
   <meta name="author" content="kjb4494">
   <meta name="copyright" content="&copy; kjb4494 2021">
@@ -42,11 +41,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="초보 개발자의 기록 보관소
-" />
-  <meta property="og:url" content="http://localhost:4000/tag/logging/">
+  <meta property="og:description" content="들어가기 전…      Google Cloud SDK 설치하기  " />
+  <meta property="og:url" content="http://localhost:4000/gcp/2021/02/15/google-cloud-sql.html">
   <meta property="og:site_name" content="늒네의 개발일지" />
-  <meta property="og:title" content="logging" />
+  <meta property="og:title" content="Google Cloud SQL" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://localhost:4000/assets/imgs/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -57,18 +55,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="logging">
-  <meta name="twitter:description" content="초보 개발자의 기록 보관소
-">
+  <meta name="twitter:title" content="Google Cloud SQL">
+  <meta name="twitter:description" content="들어가기 전…      Google Cloud SDK 설치하기  ">
   <meta name="twitter:image" content="http://localhost:4000/assets/imgs/logo.png">
-  <meta name="twitter:url" content="http://localhost:4000/tag/logging/">
+  <meta name="twitter:url" content="http://localhost:4000/gcp/2021/02/15/google-cloud-sql.html">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/tag/logging/">
+  <link rel="canonical" href="http://localhost:4000/gcp/2021/02/15/google-cloud-sql.html">
 	<link rel="alternate" type="application/rss+xml" title="늒네의 개발일지" href="http://localhost:4000/feed.xml" />
 	
 	<!-- Tooltips -->
@@ -155,30 +152,119 @@
 
 
     <div class="page-content">
-        <div class="wrapper">
-<div class="page">
+        <div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">Posts in "Logging"</h1>
-  </header>
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Google Cloud SQL</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
 
-  <span class="page-divider">
+<div class="wrapper">
+
+ <span class="page-divider">
   <span class="one"></span>
   <span class="two"></span>
 </span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">February 15, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/gcp">Gcp</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="들어가기-전">들어가기 전…</h3>
+<blockquote>
+  <ul>
+    <li><a href="/gcp/2021/02/15/google-cloud-sdk.html">Google Cloud SDK 설치하기</a></li>
+  </ul>
+</blockquote>
+
+<p>Cloud SDK가 있으면 인증이 편하다.</p>
+
+<h3 id="프록시-서버-열기">프록시 서버 열기</h3>
+<blockquote>
+  <ul>
+    <li><a href="https://cloud.google.com/sql/docs/mysql/connect-admin-proxy?hl=ko"><em>공식 문서 참고</em></a></li>
+  </ul>
+</blockquote>
+
+<p>로컬에서 Cloud SQL의 데이터베이스에 접근하기 위해 프록시 서버를 열어준다.</p>
+<ul>
+  <li>
+    <p><a href="https://dl.google.com/cloudsql/cloud_sql_proxy_x64.exe?hl=ko"><em>Cloud SQL 프록시 설치</em></a>
+  <img src="/assets/imgs/posts/gcp/google-cloud-sql-001.png" alt="사진" />
+  파일명을 cloud_sql_proxy.exe로 바꾸고 Cloud SDK가 설치된 경로의 bin 폴더에 넣으면 따로 환경변수를 설정하지 않아도 터미널에서 사용할 수 있다. (귀찮)</p>
+  </li>
+  <li>
+    <p>프록시 서버 열기</p>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  cloud_sql_proxy <span class="nt">-instances</span><span class="o">=</span>&lt;INSTANCE_CONNECTION_NAME&gt;<span class="o">=</span>tcp:3306
+</code></pre></div>    </div>
+    <p><img src="/assets/imgs/posts/gcp/google-cloud-sql-002.png" alt="사진" />
+  INSTANCE_CONNECTION_NAME은 여기 적혀 있다.</p>
+  </li>
+</ul>
+
+</article>
 
 
-  <article class="post-content">
-    <ul class="posts-list">
-      
-      <li><strong><a class="post-link" href="/python/2021/02/12/logging.html">Python logging</a></strong><span class="post-date"> - February 12, 2021</span></li>
-      
-    </ul>
-  </article>
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/gcp">gcp</a>
+</section>
+
+
+
+<!-- <section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section> -->
+
+<!-- <section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section> -->
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/gcp/2021/02/15/google-cloud-sdk.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">Google Cloud SDK 설치하기</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+		</span>
+	</section>
+
+
+
 
 </div>
 </div>
-<br>
 
     </div>
 

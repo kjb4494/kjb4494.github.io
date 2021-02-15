@@ -143,6 +143,10 @@
 
 	
 
+	
+
+	
+
 
       </ul>
     </nav>
@@ -167,6 +171,97 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/life/2021/02/15/daily-life.html">2021년 2월 15일</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>
+
+재택근무 전 가벼운 조깅 :)
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 15, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/life">Life</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/gcp/2021/02/15/google-cloud-sql.html">Google Cloud SQL</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>들어가기 전… Google Cloud SDK 설치하기 Cloud SDK가 있으면 인증이 편하다. 프록시 서버 열기 공식 문서 참고 로컬에서 Cloud SQL의 데이터베이스에 접근하기 위해 프록시 서버를 열어준다. Cloud SQL 프록시 설치 파일명을 cloud_sql_proxy.exe로 바꾸고 Cloud SDK가 설치된 경로의 bin 폴더에 넣으면 따로 환경변수를 설정하지 않아도 터미널에서 사용할 수 있다. (귀찮) 프록시...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 15, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/gcp">Gcp</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/gcp/2021/02/15/google-cloud-sdk.html">Google Cloud SDK 설치하기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>설치 방법 공식 문서 참고 공식 문서만 잘 따라가도 된다. Windows 10 환경 기준으로 정리 파워쉘을 이용해서 설치 프로그램 실행 (New-Object Net.WebClient).DownloadFile("https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe", "$env:Temp/GoogleCloudSDKInstaller.exe") &amp; $env:Temp/GoogleCloudSDKInstaller.exe 설치 프로그램으로 설치 진행 설치 완료 후 터미널에서 초기 설정 gcloud init 제거 방법 공식 문서 참고 Windows 10의 경우 Cloud SDK 디렉토리에 있는 uninstaller.exe를...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 15, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/gcp">Gcp</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/python/2021/02/15/django-02.html">Django 02편 - Dev&Prod 환경 분리하기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>Dev&amp;Prod settings.py 만들기 기존 settings.py 파일명을 base_settings.py로 변경 dev_settings.py와 prod_settings.py 파일 추가 from .base_settings import * asgi.py와 wsgi.py 수정 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_demo.prod_settings') 배포할 때 참조되는 settings이므로 prod_settings로 수정해준다. manage.py 수정 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_demo.dev_settings') 로컬 환경에서 테스트할 때 참조되는 settings이므로 dev_settings로 수정해준다. 잘 돌아가는지 테스트 python manage.py runserver 8000 굳 여기까지의 파일 구조...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 15, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/python">Python</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/life/2021/02/14/daily-life.html">2021년 2월 14일</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -178,109 +273,6 @@
     </section>
     <section class="post-meta">
       <div class="post-date">February 14, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/life">Life</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/python/2021/02/14/django-01.html">Django 01편 - Hello World!</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>들어가기 전… Python Anaconda 설치하기 쾌적한 개발을 위해 Anaconda를 이용해 가상인터프리터를 사용한다. conda create --name django_env python=3.9 conda activate django_env Django 시작하기 django 설치하기 pip install django django 프로젝트 생성하기 django-admin startproject django_demo cd django_demo django-admin 명령어로 만들어진 프로젝트 안에 manage.py가 있음 database migrate python manage.py migrate run server python...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 14, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/python">Python</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/life/2021/02/13/daily-life.html">2021년 2월 13일</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>
-
-오늘은 산까지 가볼까 했는데 생각보다 너무 멀어서 걍 되돌아옴 ㅋㅋ;;
-
-
-
-
-
-
-
-요즘 원신하고 있는데 배경이 너무 이쁘다.
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 13, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/life">Life</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/python/2021/02/12/logging.html">Python logging</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>로깅 예제 코드 코드 import logging from urllib.request import urlopen from urllib.error import HTTPError, URLError logger = logging.getLogger(__name__) logger.setLevel(logging.INFO) FORMAT = "[%(levelname)s][ %(filename)s: %(funcName)s() ] %(message)s" logging.basicConfig(format=FORMAT, level=logging.INFO) def get_status_code(url): try: res = urlopen(url) return res.getcode() except HTTPError as e: logger.error(e) except URLError as e: logger.error(e) except Exception as e:...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 12, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/python">Python</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/life/2021/02/12/daily-life.html">2021년 2월 12일</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>오늘은 운동하는 김에 공원을 가로질러왔다.
-겨울이라 볼 것도 없었지만… ;(
-
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 12, 2021</div>
       <div class="post-categories">
       in 
         
@@ -340,6 +332,10 @@
 
 	
 	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
 	
 
 	
