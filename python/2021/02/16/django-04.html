@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Django 04편 - polls app 구현하기 1편</title>
+  <meta name="description" content="      공식 문서의 튜토리얼 polls app  ">
+  
+  <meta name="author" content="kjb4494">
+  <meta name="copyright" content="&copy; kjb4494 2021">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/.min.css"> -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="      공식 문서의 튜토리얼 polls app  " />
+  <meta property="og:url" content="http://localhost:4000/python/2021/02/16/django-04.html">
+  <meta property="og:site_name" content="늒네의 개발일지" />
+  <meta property="og:title" content="Django 04편 - polls app 구현하기 1편" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/imgs/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Django 04편 - polls app 구현하기 1편">
+  <meta name="twitter:description" content="      공식 문서의 튜토리얼 polls app  ">
+  <meta name="twitter:image" content="http://localhost:4000/assets/imgs/logo.png">
+  <meta name="twitter:url" content="http://localhost:4000/python/2021/02/16/django-04.html">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/python/2021/02/16/django-04.html">
+	<link rel="alternate" type="application/rss+xml" title="늒네의 개발일지" href="http://localhost:4000/feed.xml" />
+	
+	<!-- Tooltips -->
+	<script type="text/javascript">
+		window.tooltips = []
+	</script>
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/imgs/logo.png" alt="늒네의 개발일지">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Django 04편 - polls app 구현하기 1편</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">February 16, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/python">Python</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <blockquote>
+  <ul>
+    <li><a href="https://docs.djangoproject.com/ko/3.1/intro/tutorial01/"><em>공식 문서의 튜토리얼 polls app</em></a></li>
+  </ul>
+</blockquote>
+
+<h3 id="polls-app을-만들어서-프로젝트에-붙이자">polls app을 만들어서 프로젝트에 붙이자!</h3>
+<ol>
+  <li>polls app 생성
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">mkdir </span>django_demo/apps/polls
+ django-admin startapp polls django_demo/apps/polls
+</code></pre></div>    </div>
+  </li>
+  <li>settings.py INSTALLED_APPS에 app 추가
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="s">'django.contrib.admin'</span><span class="p">,</span>
+     <span class="s">'django.contrib.auth'</span><span class="p">,</span>
+     <span class="s">'django.contrib.contenttypes'</span><span class="p">,</span>
+     <span class="s">'django.contrib.sessions'</span><span class="p">,</span>
+     <span class="s">'django.contrib.messages'</span><span class="p">,</span>
+     <span class="s">'django.contrib.staticfiles'</span><span class="p">,</span>
+     <span class="s">'apps.test_app'</span><span class="p">,</span>
+     <span class="s">'apps.polls'</span><span class="p">,</span>
+ <span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>테스트를 위한 view 추가
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">import</span> <span class="nn">logging</span>
+ <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+
+ <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">'debug'</span><span class="p">)</span>
+
+
+ <span class="c1"># Create your views here.
+</span> <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+     <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'polls app test.'</span><span class="p">)</span>
+     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s">"Hello, world. You're at the polls index."</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>urls.py 생성
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+ <span class="kn">from</span> <span class="nn">apps.polls</span> <span class="kn">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">polls_views</span>
+
+ <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="n">polls_views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'index'</span><span class="p">),</span>
+ <span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>프로젝트에 urls include
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="s">"""django_demo URL Configuration
+
+ The `urlpatterns` list routes URLs to views. For more information please see:
+     https://docs.djangoproject.com/en/3.1/topics/http/urls/
+ Examples:
+ Function views
+     1. Add an import:  from my_app import views
+     2. Add a URL to urlpatterns:  path('', views.home, name='home')
+ Class-based views
+     1. Add an import:  from other_app.views import Home
+     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+ Including another URLconf
+     1. Import the include() function: from django.urls import include, path
+     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+ """</span>
+ <span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+ <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">include</span>
+
+ <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="n">path</span><span class="p">(</span><span class="s">'admin/'</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+     <span class="n">path</span><span class="p">(</span><span class="s">'test/'</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">'apps.test_app.urls'</span><span class="p">)),</span>
+     <span class="n">path</span><span class="p">(</span><span class="s">'polls/'</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">'apps.polls.urls'</span><span class="p">)),</span>
+ <span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>잘 작동하는지 테스트
+    <blockquote>
+      <ul>
+        <li>로그
+          <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   [DEBUG][C:\Users\****\Desktop\dev\github\django-demo\django_demo\apps\polls\views.py:index():9][16/Feb/2021 17:23:20] "polls app test."
+</code></pre></div>          </div>
+        </li>
+        <li>웹 페이지<br />
+   <img src="/assets/imgs/posts/python/django-04-001.png" alt="사진" /></li>
+      </ul>
+    </blockquote>
+  </li>
+  <li>파일 구조<br />
+ <img src="/assets/imgs/posts/python/django-04-002.png" alt="사진" /></li>
+</ol>
+
+<h3 id="데이터베이스-사용해보기">데이터베이스 사용해보기</h3>
+<ol>
+  <li>settings에서 타임존 설정하기
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="s">'Asia/Seoul'</span>
+ <span class="n">USE_TZ</span> <span class="o">=</span> <span class="bp">False</span>
+</code></pre></div>    </div>
+  </li>
+  <li>모델 만들기 (models.py)
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">import</span> <span class="nn">datetime</span>
+ <span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+ <span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+
+
+ <span class="c1"># Create your models here.
+</span> <span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+     <span class="n">question_text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+     <span class="n">pub_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="s">'date published'</span><span class="p">)</span>
+
+     <span class="k">def</span> <span class="nf">was_published_recently</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pub_date</span> <span class="o">&gt;=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">question_text</span>
+
+
+ <span class="k">class</span> <span class="nc">Choice</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+     <span class="n">question</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+     <span class="n">choice_text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+     <span class="n">votes</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">choice_text</span>
+</code></pre></div>    </div>
+  </li>
+  <li>migrate 하기
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> python manage.py makemigrations polls
+</code></pre></div>    </div>
+    <p>위 명령어를 실행하면 아래와 같은 출력문이 나온다.</p>
+
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Migrations for 'polls':
+     apps\polls\migrations\0001_initial.py
+         - Create model Question
+         - Create model Choice
+</code></pre></div>    </div>
+    <p>이후 실행할 migrate 명령어는 migration들을 실행시켜주고 자동으로 데이터베이스 스키마를 관리해준다. 이 명령어를 실행하기 전에, migration이 내부적으로 어떤 SQL문장을 실행시키는지 알아보자.</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> python manage.py sqlmigrate polls 0001
+</code></pre></div>    </div>
+    <p>위 명령어를 실행하면 아래와 같은 출력문이 나온다. 가독성을 위해 줄바꿈을 조금 수정함 ;)</p>
+
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">BEGIN</span><span class="p">;</span>
+ <span class="c1">--</span>
+ <span class="c1">-- Create model Question</span>
+ <span class="c1">--</span>
+ <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nv">"polls_question"</span> <span class="p">(</span>
+     <span class="nv">"id"</span> <span class="nb">integer</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTOINCREMENT</span><span class="p">,</span> 
+     <span class="nv">"question_text"</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> 
+     <span class="nv">"pub_date"</span> <span class="nb">datetime</span> <span class="k">NOT</span> <span class="k">NULL</span>
+ <span class="p">);</span>
+ <span class="c1">--</span>
+ <span class="c1">-- Create model Choice</span>
+ <span class="c1">--</span>
+ <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nv">"polls_choice"</span> <span class="p">(</span>
+     <span class="nv">"id"</span> <span class="nb">integer</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTOINCREMENT</span><span class="p">,</span> 
+     <span class="nv">"choice_text"</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> 
+     <span class="nv">"votes"</span> <span class="nb">integer</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> 
+     <span class="nv">"question_id"</span> <span class="nb">integer</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">REFERENCES</span> 
+     <span class="nv">"polls_question"</span> <span class="p">(</span><span class="nv">"id"</span><span class="p">)</span> <span class="k">DEFERRABLE</span> <span class="k">INITIALLY</span> <span class="k">DEFERRED</span>
+ <span class="p">);</span>
+ <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="nv">"polls_choice_question_id_c5b4b260"</span> 
+     <span class="k">ON</span> <span class="nv">"polls_choice"</span> <span class="p">(</span><span class="nv">"question_id"</span><span class="p">);</span>
+ <span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div>    </div>
+    <p>이제 내부적으로 어떤 SQL이 작동하는지도 알았으니 migrate 해주자.</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> python manage.py migrate
+</code></pre></div>    </div>
+    <p>위 명령어를 실행하면 아래와 같은 출력문이 나온다.</p>
+
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Operations to perform:
+     Apply all migrations: admin, auth, contenttypes, polls, sessions
+ Running migrations:
+     Applying polls.0001_initial... OK
+</code></pre></div>    </div>
+  </li>
+  <li>admin 사이트에 모델 등록 (admin.py)
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+ <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span><span class="p">,</span> <span class="n">Choice</span>
+
+ <span class="c1"># Register your models here.
+</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Question</span><span class="p">)</span>
+ <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Choice</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>관리자 계정 만들기
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> python manage.py createsuperuser
+</code></pre></div>    </div>
+  </li>
+  <li>관리자 페이지 접속해보기
+ <img src="/assets/imgs/posts/python/django-04-003.png" alt="사진" /></li>
+</ol>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/django">django</a>
+</section>
+
+
+
+<!-- <section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section> -->
+
+<!-- <section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section> -->
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/git/2021/02/16/add-git-bash-in-windows-terminal.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">Windows Terminal에 git-bash 추가하기</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+				<a href="/git/2021/02/16/github-commit-sv.html">
+					<span class="page-number">Github에서 내 Commit에 서명하기</span>
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+			
+		</span>
+	</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">늒네의 개발일지</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:rlagnltn1357@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">rlagnltn1357@gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/kjb4494" title="">
+              <i class="fa fa-github"></i>
+              <span class="username">kjb4494</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <!-- <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">초보 개발자의 기록 보관소
+</p>
+    </div> -->
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<script src="//unpkg.com/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="//unpkg.com/tippy.js@5.2.1/dist/tippy-bundle.iife.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+	// Enable tooltips via Tippy.js
+	if (Array.isArray(window.tooltips)) {
+		window.tooltips.forEach(function(tooltip) {
+			var selector = tooltip[0];
+			var config = tooltip[1];
+			tippy(selector, config);
+		})
+	}
+});
+
+</script>
+
+
+
+
+
+
+  </body>
+
+</html>
