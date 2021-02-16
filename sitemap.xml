@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/github/2021/02/10/create-github-blog.html</loc>
+<loc>http://localhost:4000/git/2021/02/10/create-github-blog.html</loc>
 <lastmod>2021-02-10T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -65,10 +65,25 @@
 <lastmod>2021-02-15T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/git/2021/02/16/add-git-bash-in-windows-terminal.html</loc>
+<lastmod>2021-02-16T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/git/2021/02/16/github-commit-sv.html</loc>
+<lastmod>2021-02-16T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/%EB%A3%A9%EB%8D%95%EC%A7%88/2021/02/16/windows-terminal-theme.html</loc>
+<lastmod>2021-02-16T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/posts/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/git/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/tag/github/</loc>
@@ -107,7 +122,16 @@
 <loc>http://localhost:4000/tag/gcp/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/category/github/</loc>
+<loc>http://localhost:4000/tag/shell/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/commit/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/%EB%A3%A9%EB%8D%95%EC%A7%88/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/category/git/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/category/life/</loc>
@@ -117,5 +141,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/category/gcp/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/category/%EB%A3%A9%EB%8D%95%EC%A7%88/</loc>
 </url>
 </urlset>
