@@ -249,6 +249,22 @@
  <a href="https://github.com/settings/keys"><em>GPG keys Settings</em></a>에서 export한 내용을 복사해 등록해준다.</li>
 </ol>
 
+<h3 id="mac에서">Mac에서…</h3>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>gnupg
+brew <span class="nb">install </span>pinentry-mac
+</code></pre></div></div>
+<p>brew의 gnupg는 실제로 gnupg2로 링크되어 있기 때문에 github가 요구하는 gpg2 버전을 충족한다.
+mac에 기본적으로 pinentry가 깔려있겠지만, 만약 commit 할 때 아래와 같은 에러가 발생한다면 pinentry-mac을 설치해준다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>error: gpg failed to sign the data
+fatal: failed to write commit object
+</code></pre></div></div>
+<p>pinentry-mac을 설치해도 이 같은 에러가 계속 난다면 아래 절차를 수행해주자.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"pinentry-program /usr/local/bin/pinentry-mac"</span> <span class="o">&gt;&gt;</span> ~/.gnupg/gpg-agent.conf
+gpgconf <span class="nt">--kill</span> gpg-agent
+</code></pre></div></div>
+
 <h3 id="commit-할-때-서명하기">commit 할 때 서명하기</h3>
 <ul>
   <li>git config

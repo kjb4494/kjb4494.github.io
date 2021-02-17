@@ -210,6 +210,73 @@
 
 <hr />
 
+<h3 id="들어가기-전">들어가기 전…</h3>
+<p>jekyll을 설치해주자. 그럴려면 먼저 ruby를 설치해야한다.</p>
+<ol>
+  <li>ruby 설치하기
+    <ul>
+      <li>Windows10<br />
+  <a href="https://rubyinstaller.org/downloads/"><em>여기</em></a>에서 원하는 버전의 루비를 설치해준다. 매우 간단하다!</li>
+      <li>Mac<br />
+  mac에서 gem 명령어를 사용하려고 하면 이런 에러가 발생한다.
+        <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ERROR:  While executing gem ... (Gem::FilePermissionError)
+      You don't have write permissions for the /Library/Ruby/Gems/2.3.0 directory.
+</code></pre></div>        </div>
+        <p>이것은 시스템 ruby를 사용하려고 하기 때문에 발생하는 에러다. 따라서 brew로 rbenv를 설치해 ruby를 이용할 것이다.(<a href="https://github.com/rbenv/rbenv#installation"><em>설치 방법 참고</em></a>)</p>
+
+        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  brew <span class="nb">install </span>rbenv
+</code></pre></div>        </div>
+        <p>설치가 완료되면 rbenv 명령어를 사용할 수 있다.</p>
+
+        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  rbenv init
+</code></pre></div>        </div>
+        <p>위 명령어를 실행하고 쉘을 껏다 켜주면 된다.</p>
+
+        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  curl <span class="nt">-fsSL</span> https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+</code></pre></div>        </div>
+        <p>rbenv-doctor를 이용해 제대로 설정이 완료 됐는지 확인해준다. 아래처럼 전부 OK로 나온다면 잘 된 것이다.</p>
+        <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Checking for `rbenv' in PATH: /usr/local/bin/rbenv
+  Checking for rbenv shims in PATH: OK
+  Checking `rbenv install' support: /usr/local/bin/rbenv-install (ruby-build 20210119)
+  Counting installed Ruby versions: 1 versions
+  Checking RubyGems settings: OK
+  Auditing installed plugins: OK
+</code></pre></div>        </div>
+
+        <p>만약 zsh을 사용 중이고 PATH에서 rbenv shims를 못 잡을 경우, 아래 명령어를 수행 후 쉘을 껏다 켜주도록하자.</p>
+        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">echo</span> <span class="s1">'eval "$(rbenv init -)"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
+</code></pre></div>        </div>
+
+        <p>모두 완료 됐으면 rbenv를 이용해 ruby를 설치해주도록 하자.</p>
+
+        <ul>
+          <li>설치할 수 있는 ruby 버전 목록 출력
+            <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  rbenv <span class="nb">install</span> <span class="nt">-l</span>
+</code></pre></div>            </div>
+          </li>
+          <li>ruby 설치하기
+            <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  rbenv <span class="nb">install </span>2.6.6
+</code></pre></div>            </div>
+            <p>자신이 원하는 버전으로 설치해주면 된다. 2.6 버전이 필요해서 2.6.6을 설치했다.</p>
+          </li>
+          <li>ruby 사용하기
+            <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  rbenv global 2.6.6
+</code></pre></div>            </div>
+            <p>여기까지 하고도 권한 에러가 나면 쉘을 껏다 켜주도록 하자.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>jeklly, bundler 설치하기
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> gem <span class="nb">install </span>jekyll bundler
+</code></pre></div>    </div>
+    <p>jekyll와 함께 <a href="https://jekyllrb.com/docs/ruby-101/#bundler"><em>bundler</em></a>도 설치해줬다.</p>
+  </li>
+</ol>
+
+<p>이러면 블로그를 만들 개발환경 세팅은 끝났다.</p>
+
 <h3 id="깃허브로-블로그-만드는-법">깃허브로 블로그 만드는 법</h3>
 <ul>
   <li>[본인아이디].github.io 로 레파지토리를 생성한다.</li>

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Python Anaconda 설치하기</title>
-  <meta name="description" content="Windows10  Miniconda 설치하기환경 변수에 추가하기 체크  설치 후 파워쉘에서 사용할 수 있도록 초기화      conda init powershell        만약 내 문서 경로에 한글이 있을 경우,      이런식으로 이상한 경로로 폴더를 만들어 프로필을 생성...">
+  <meta name="description" content="Windows10에 설치하기  Miniconda 설치하기환경 변수에 추가하기 체크  설치 후 파워쉘에서 사용할 수 있도록 초기화      conda init powershell        만약 내 문서 경로에 한글이 있을 경우,      이런식으로 이상한 경로로 폴더를 만들어 프...">
   
   <meta name="author" content="kjb4494">
   <meta name="copyright" content="&copy; kjb4494 2021">
@@ -41,7 +41,7 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="Windows10  Miniconda 설치하기환경 변수에 추가하기 체크  설치 후 파워쉘에서 사용할 수 있도록 초기화      conda init powershell        만약 내 문서 경로에 한글이 있을 경우,      이런식으로 이상한 경로로 폴더를 만들어 프로필을 생성..." />
+  <meta property="og:description" content="Windows10에 설치하기  Miniconda 설치하기환경 변수에 추가하기 체크  설치 후 파워쉘에서 사용할 수 있도록 초기화      conda init powershell        만약 내 문서 경로에 한글이 있을 경우,      이런식으로 이상한 경로로 폴더를 만들어 프..." />
   <meta property="og:url" content="http://localhost:4000/python/2021/02/11/install-conda.html">
   <meta property="og:site_name" content="늒네의 개발일지" />
   <meta property="og:title" content="Python Anaconda 설치하기" />
@@ -56,7 +56,7 @@
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Python Anaconda 설치하기">
-  <meta name="twitter:description" content="Windows10  Miniconda 설치하기환경 변수에 추가하기 체크  설치 후 파워쉘에서 사용할 수 있도록 초기화      conda init powershell        만약 내 문서 경로에 한글이 있을 경우,      이런식으로 이상한 경로로 폴더를 만들어 프로필을 생성...">
+  <meta name="twitter:description" content="Windows10에 설치하기  Miniconda 설치하기환경 변수에 추가하기 체크  설치 후 파워쉘에서 사용할 수 있도록 초기화      conda init powershell        만약 내 문서 경로에 한글이 있을 경우,      이런식으로 이상한 경로로 폴더를 만들어 프...">
   <meta name="twitter:image" content="http://localhost:4000/assets/imgs/logo.png">
   <meta name="twitter:url" content="http://localhost:4000/python/2021/02/11/install-conda.html">
   
@@ -195,7 +195,7 @@
 </section>
 
 <article class="post-content">
-  <h3 id="windows10">Windows10</h3>
+  <h3 id="windows10에-설치하기">Windows10에 설치하기</h3>
 <ul>
   <li><a href="https://docs.conda.io/en/latest/miniconda.html"><em>Miniconda 설치하기</em></a>
 <img src="/assets/imgs/posts/python/install-conda-001.png" alt="사진" />
@@ -210,33 +210,48 @@
   이럴 경우엔 저 이상한 경로로 되어 있는 폴더 안의 내용물을 직접 내문서로 옮겨준다.<br />
   가장 좋은 방법은 그냥 윈도우 설치할 때 마이크로소프트 계정 연동하지 말고 로컬 계정으로 만들었다가 나중에 연결하는 식으로 계정 만드는게 좋은듯…(위 사진은 옛날에 찍어놓은 스크린샷 ㅎㅎ…)</p>
   </li>
-  <li>많이 쓰는 명령어 모음
-    <ul>
-      <li>가상환경 조회
-        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda <span class="nb">env </span>list
-</code></pre></div>        </div>
-      </li>
-      <li>가상환경 실행
-        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  activate &lt;env_name&gt;
-</code></pre></div>        </div>
-      </li>
-      <li>가상환경 종료
-        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  deactivate
-</code></pre></div>        </div>
-      </li>
-      <li>conda 가상환경 내 package 목록/버전 확인
-        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda list <span class="nt">-n</span> &lt;env_name&gt;
-</code></pre></div>        </div>
-      </li>
-      <li>특정 conda 가상환경을 복제해 새로운 가상환경을 생성
-        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda create <span class="nt">--name</span> &lt;new_env_name&gt; <span class="nt">--clone</span> &lt;old_env_name&gt;
-</code></pre></div>        </div>
-      </li>
-      <li>가상환경 제거
-        <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda remove <span class="nt">--name</span> &lt;env_name&gt; <span class="nt">--all</span>
-</code></pre></div>        </div>
-      </li>
-    </ul>
+</ul>
+
+<h3 id="mac에-설치하기">Mac에 설치하기</h3>
+<ul>
+  <li><a href="https://docs.conda.io/en/latest/miniconda.html"><em>miniconda 설치하기</em></a><br />
+  간편하게 <a href="https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.pkg"><em>Miniconda3 MacOSX 64-bit pkg</em></a>로 설치했다. 전부 기본값으로 설치하면 ‘/opt/miniconda3’ 경로에 설치된다.</li>
+  <li>init
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  /opt/miniconda3/bin/conda init zsh
+</code></pre></div>    </div>
+    <p>자신이 사용하고 있는 쉘로 init 한 뒤, 터미널을 껏다 켜준다.</p>
+  </li>
+</ul>
+
+<h3 id="많이-쓰는-명령어-모음">많이 쓰는 명령어 모음</h3>
+<ul>
+  <li>가상환경 조회
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda <span class="nb">env </span>list
+</code></pre></div>    </div>
+  </li>
+  <li>가상환경 만들기
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda create <span class="nt">-n</span> &lt;new_env_name&gt; <span class="nv">python</span><span class="o">=</span>&lt;python_version&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>가상환경 실행
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  activate &lt;env_name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>가상환경 종료
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  deactivate
+</code></pre></div>    </div>
+  </li>
+  <li>conda 가상환경 내 package 목록/버전 확인
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda list <span class="nt">-n</span> &lt;env_name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>특정 conda 가상환경을 복제해 새로운 가상환경을 생성
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda create <span class="nt">--name</span> &lt;new_env_name&gt; <span class="nt">--clone</span> &lt;old_env_name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>가상환경 제거
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda remove <span class="nt">--name</span> &lt;env_name&gt; <span class="nt">--all</span>
+</code></pre></div>    </div>
   </li>
 </ul>
 
