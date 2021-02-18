@@ -81,6 +81,14 @@
 <lastmod>2021-02-16T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/python/2021/02/18/django-05.html</loc>
+<lastmod>2021-02-18T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/python/2021/02/18/django-06.html</loc>
+<lastmod>2021-02-18T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
@@ -127,6 +135,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/tag/shell/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/tutorial/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/tag/commit/</loc>

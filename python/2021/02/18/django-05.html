@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Django 05편 - polls app 구현하기 2편</title>
+  <meta name="description" content="1편에서 Model을 구현했으니 이번엔 View와 Template를 구현해보자.">
+  
+  <meta name="author" content="kjb4494">
+  <meta name="copyright" content="&copy; kjb4494 2021">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/.min.css"> -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="1편에서 Model을 구현했으니 이번엔 View와 Template를 구현해보자." />
+  <meta property="og:url" content="http://localhost:4000/python/2021/02/18/django-05.html">
+  <meta property="og:site_name" content="늒네의 개발일지" />
+  <meta property="og:title" content="Django 05편 - polls app 구현하기 2편" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/imgs/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Django 05편 - polls app 구현하기 2편">
+  <meta name="twitter:description" content="1편에서 Model을 구현했으니 이번엔 View와 Template를 구현해보자.">
+  <meta name="twitter:image" content="http://localhost:4000/assets/imgs/logo.png">
+  <meta name="twitter:url" content="http://localhost:4000/python/2021/02/18/django-05.html">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/python/2021/02/18/django-05.html">
+	<link rel="alternate" type="application/rss+xml" title="늒네의 개발일지" href="http://localhost:4000/feed.xml" />
+	
+	<!-- Tooltips -->
+	<script type="text/javascript">
+		window.tooltips = []
+	</script>
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/imgs/logo.png" alt="늒네의 개발일지">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Django 05편 - polls app 구현하기 2편</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">February 18, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/python">Python</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p>1편에서 Model을 구현했으니 이번엔 View와 Template를 구현해보자.</p>
+
+<h3 id="인수를-받는-view-만들기">인수를 받는 View 만들기</h3>
+<ul>
+  <li>views.py
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">logging</span>
+  <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+
+  <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">'debug'</span><span class="p">)</span>
+
+
+  <span class="c1"># Create your views here.
+</span>  <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+      <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'polls app test.'</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s">"Hello, world. You're at the polls index."</span><span class="p">)</span>
+
+
+  <span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s">"You're looking at question </span><span class="si">%</span><span class="s">s."</span> <span class="o">%</span> <span class="n">question_id</span><span class="p">)</span>
+
+
+  <span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
+      <span class="n">response</span> <span class="o">=</span> <span class="s">"You're looking at the results of question </span><span class="si">%</span><span class="s">s."</span>
+      <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">response</span> <span class="o">%</span> <span class="n">question_id</span><span class="p">)</span>
+
+
+  <span class="k">def</span> <span class="nf">vote</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s">"You're voting on question </span><span class="si">%</span><span class="s">s."</span> <span class="o">%</span> <span class="n">question_id</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>urls.py
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+  <span class="kn">from</span> <span class="nn">apps.polls</span> <span class="kn">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">polls_views</span>
+
+  <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="n">polls_views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'index'</span><span class="p">),</span>
+      <span class="n">path</span><span class="p">(</span><span class="s">'&lt;int:question_id&gt;/'</span><span class="p">,</span> <span class="n">polls_views</span><span class="o">.</span><span class="n">detail</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'detail'</span><span class="p">),</span>
+      <span class="n">path</span><span class="p">(</span><span class="s">'&lt;int:question_id&gt;/results/'</span><span class="p">,</span> <span class="n">polls_views</span><span class="o">.</span><span class="n">results</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'results'</span><span class="p">),</span>
+      <span class="n">path</span><span class="p">(</span><span class="s">'&lt;int:question_id&gt;/vote/'</span><span class="p">,</span> <span class="n">polls_views</span><span class="o">.</span><span class="n">vote</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'vote'</span><span class="p">),</span>
+  <span class="p">]</span>
+</code></pre></div>    </div>
+    <p><img src="/assets/imgs/posts/python/django-05-001.png" alt="사진" /></p>
+  </li>
+</ul>
+
+<p>잘 동작한다. :)</p>
+
+<h3 id="template-추가하기">Template 추가하기</h3>
+<p><img src="/assets/imgs/posts/python/django-05-002.png" alt="사진" /></p>
+
+<p>pycharm 쓸 때 template laguages를 django로 설정해주면 편함 :D</p>
+
+<p>먼저, django의 template 시스템에 대한 이해가 필요하다. 공식 문서에 따르면 다음과 같다.</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>프로젝트의 TEMPLATES 설정은 Django가 어떻게 템플릿을 불러오고 렌더링 할 것인지 기술합니다. 
+기본 설정 파일은 APP_DIRS 옵션이 True로 설정된 DjangoTemplates 백엔드를 구성합니다. 
+관례에 따라, DjangoTemplates은 각 INSTALLED_APPS 디렉토리의 《templates》 하위 디렉토리를 탐색합니다.
+</code></pre></div></div>
+<p><img src="/assets/imgs/posts/python/django-05-003.png" alt="사진" /></p>
+
+<p>따라서 template의 파일구조는 이런식으로 구성해준다.</p>
+<ul>
+  <li>
+    <p>index.html</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {% if latest_question_list %}
+      <span class="nt">&lt;ul&gt;</span>
+      {% for question in latest_question_list %}
+          <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/polls/{{ question.id }}/"</span><span class="nt">&gt;</span>{{ question.question_text }}<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      {% endfor %}
+      <span class="nt">&lt;/ul&gt;</span>
+  {% else %}
+      <span class="nt">&lt;p&gt;</span>No polls are available.<span class="nt">&lt;/p&gt;</span>
+  {% endif %}
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>views.py</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
+  <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+
+
+  <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+      <span class="n">latest_question_list</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'-pub_date'</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+      <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s">'latest_question_list'</span><span class="p">:</span> <span class="n">latest_question_list</span><span class="p">}</span>
+      <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'polls/index.html'</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>index view를 수정해준다.</p>
+
+    <ul>
+      <li>render()
+        <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  render() 함수는 request 객체를 첫번째 인수로 받고, 
+  템플릿 이름을 두번째 인수로 받으며, 
+  context 사전형 객체를 세전째 선택적(optional) 인수로 받습니다. 
+  인수로 지정된 context로 표현된 템플릿의 HttpResponse 객체가 반환됩니다.
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>다음으로, 데이터베이스 검색 결과가 없을 경우 404 페이지를 띄워보자.</p>
+<ul>
+  <li>
+    <p>detail.html</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;h1&gt;</span>{{ question.question_text }}<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;ul&gt;</span>
+  {% for choice in question.choice_set.all %}
+      <span class="nt">&lt;li&gt;</span>{{ choice.choice_text }}<span class="nt">&lt;/li&gt;</span>
+  {% endfor %}
+  <span class="nt">&lt;/ul&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>views.py</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
+      <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'polls/detail.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'question'</span><span class="p">:</span> <span class="n">question</span><span class="p">})</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>철학
+        <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  상위 계층에서 ObjectDoesNotExist 예외를 자동으로 잡아 내는 대신
+  get_object_or_404() 도움 함수(helper functoin)를 사용하거나,
+  ObjectDoesNotExist 예외를 사용하는 대신 Http404 를 사용하는 이유는 무엇일까요?
+
+  왜냐하면, 모델 계층을 뷰 계층에 연결하는 방법이기 때문입니다. 
+  Django의 중요한 설계 목표는, 
+  약결합(loose coupling)을 관리하는 데에 있습니다. 
+  일부 제어된 결합이 django.shortcuts 모듈에서 도입되었습니다.
+</code></pre></div>        </div>
+        <p>상위 계층에서 예외를 자동으로 잡아 내는 java spring과는 달리 약결합 관리를 중시하는 django는 위와 같은 방법으로 shortcuts 모듈을 사용하거나 try-except문을 이용한다.</p>
+
+        <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  또한, get_object_or_404() 함수처럼 동작하는 get_list_or_404() 함수가 있습니다. 
+  get() 대신 filter() 를 쓴다는 것이 다릅니다. 
+  리스트가 비어있을 경우, Http404 예외를 발생시킵니다.
+</code></pre></div>        </div>
+        <p>(대충 sql에서 where절로 여러 결과를 가져와야할 경우 get_list_or_404()를 쓰면 된다는 내용)</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="중간-테스트">중간 테스트</h3>
+<ul>
+  <li>index 페이지
+  <img src="/assets/imgs/posts/python/django-05-004.png" alt="사진" /></li>
+  <li>admin 페이지에서 question 추가
+  <img src="/assets/imgs/posts/python/django-05-005.png" alt="사진" /></li>
+  <li>1번째 question detail 페이지
+  <img src="/assets/imgs/posts/python/django-05-006.png" alt="사진" /></li>
+  <li>index 페이지
+  <img src="/assets/imgs/posts/python/django-05-007.png" alt="사진" /></li>
+</ul>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/django">django</a>,&nbsp;<a href="/tag/tutorial">tutorial</a>
+</section>
+
+
+
+<!-- <section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section> -->
+
+<!-- <section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section> -->
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/%EB%A3%A9%EB%8D%95%EC%A7%88/2021/02/16/windows-terminal-theme.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">Windows Termial 테마 적용하기</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+				<a href="/python/2021/02/18/django-06.html">
+					<span class="page-number">Django 06편 - polls app 구현하기 3편</span>
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+			
+		</span>
+	</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">늒네의 개발일지</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:rlagnltn1357@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">rlagnltn1357@gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/kjb4494" title="">
+              <i class="fa fa-github"></i>
+              <span class="username">kjb4494</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <!-- <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">초보 개발자의 기록 보관소
+</p>
+    </div> -->
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<script src="//unpkg.com/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="//unpkg.com/tippy.js@5.2.1/dist/tippy-bundle.iife.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+	// Enable tooltips via Tippy.js
+	if (Array.isArray(window.tooltips)) {
+		window.tooltips.forEach(function(tooltip) {
+			var selector = tooltip[0];
+			var config = tooltip[1];
+			tippy(selector, config);
+		})
+	}
+});
+
+</script>
+
+
+
+
+
+
+  </body>
+
+</html>

@@ -6,9 +6,45 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 17 Feb 2021 15:54:46 +0900</pubDate>
-    <lastBuildDate>Wed, 17 Feb 2021 15:54:46 +0900</lastBuildDate>
+    <pubDate>Thu, 18 Feb 2021 22:27:04 +0900</pubDate>
+    <lastBuildDate>Thu, 18 Feb 2021 22:27:04 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Django 06편 - polls app 구현하기 3편</title>
+        <description>&lt;h3 id=&quot;템플릿에서-하드-코딩된-url을-제거하자&quot;&gt;템플릿에서 하드 코딩된 URL을 제거하자!&lt;/h3&gt; &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/polls/{{ question.id }}/&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ question.question_text }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt; &lt;p&gt;이 부분은 만약 polls의 url을 바꾸게 되면 템플릿에...</description>
+        <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/python/2021/02/18/django-06.html</link>
+        <guid isPermaLink="true">http://localhost:4000/python/2021/02/18/django-06.html</guid>
+        
+        <category>python</category>
+        
+        <category>django</category>
+        
+        <category>tutorial</category>
+        
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>Django 05편 - polls app 구현하기 2편</title>
+        <description>&lt;p&gt;1편에서 Model을 구현했으니 이번엔 View와 Template를 구현해보자.&lt;/p&gt; &lt;h3 id=&quot;인수를-받는-view-만들기&quot;&gt;인수를 받는 View 만들기&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;views.py &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;logging&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;django.http&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span...</description>
+        <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/python/2021/02/18/django-05.html</link>
+        <guid isPermaLink="true">http://localhost:4000/python/2021/02/18/django-05.html</guid>
+        
+        <category>python</category>
+        
+        <category>django</category>
+        
+        <category>tutorial</category>
+        
+        
+        <category>python</category>
+        
+      </item>
     
       <item>
         <title>Windows Termial 테마 적용하기</title>
@@ -44,7 +80,7 @@
     
       <item>
         <title>Django 04편 - polls app 구현하기 1편</title>
-        <description>&lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;https://docs.djangoproject.com/ko/3.1/intro/tutorial01/&quot;&gt;&lt;em&gt;공식 문서의 튜토리얼 polls app&lt;/em&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;h3 id=&quot;polls-app을-만들어서-프로젝트에-붙이자&quot;&gt;polls app을 만들어서 프로젝트에 붙이자!&lt;/h3&gt; &lt;ol&gt; &lt;li&gt;polls app 생성 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;django_demo/apps/polls django-admin startapp...</description>
+        <description>&lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;https://docs.djangoproject.com/ko/3.1/intro/tutorial01/&quot;&gt;&lt;em&gt;공식 문서의 튜토리얼 polls app&lt;/em&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;p&gt;이번에 django 공식 문서의 튜토리얼을 진행하면서 가능한 한 자세하게 다뤄볼 생각…&lt;/p&gt; &lt;h3 id=&quot;polls-app을-만들어서-프로젝트에-붙이자&quot;&gt;polls app을 만들어서 프로젝트에 붙이자!&lt;/h3&gt; &lt;ol&gt; &lt;li&gt;polls app...</description>
         <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/python/2021/02/16/django-04.html</link>
         <guid isPermaLink="true">http://localhost:4000/python/2021/02/16/django-04.html</guid>
@@ -52,6 +88,8 @@
         <category>python</category>
         
         <category>django</category>
+        
+        <category>tutorial</category>
         
         
         <category>python</category>
@@ -124,39 +162,6 @@
         <pubDate>Mon, 15 Feb 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/python/2021/02/15/django-02.html</link>
         <guid isPermaLink="true">http://localhost:4000/python/2021/02/15/django-02.html</guid>
-        
-        <category>python</category>
-        
-        <category>django</category>
-        
-        
-        <category>python</category>
-        
-      </item>
-    
-      <item>
-        <title>2021년 2월 15일</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/assets/imgs/posts/daily-life/2021-02-15-001.jpg&quot; alt=&quot;사진&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;재택근무 전 가벼운 조깅 :)&lt;/p&gt;
-</description>
-        <pubDate>Mon, 15 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/life/2021/02/15/daily-life.html</link>
-        <guid isPermaLink="true">http://localhost:4000/life/2021/02/15/daily-life.html</guid>
-        
-        <category>life</category>
-        
-        
-        <category>life</category>
-        
-      </item>
-    
-      <item>
-        <title>Django 01편 - Hello World!</title>
-        <description>&lt;h3 id=&quot;들어가기-전&quot;&gt;들어가기 전…&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;/python/2021/02/11/install-conda.html&quot;&gt;Python Anaconda 설치하기&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;p&gt;쾌적한 개발을 위해 Anaconda를 이용해 가상인터프리터를 사용한다.&lt;/p&gt; &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda create &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; django_env &lt;span class=&quot;nv&quot;&gt;python&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3.9...</description>
-        <pubDate>Sun, 14 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/python/2021/02/14/django-01.html</link>
-        <guid isPermaLink="true">http://localhost:4000/python/2021/02/14/django-01.html</guid>
         
         <category>python</category>
         
