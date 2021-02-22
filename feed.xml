@@ -6,9 +6,41 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 18 Feb 2021 22:27:04 +0900</pubDate>
-    <lastBuildDate>Thu, 18 Feb 2021 22:27:04 +0900</lastBuildDate>
+    <pubDate>Mon, 22 Feb 2021 11:54:02 +0900</pubDate>
+    <lastBuildDate>Mon, 22 Feb 2021 11:54:02 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Django 07편 - polls app 구현하기 4편</title>
+        <description>&lt;h3 id=&quot;제너릭-뷰로-리팩토링-해보자&quot;&gt;제너릭 뷰로 리팩토링 해보자!&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;불필요한 레거시 뷰 중 일부를 삭제한다.&lt;/li&gt; &lt;li&gt;Django의 제너릭 뷰를 기반으로 새로운 뷰를 도입해본다.&lt;/li&gt; &lt;li&gt;URLconf를 수정한다.&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;ul&gt; &lt;li&gt;views.py 수정 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div...</description>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/python/2021/02/20/django-07.html</link>
+        <guid isPermaLink="true">http://localhost:4000/python/2021/02/20/django-07.html</guid>
+        
+        <category>python</category>
+        
+        <category>django</category>
+        
+        <category>tutorial</category>
+        
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>2021년 2월 20일</title>
+        <description>&lt;h3 id=&quot;원신-해등절-이벤트-요약&quot;&gt;원신 해등절 이벤트 요약…&lt;/h3&gt; &lt;p&gt;&lt;img src=&quot;/assets/imgs/posts/daily-life/2021-02-20-001.png&quot; alt=&quot;사진&quot; /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;유저가 원했던 해등절 이벤트&lt;/code&gt;&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/assets/imgs/posts/daily-life/2021-02-20-002.png&quot; alt=&quot;사진&quot; /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;현실 ㅋㅋㅋ&lt;/code&gt;&lt;/p&gt; &lt;h3 id=&quot;역시-온라인-rpg-게임은-못-하겠다&quot;&gt;역시 온라인 RPG 게임은 못 하겠다…&lt;/h3&gt; &lt;p&gt;스토리 컨텐츠...</description>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/life/2021/02/20/daily-life.html</link>
+        <guid isPermaLink="true">http://localhost:4000/life/2021/02/20/daily-life.html</guid>
+        
+        <category>life</category>
+        
+        
+        <category>life</category>
+        
+      </item>
     
       <item>
         <title>Django 06편 - polls app 구현하기 3편</title>
@@ -137,38 +169,6 @@
         
         
         <category>gcp</category>
-        
-      </item>
-    
-      <item>
-        <title>Django 03편 - Logging</title>
-        <description>&lt;h3 id=&quot;로깅-설정&quot;&gt;로깅 설정&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;https://docs.djangoproject.com/en/3.1/topics/logging/&quot;&gt;&lt;em&gt;Django Logging Documentation&lt;/em&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;ul&gt; &lt;li&gt;dev_settings.py에 로깅 설정 추가 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;LOGGING&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'version'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;...</description>
-        <pubDate>Mon, 15 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/python/2021/02/15/django-03.html</link>
-        <guid isPermaLink="true">http://localhost:4000/python/2021/02/15/django-03.html</guid>
-        
-        <category>python</category>
-        
-        <category>django</category>
-        
-        
-        <category>python</category>
-        
-      </item>
-    
-      <item>
-        <title>Django 02편 - Dev&amp;Prod 환경 분리하기</title>
-        <description>&lt;h3 id=&quot;devprod-settingspy-만들기&quot;&gt;Dev&amp;amp;Prod settings.py 만들기&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;기존 settings.py 파일명을 base_settings.py로 변경&lt;/li&gt; &lt;li&gt;dev_settings.py와 prod_settings.py 파일 추가 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;.base_settings&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt; &lt;/div&gt; &lt;/li&gt;...</description>
-        <pubDate>Mon, 15 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/python/2021/02/15/django-02.html</link>
-        <guid isPermaLink="true">http://localhost:4000/python/2021/02/15/django-02.html</guid>
-        
-        <category>python</category>
-        
-        <category>django</category>
-        
-        
-        <category>python</category>
         
       </item>
     
