@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Django 08편 - 테스트 주도 개발(Test-driven development, TDD) 1편</title>
+  <meta name="description" content="들어가기 전…      polls app 구현하기 4편  ">
+  
+  <meta name="author" content="kjb4494">
+  <meta name="copyright" content="&copy; kjb4494 2021">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/.min.css"> -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="들어가기 전…      polls app 구현하기 4편  " />
+  <meta property="og:url" content="http://localhost:4000/python/2021/02/22/django-08.html">
+  <meta property="og:site_name" content="늒네의 개발일지" />
+  <meta property="og:title" content="Django 08편 - 테스트 주도 개발(Test-driven development, TDD) 1편" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/imgs/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Django 08편 - 테스트 주도 개발(Test-driven development, TDD) 1편">
+  <meta name="twitter:description" content="들어가기 전…      polls app 구현하기 4편  ">
+  <meta name="twitter:image" content="http://localhost:4000/assets/imgs/logo.png">
+  <meta name="twitter:url" content="http://localhost:4000/python/2021/02/22/django-08.html">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/python/2021/02/22/django-08.html">
+	<link rel="alternate" type="application/rss+xml" title="늒네의 개발일지" href="http://localhost:4000/feed.xml" />
+	
+	<!-- Tooltips -->
+	<script type="text/javascript">
+		window.tooltips = []
+	</script>
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/imgs/logo.png" alt="늒네의 개발일지">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Django 08편 - 테스트 주도 개발(Test-driven development, TDD) 1편</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">February 22, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/python">Python</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="들어가기-전">들어가기 전…</h3>
+<blockquote>
+  <ul>
+    <li><a href="/python/2021/02/20/django-07.html">polls app 구현하기 4편</a></li>
+  </ul>
+</blockquote>
+
+<p>위 프로젝트에서 다룬 앱을 이용해 TDD를 구성해보자.</p>
+
+<h3 id="테스트-주도-개발test-driven-development-tdd이란">테스트 주도 개발(Test-driven development, TDD)이란?</h3>
+
+<h3 id="첫-번째-테스트-작성하기">첫 번째 테스트 작성하기</h3>
+<p>이전에 만든 polls 앱에는 버그가 있다. Question.was_published_recently() 메소드는 Question이 어제 게시된 경우 True를 반환(올바른 동작)할 뿐만 아니라 Question의 pub_date 필드가 미래로 설정되어 있을 때도 그렇다(틀린 동작).</p>
+
+<ul>
+  <li>버그를 노출하는 테스트 코드 만들기
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">datetime</span>
+
+  <span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">TestCase</span>
+  <span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+
+  <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
+
+
+  <span class="c1"># Create your tests here.
+</span>  <span class="k">class</span> <span class="nc">QuestionModelTests</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+
+      <span class="k">def</span> <span class="nf">test_was_published_recently_with_future_question</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="s">"""
+          was_published_recently() returns False for questions whose pub_date
+          is in the future.
+          """</span>
+          <span class="n">time</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+          <span class="n">future_question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">pub_date</span><span class="o">=</span><span class="n">time</span><span class="p">)</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">assertIs</span><span class="p">(</span><span class="n">future_question</span><span class="o">.</span><span class="n">was_published_recently</span><span class="p">(),</span> <span class="bp">False</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>미래의 pub_date를 가진 Question 인스턴스를 생성하는 메소드를 가진 django.test.TestCase 하위 클래스를 생성했다. 그런 다음 was_published_recently()의 출력이 False가 되는지 확인했다.</p>
+  </li>
+  <li>테스트 실행
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  python manage.py <span class="nb">test </span>apps.polls
+</code></pre></div>    </div>
+  </li>
+  <li>테스트 결과
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Creating test database for alias 'default'...
+  System check identified no issues (0 silenced).
+  F
+  ======================================================================
+  FAIL: test_was_published_recently_with_future_question (apps.polls.tests.QuestionModelTests)
+  was_published_recently() returns False for questions whose pub_date
+  ----------------------------------------------------------------------
+  Traceback (most recent call last):
+  File "C:\Users\yuri\Desktop\dev\github\django-demo\django_demo\apps\polls\tests.py", line 19, in test_was_published_recently_with_future_question
+      self.assertIs(future_question.was_published_recently(), False)
+  AssertionError: True is not False
+
+  ----------------------------------------------------------------------
+  Ran 1 test in 0.006s
+
+  FAILED (failures=1)
+  Destroying test database for alias 'default'...
+</code></pre></div>    </div>
+    <p>혹시 테스트 결과가 ‘AssertionError: True is not False’가 아니라 ‘ModuleNotFoundError: No module named ~’이 나온다면 파일 구조가 아래와 같은지 확인해본다.</p>
+
+    <p><img src="/assets/imgs/posts/python/django-08-001.png" alt="사진" /></p>
+
+    <p>특히, apps 폴더 아래에 __init__.py가 있는지 확인한다. 해당 파일이 존재하지않으면 파이썬 패키지로 인식하지 않는다.</p>
+  </li>
+</ul>
+
+<h3 id="버그-수정하기">버그 수정하기</h3>
+<ul>
+  <li>model.py
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="k">def</span> <span class="nf">was_published_recently</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="c1"># return self.pub_date &gt;= timezone.now() - datetime.timedelta(days=1)
+</span>          <span class="n">now</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+          <span class="k">return</span> <span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pub_date</span> <span class="o">&lt;=</span> <span class="n">now</span>
+</code></pre></div>    </div>
+    <p>Question.was_published_recently()는 pub_date가 미래에 있다면 False를 반환해야 한다. models.py에서 날짜가 과거에 있을 때에만 True를 반환하도록 메소드를 수정하자.</p>
+  </li>
+  <li>다시 테스트 실행하기
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  python manage.py <span class="nb">test </span>apps.polls
+</code></pre></div>    </div>
+  </li>
+  <li>테스트 결과
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Creating test database for alias 'default'...
+  System check identified no issues (0 silenced).
+  .
+  ----------------------------------------------------------------------
+  Ran 1 test in 0.001s
+
+  OK
+  Destroying test database for alias 'default'...
+</code></pre></div>    </div>
+    <p>테스트가 무사히 통과되었다. X)</p>
+  </li>
+</ul>
+
+<h3 id="보다-포괄적인-테스트">보다 포괄적인 테스트</h3>
+<ul>
+  <li>tests.py
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nf">test_was_published_recently_with_old_question</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="s">"""
+      was_published_recently() returns False for questions whose pub_date
+      is older than 1 day.
+      """</span>
+      <span class="n">time</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+      <span class="n">old_question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">pub_date</span><span class="o">=</span><span class="n">time</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">assertIs</span><span class="p">(</span><span class="n">old_question</span><span class="o">.</span><span class="n">was_published_recently</span><span class="p">(),</span> <span class="bp">False</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">test_was_published_recently_with_recent_question</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="s">"""
+      was_published_recently() returns True for questions whose pub_date
+      is within the last day.
+      """</span>
+      <span class="n">time</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">23</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">59</span><span class="p">,</span> <span class="n">seconds</span><span class="o">=</span><span class="mi">59</span><span class="p">)</span>
+      <span class="n">recent_question</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">pub_date</span><span class="o">=</span><span class="n">time</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">assertIs</span><span class="p">(</span><span class="n">recent_question</span><span class="o">.</span><span class="n">was_published_recently</span><span class="p">(),</span> <span class="bp">True</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>위 코드를 추가해주면 이제 Question.was_published_recently()가 과거, 최근, 미래의 질문에 대해 올바른 값을 반환한다는걸 확인시켜주는 세가지 테스트를 수행할 수 있다.</p>
+  </li>
+</ul>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/django">django</a>,&nbsp;<a href="/tag/tdd">tdd</a>
+</section>
+
+
+
+<!-- <section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section> -->
+
+<!-- <section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section> -->
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/python/2021/02/20/django-07.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">Django 07편 - polls app 구현하기 4편</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+		</span>
+	</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">늒네의 개발일지</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:rlagnltn1357@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">rlagnltn1357@gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/kjb4494" title="">
+              <i class="fa fa-github"></i>
+              <span class="username">kjb4494</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <!-- <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">초보 개발자의 기록 보관소
+</p>
+    </div> -->
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<script src="//unpkg.com/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="//unpkg.com/tippy.js@5.2.1/dist/tippy-bundle.iife.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+	// Enable tooltips via Tippy.js
+	if (Array.isArray(window.tooltips)) {
+		window.tooltips.forEach(function(tooltip) {
+			var selector = tooltip[0];
+			var config = tooltip[1];
+			tippy(selector, config);
+		})
+	}
+});
+
+</script>
+
+
+
+
+
+
+  </body>
+
+</html>
