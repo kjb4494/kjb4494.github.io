@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Django 08편 - 테스트 주도 개발(Test-driven development, TDD) 1편</title>
+  <title>Django 08편 - TDD 1편</title>
   <meta name="description" content="들어가기 전…      polls app 구현하기 4편  ">
   
   <meta name="author" content="kjb4494">
@@ -44,7 +44,7 @@
   <meta property="og:description" content="들어가기 전…      polls app 구현하기 4편  " />
   <meta property="og:url" content="http://localhost:4000/python/2021/02/22/django-08.html">
   <meta property="og:site_name" content="늒네의 개발일지" />
-  <meta property="og:title" content="Django 08편 - 테스트 주도 개발(Test-driven development, TDD) 1편" />
+  <meta property="og:title" content="Django 08편 - TDD 1편" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://localhost:4000/assets/imgs/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -55,7 +55,7 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Django 08편 - 테스트 주도 개발(Test-driven development, TDD) 1편">
+  <meta name="twitter:title" content="Django 08편 - TDD 1편">
   <meta name="twitter:description" content="들어가기 전…      polls app 구현하기 4편  ">
   <meta name="twitter:image" content="http://localhost:4000/assets/imgs/logo.png">
   <meta name="twitter:url" content="http://localhost:4000/python/2021/02/22/django-08.html">
@@ -162,6 +162,8 @@
 
 	
 
+	
+
 
       </ul>
     </nav>
@@ -175,7 +177,7 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">Django 08편 - 테스트 주도 개발(Test-driven development, TDD) 1편</h1>
+      <h1 class="title">Django 08편 - TDD 1편</h1>
       <!-- <p class="info">by <strong></strong></p> -->
     </header>
   </div>
@@ -211,6 +213,30 @@
 <p>위 프로젝트에서 다룬 앱을 이용해 TDD를 구성해보자.</p>
 
 <h3 id="테스트-주도-개발test-driven-development-tdd이란">테스트 주도 개발(Test-driven development, TDD)이란?</h3>
+<p>테스트 주도 개발(Test-driven development TDD)은 매우 짧은 개발 사이클을 반복하는 소프트웨어 개발 프로세스 중 하나이다. 개발자는 먼저 요구사항을 검증하는 자동화된 테스트 케이스를 작성한다. 그런 후에, 그 테스트 케이스를 통과하기 위한 최소한의 코드를 생성한다. 마지막으로 작성한 코드를 표준에 맞도록 리팩토링한다.</p>
+
+<blockquote>
+  <ul>
+    <li><a href="https://docs.djangoproject.com/ko/3.1/intro/tutorial05/#introducing-automated-testing"><em>자동화된 테스트 소개</em></a></li>
+  </ul>
+</blockquote>
+
+<ul>
+  <li>자동화된 테스트란?<br />
+  테스트는 다양한 수준에서 작동합니다. 일부 테스트는 작은 세부 사항에 적용될 수 있습니다 (특정 모델 메서드는 예상대로 값을 반환합니까?) 또 다른 테스트는 소프트웨어의 전반적인 작동을 검사합니다 (사이트에서 사용자 입력 시퀀스가 원하는 결과를 생성합니까?). 자동화 된 테스트에서는 테스트 작업이 시스템에서 수행됩니다. 한 번 테스트 세트를 작성한 이후에는 앱을 변경할 때 수동 테스트를 수행하지 않아도 원래 의도대로 코드가 작동하는지 확인할 수 있습니다.</li>
+  <li>테스트를 만들어야하는 이유
+    <ol>
+      <li>테스트를 통해 시간을 절약 할 수 있습니다.<br />
+ 더 정교한 어플리케이션에서는 구성 요소간에 수십 개의 복잡한 상호 작용이있을 수 있습니다. 이러한 구성 요소를 변경하면 응용 프로그램의 동작에 예기치 않은 결과가 발생할 수 있습니다. 이를 확인하기 위한 수동 테스트 작업을 자동화된 테스트가 몇초만에 해낼수 있다면 귀한시간을 많이 아낄수 있겠죠?. 무언가가 잘못되어도 테스트를 통해 예기치 않은 동작을 일으키는 코드를 식별하는 데 도움이됩니다.</li>
+      <li>테스트는 문제를 그저 식별만하는 것이 아니라 예방합니다.<br />
+ 테스트가 없으면 어플리케이션의 목적 또는 의도 된 동작이 다소 불투명 할 수 있습니다. 심지어 자신의 코드 일 때도, 정확히 무엇을하고 있는지 알아 내려고 노력하게 됩니다. 테스트는 이 불투명함을 바꿉니다. 그들은 내부에서 코드를 밝혀 내고, 어떤 것이 잘못 될 때, 그것이 잘못되었다는 것을 깨닫지 못했다고 할지라도, 잘못된 부분에 빛을 집중시킵니다.</li>
+      <li>테스트가 코드를 더 매력적으로 만듭니다.<br />
+ 테스트 작성을 시작해야하는 또다른 이유는 다른 개발자들이 당신의 소프트웨어를 사용하는것을 진지하게 고려하기 전에 테스트 코드를 보기를 원하기 때문입니다.</li>
+      <li>테스트는 협업을 원활하게 해줍니다.<br />
+ 복잡한 애플리케이션은 팀별로 유지 관리됩니다. 테스트는 동료가 실수로 코드를 손상시키지 않는다는 것을 보증합니다 (그리고 당신이 동료의 코드를 모르는새에 망가트리는것도).</li>
+    </ol>
+  </li>
+</ul>
 
 <h3 id="첫-번째-테스트-작성하기">첫 번째 테스트 작성하기</h3>
 <p>이전에 만든 polls 앱에는 버그가 있다. Question.was_published_recently() 메소드는 Question이 어제 게시된 경우 True를 반환(올바른 동작)할 뿐만 아니라 Question의 pub_date 필드가 미래로 설정되어 있을 때도 그렇다(틀린 동작).</p>
@@ -252,7 +278,7 @@
   was_published_recently() returns False for questions whose pub_date
   ----------------------------------------------------------------------
   Traceback (most recent call last):
-  File "C:\Users\yuri\Desktop\dev\github\django-demo\django_demo\apps\polls\tests.py", line 19, in test_was_published_recently_with_future_question
+  File "C:\Users\-\Desktop\dev\github\django-demo\django_demo\apps\polls\tests.py", line 19, in test_was_published_recently_with_future_question
       self.assertIs(future_question.was_published_recently(), False)
   AssertionError: True is not False
 
@@ -365,6 +391,14 @@
 		</span>
 		<span class="next-post">
 			
+				<a href="/python/2021/02/24/django-09.html">
+					<span class="page-number">Django 08편 - TDD 2편</span>
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+			
 		</span>
 	</section>
 
@@ -397,6 +431,8 @@
 
 	
 	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
 	
 
 	

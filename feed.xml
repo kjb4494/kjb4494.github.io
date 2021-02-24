@@ -6,13 +6,31 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 23 Feb 2021 20:27:30 +0900</pubDate>
-    <lastBuildDate>Tue, 23 Feb 2021 20:27:30 +0900</lastBuildDate>
+    <pubDate>Wed, 24 Feb 2021 12:10:29 +0900</pubDate>
+    <lastBuildDate>Wed, 24 Feb 2021 12:10:29 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
-        <title>Django 08편 - 테스트 주도 개발(Test-driven development, TDD) 1편</title>
-        <description>&lt;h3 id=&quot;들어가기-전&quot;&gt;들어가기 전…&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;/python/2021/02/20/django-07.html&quot;&gt;polls app 구현하기 4편&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;p&gt;위 프로젝트에서 다룬 앱을 이용해 TDD를 구성해보자.&lt;/p&gt; &lt;h3 id=&quot;테스트-주도-개발test-driven-development-tdd이란&quot;&gt;테스트 주도 개발(Test-driven development, TDD)이란?&lt;/h3&gt; &lt;h3 id=&quot;첫-번째-테스트-작성하기&quot;&gt;첫 번째 테스트 작성하기&lt;/h3&gt;...</description>
+        <title>Django 08편 - TDD 2편</title>
+        <description>&lt;h3 id=&quot;들어가기-전&quot;&gt;들어가기 전…&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;/python/2021/02/20/django-07.html&quot;&gt;polls app 구현하기 4편&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;p&gt;위 프로젝트에서 다룬 앱을 이용해 TDD를 구성해보자.&lt;/p&gt; &lt;h3 id=&quot;뷰-테스트&quot;&gt;뷰 테스트&lt;/h3&gt; &lt;p&gt;앞에서 만든 설문조사 어플리케이션은 상당히 대충대충 만들어져 있다....</description>
+        <pubDate>Wed, 24 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/python/2021/02/24/django-09.html</link>
+        <guid isPermaLink="true">http://localhost:4000/python/2021/02/24/django-09.html</guid>
+        
+        <category>python</category>
+        
+        <category>django</category>
+        
+        <category>tdd</category>
+        
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>Django 08편 - TDD 1편</title>
+        <description>&lt;h3 id=&quot;들어가기-전&quot;&gt;들어가기 전…&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;/python/2021/02/20/django-07.html&quot;&gt;polls app 구현하기 4편&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;p&gt;위 프로젝트에서 다룬 앱을 이용해 TDD를 구성해보자.&lt;/p&gt; &lt;h3 id=&quot;테스트-주도-개발test-driven-development-tdd이란&quot;&gt;테스트 주도 개발(Test-driven development, TDD)이란?&lt;/h3&gt; &lt;p&gt;테스트 주도 개발(Test-driven development TDD)은...</description>
         <pubDate>Mon, 22 Feb 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/python/2021/02/22/django-08.html</link>
         <guid isPermaLink="true">http://localhost:4000/python/2021/02/22/django-08.html</guid>
@@ -159,20 +177,6 @@
         
         
         <category>git</category>
-        
-      </item>
-    
-      <item>
-        <title>Google Cloud SQL</title>
-        <description>&lt;h3 id=&quot;들어가기-전&quot;&gt;들어가기 전…&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;/gcp/2021/02/15/google-cloud-sdk.html&quot;&gt;Google Cloud SDK 설치하기&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;p&gt;Cloud SDK가 있으면 인증이 편하다.&lt;/p&gt; &lt;h3 id=&quot;프록시-서버-열기&quot;&gt;프록시 서버 열기&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;https://cloud.google.com/sql/docs/mysql/connect-admin-proxy?hl=ko&quot;&gt;&lt;em&gt;공식 문서 참고&lt;/em&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;p&gt;로컬에서...</description>
-        <pubDate>Mon, 15 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/gcp/2021/02/15/google-cloud-sql.html</link>
-        <guid isPermaLink="true">http://localhost:4000/gcp/2021/02/15/google-cloud-sql.html</guid>
-        
-        <category>gcp</category>
-        
-        
-        <category>gcp</category>
         
       </item>
     
