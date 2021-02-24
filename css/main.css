@@ -22,7 +22,9 @@ button {
   text-decoration: none;
   user-select: none;
   vertical-align: middle;
-  white-space: nowrap; }
+  white-space: nowrap;
+  margin-top: 5px;
+  margin-bottom: 5px; }
   button:hover, button:focus, input[type="button"]:hover, input[type="button"]:focus, input[type="reset"]:hover, input[type="reset"]:focus, input[type="submit"]:hover, input[type="submit"]:focus,
   button:hover,
   button:focus {
@@ -319,6 +321,21 @@ picture {
   font-weight: 700;
   src: url("../../assets/fonts/D2Coding/D2CodingBold.eot");
   src: local("※"), local("D2Coding Bold"), url("../../assets/fonts/D2Coding/D2D2CodingBold.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/D2Coding/D2CodingBold.woff2") format("x-woff2"), url("../../assets/fonts/D2Coding/D2CodingBold.woff") format("woff"), url("../../assets/fonts/D2Coding/D2CodingBold.ttf") format("truetype"), url("../../assets/fonts/D2Coding/D2CodingBold.svg") format("svg"); }
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  word-wrap: break-word;
+  background-color: #e5ebf7;
+  background-clip: border-box;
+  border: 1px solid #8fceff;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 10px;
+  margin-top: 10px; }
+
 html {
   box-sizing: border-box; }
 
