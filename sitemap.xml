@@ -85,6 +85,14 @@
 <lastmod>2021-03-02T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/ml/2021/03/09/intro-to-machine-learning.html</loc>
+<lastmod>2021-03-09T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/ml/2021/03/10/jupyter-notebook.html</loc>
+<lastmod>2021-03-10T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
@@ -142,6 +150,9 @@
 <loc>http://localhost:4000/tag/tdd/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/tag/ml/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/category/git/</loc>
 </url>
 <url>
@@ -152,5 +163,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/category/%EB%A3%A9%EB%8D%95%EC%A7%88/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/category/ml/</loc>
 </url>
 </urlset>

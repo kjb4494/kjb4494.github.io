@@ -6,9 +6,39 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 08 Mar 2021 09:59:42 +0900</pubDate>
-    <lastBuildDate>Mon, 08 Mar 2021 09:59:42 +0900</lastBuildDate>
+    <pubDate>Wed, 10 Mar 2021 19:48:04 +0900</pubDate>
+    <lastBuildDate>Wed, 10 Mar 2021 19:48:04 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>docker로 쥬피터 노트북 사용하기</title>
+        <description>&lt;h3 id=&quot;쥬피터-서버-열기&quot;&gt;쥬피터 서버 열기&lt;/h3&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;&lt;a href=&quot;https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html&quot;&gt;&lt;em&gt;jupyter docker images&lt;/em&gt;&lt;/a&gt;&lt;br /&gt; 자신에게 맞는 docker image를 선택한다.&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/assets/imgs/posts/ml/jupyter-notebook-001.png&quot; alt=&quot;사진&quot; /&gt;&lt;/p&gt; &lt;p&gt;내가 사용할 도커 이미지는 jupyter/tensorflow-notebook 이다.&lt;/p&gt; &lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre...</description>
+        <pubDate>Wed, 10 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/ml/2021/03/10/jupyter-notebook.html</link>
+        <guid isPermaLink="true">http://localhost:4000/ml/2021/03/10/jupyter-notebook.html</guid>
+        
+        <category>ml</category>
+        
+        <category>python</category>
+        
+        
+        <category>ml</category>
+        
+      </item>
+    
+      <item>
+        <title>Intro to Machine Learning</title>
+        <description>&lt;h3 id=&quot;목차&quot;&gt;목차&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;https://www.kaggle.com/learn/intro-to-machine-learning&quot;&gt;&lt;em&gt;Kaggle Course - Intro to Machine Learning&lt;/em&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;ol&gt; &lt;li&gt;모델의 작동 방식&lt;/li&gt; &lt;li&gt;기본 데이터 탐색&lt;/li&gt; &lt;li&gt;첫 번째 기계 학습 모델&lt;/li&gt; &lt;li&gt;모델 유효성 검사&lt;/li&gt; &lt;li&gt;언더피팅...</description>
+        <pubDate>Tue, 09 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/ml/2021/03/09/intro-to-machine-learning.html</link>
+        <guid isPermaLink="true">http://localhost:4000/ml/2021/03/09/intro-to-machine-learning.html</guid>
+        
+        <category>ml</category>
+        
+        
+        <category>ml</category>
+        
+      </item>
     
       <item>
         <title>Django 10편 - debug toolbar</title>
@@ -142,40 +172,6 @@
         <category>github</category>
         
         <category>commit</category>
-        
-        
-        <category>git</category>
-        
-      </item>
-    
-      <item>
-        <title>Django 04편 - polls app 구현하기 1편</title>
-        <description>&lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;https://docs.djangoproject.com/ko/3.1/intro/tutorial01/&quot;&gt;&lt;em&gt;공식 문서의 튜토리얼 polls app&lt;/em&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;p&gt;이번에 django 공식 문서의 튜토리얼을 진행하면서 가능한 한 자세하게 다뤄볼 생각…&lt;/p&gt; &lt;h3 id=&quot;polls-app을-만들어서-프로젝트에-붙이자&quot;&gt;polls app을 만들어서 프로젝트에 붙이자!&lt;/h3&gt; &lt;ol&gt; &lt;li&gt;polls app...</description>
-        <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/python/2021/02/16/django-04.html</link>
-        <guid isPermaLink="true">http://localhost:4000/python/2021/02/16/django-04.html</guid>
-        
-        <category>python</category>
-        
-        <category>django</category>
-        
-        <category>tutorial</category>
-        
-        
-        <category>python</category>
-        
-      </item>
-    
-      <item>
-        <title>Windows Terminal에 git-bash 추가하기</title>
-        <description>&lt;h3 id=&quot;windows-terminal-profile-추가&quot;&gt;Windows Terminal Profile 추가&lt;/h3&gt; &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;guid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{3b309cd0-e48b-4361-a95a-c56d51c101f4}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;commandline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%programfiles%/git/usr/bin/bash.exe -il&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span...</description>
-        <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/git/2021/02/16/add-git-bash-in-windows-terminal.html</link>
-        <guid isPermaLink="true">http://localhost:4000/git/2021/02/16/add-git-bash-in-windows-terminal.html</guid>
-        
-        <category>git</category>
-        
-        <category>shell</category>
         
         
         <category>git</category>
