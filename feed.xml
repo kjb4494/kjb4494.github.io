@@ -6,9 +6,23 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 10 Mar 2021 19:48:04 +0900</pubDate>
-    <lastBuildDate>Wed, 10 Mar 2021 19:48:04 +0900</lastBuildDate>
+    <pubDate>Fri, 12 Mar 2021 16:28:59 +0900</pubDate>
+    <lastBuildDate>Fri, 12 Mar 2021 16:28:59 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Intermediate Machine Learning</title>
+        <description>&lt;h3 id=&quot;목차&quot;&gt;목차&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;https://www.kaggle.com/learn/intermediate-machine-learning&quot;&gt;&lt;em&gt;Kaggle Course - Intermediate Machine Learning&lt;/em&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;ol&gt; &lt;li&gt;결측값(Missing value)&lt;/li&gt; &lt;li&gt;범주형 변수(Categorical valiables)&lt;/li&gt; &lt;li&gt;파이프라인(Piplines)&lt;/li&gt; &lt;li&gt;교차검증(Cross validation)&lt;/li&gt; &lt;li&gt;XGBoost&lt;/li&gt; &lt;li&gt;데이터 누수(Data leakage)&lt;/li&gt; &lt;/ol&gt; &lt;hr /&gt; &lt;h3...</description>
+        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/ml/2021/03/11/intermediate-machine-learning.html</link>
+        <guid isPermaLink="true">http://localhost:4000/ml/2021/03/11/intermediate-machine-learning.html</guid>
+        
+        <category>ml</category>
+        
+        
+        <category>ml</category>
+        
+      </item>
     
       <item>
         <title>docker로 쥬피터 노트북 사용하기</title>
@@ -157,24 +171,6 @@
         
         
         <category>룩덕질</category>
-        
-      </item>
-    
-      <item>
-        <title>Github에서 내 Commit에 서명하기</title>
-        <description>&lt;h3 id=&quot;gpg-key-등록하기&quot;&gt;GPG Key 등록하기&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/github/authenticating-to-github/managing-commit-signature-verification&quot;&gt;&lt;em&gt;공식 문서&lt;/em&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;p&gt;각 쉘 명령어는 모두 Git Bash에서 진행한다.&lt;/p&gt; &lt;ol&gt; &lt;li&gt;gpg key 생성하기 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; gpg &lt;span class=&quot;nt&quot;&gt;--full-generate-key&lt;/span&gt;...</description>
-        <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/git/2021/02/16/github-commit-sv.html</link>
-        <guid isPermaLink="true">http://localhost:4000/git/2021/02/16/github-commit-sv.html</guid>
-        
-        <category>git</category>
-        
-        <category>github</category>
-        
-        <category>commit</category>
-        
-        
-        <category>git</category>
         
       </item>
     
