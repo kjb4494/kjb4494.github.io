@@ -6,9 +6,23 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 12 Mar 2021 16:28:59 +0900</pubDate>
-    <lastBuildDate>Fri, 12 Mar 2021 16:28:59 +0900</lastBuildDate>
+    <pubDate>Tue, 16 Mar 2021 12:44:18 +0900</pubDate>
+    <lastBuildDate>Tue, 16 Mar 2021 12:44:18 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Data Visualization</title>
+        <description>&lt;h3 id=&quot;목차&quot;&gt;목차&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;https://www.kaggle.com/learn/data-visualization&quot;&gt;&lt;em&gt;Kaggle Course - Data Visualization&lt;/em&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;ol&gt; &lt;li&gt;Hello, Seaborn&lt;/li&gt; &lt;li&gt;선도표(Line Charts)&lt;/li&gt; &lt;li&gt;막대 차트(Bar Charts)와 히트맵(Heatmaps)&lt;/li&gt; &lt;li&gt;산점도(Scatter Plots)&lt;/li&gt; &lt;li&gt;확률 분포(Distributions)&lt;/li&gt; &lt;/ol&gt; &lt;hr /&gt; &lt;h3 id=&quot;hello-seaborn&quot;&gt;Hello,...</description>
+        <pubDate>Mon, 15 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/ml/2021/03/15/data-visualization.html</link>
+        <guid isPermaLink="true">http://localhost:4000/ml/2021/03/15/data-visualization.html</guid>
+        
+        <category>ml</category>
+        
+        
+        <category>ml</category>
+        
+      </item>
     
       <item>
         <title>Intermediate Machine Learning</title>
@@ -157,20 +171,6 @@
         
         
         <category>python</category>
-        
-      </item>
-    
-      <item>
-        <title>Windows Termial 테마 적용하기</title>
-        <description>&lt;h3 id=&quot;프로필-설정하기&quot;&gt;프로필 설정하기&lt;/h3&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;설정 파일 Open&lt;br /&gt; &lt;img src=&quot;/assets/imgs/posts/룩덕질/windows-terminal-theme-001.png&quot; alt=&quot;사진&quot; /&gt;&lt;/p&gt; &lt;/li&gt; &lt;li&gt;테마 스키마 추가 &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;schemes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;...</description>
-        <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/%EB%A3%A9%EB%8D%95%EC%A7%88/2021/02/16/windows-terminal-theme.html</link>
-        <guid isPermaLink="true">http://localhost:4000/%EB%A3%A9%EB%8D%95%EC%A7%88/2021/02/16/windows-terminal-theme.html</guid>
-        
-        <category>룩덕질</category>
-        
-        
-        <category>룩덕질</category>
         
       </item>
     
