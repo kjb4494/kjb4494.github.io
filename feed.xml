@@ -6,9 +6,23 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 16 Mar 2021 12:44:18 +0900</pubDate>
-    <lastBuildDate>Tue, 16 Mar 2021 12:44:18 +0900</lastBuildDate>
+    <pubDate>Wed, 17 Mar 2021 19:08:40 +0900</pubDate>
+    <lastBuildDate>Wed, 17 Mar 2021 19:08:40 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Pandas</title>
+        <description>&lt;h3 id=&quot;목차&quot;&gt;목차&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;https://www.kaggle.com/learn/pandas&quot;&gt;&lt;em&gt;Kaggle Course - Pandas&lt;/em&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;ol&gt; &lt;li&gt;Creating, Reading and Writing&lt;/li&gt; &lt;li&gt;Indexing, Selecting &amp;amp; Assigning&lt;/li&gt; &lt;li&gt;Summary Functions and Maps&lt;/li&gt; &lt;li&gt;Grouping and Sorting&lt;/li&gt; &lt;li&gt;Data Types and...</description>
+        <pubDate>Tue, 16 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/ml/2021/03/16/pandas.html</link>
+        <guid isPermaLink="true">http://localhost:4000/ml/2021/03/16/pandas.html</guid>
+        
+        <category>ml</category>
+        
+        
+        <category>ml</category>
+        
+      </item>
     
       <item>
         <title>Data Visualization</title>
@@ -144,24 +158,6 @@
         <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/python/2021/02/18/django-06.html</link>
         <guid isPermaLink="true">http://localhost:4000/python/2021/02/18/django-06.html</guid>
-        
-        <category>python</category>
-        
-        <category>django</category>
-        
-        <category>tutorial</category>
-        
-        
-        <category>python</category>
-        
-      </item>
-    
-      <item>
-        <title>Django 05편 - polls app 구현하기 2편</title>
-        <description>&lt;p&gt;1편에서 Model을 구현했으니 이번엔 View와 Template를 구현해보자.&lt;/p&gt; &lt;h3 id=&quot;인수를-받는-view-만들기&quot;&gt;인수를 받는 View 만들기&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;views.py &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;logging&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;django.http&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span...</description>
-        <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/python/2021/02/18/django-05.html</link>
-        <guid isPermaLink="true">http://localhost:4000/python/2021/02/18/django-05.html</guid>
         
         <category>python</category>
         

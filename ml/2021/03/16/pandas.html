@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Pandas</title>
+  <meta name="description" content="목차      Kaggle Course - Pandas  ">
+  
+  <meta name="author" content="kjb4494">
+  <meta name="copyright" content="&copy; kjb4494 2021">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/.min.css"> -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="목차      Kaggle Course - Pandas  " />
+  <meta property="og:url" content="http://localhost:4000/ml/2021/03/16/pandas.html">
+  <meta property="og:site_name" content="늒네의 개발일지" />
+  <meta property="og:title" content="Pandas" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/imgs/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Pandas">
+  <meta name="twitter:description" content="목차      Kaggle Course - Pandas  ">
+  <meta name="twitter:image" content="http://localhost:4000/assets/imgs/logo.png">
+  <meta name="twitter:url" content="http://localhost:4000/ml/2021/03/16/pandas.html">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/ml/2021/03/16/pandas.html">
+	<link rel="alternate" type="application/rss+xml" title="늒네의 개발일지" href="http://localhost:4000/feed.xml" />
+	
+	<!-- Tooltips -->
+	<script type="text/javascript">
+		window.tooltips = []
+	</script>
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/imgs/logo.png" alt="늒네의 개발일지">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Pandas</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">March 16, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/ml">Ml</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="목차">목차</h3>
+<blockquote>
+  <ul>
+    <li><a href="https://www.kaggle.com/learn/pandas"><em>Kaggle Course - Pandas</em></a></li>
+  </ul>
+</blockquote>
+
+<ol>
+  <li>Creating, Reading and Writing</li>
+  <li>Indexing, Selecting &amp; Assigning</li>
+  <li>Summary Functions and Maps</li>
+  <li>Grouping and Sorting</li>
+  <li>Data Types and Missing Values</li>
+  <li>Renaming and Combining</li>
+</ol>
+
+<hr />
+
+<h3 id="creating-reading-and-writing">Creating, Reading and Writing</h3>
+<p>이 튜토리얼에서는 이미 존재하는 데이터로 작업하는 방법과 함께 고유한 데이터를 만드는 방법을 배웁니다.</p>
+
+<p>pandas 라이브러리를 사용하기 위해 다음과 같이 import 해줍니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+</code></pre></div></div>
+
+<h4 id="creating-data">Creating data</h4>
+<p>Pandas에는 DataFrame과 Series라는 두 가지 핵심 개체가 있습니다.</p>
+
+<p><b>DataFrame</b><br />
+DataFrame은 테이블입니다. 여기에는 개별 항목의 배열이 포함되며 각 항목에는 특정 값이 있습니다. 각 항목은 행(또는 레코드)과 열에 해당합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'Yes'</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span> <span class="s">'No'</span><span class="p">:</span> <span class="p">[</span><span class="mi">131</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   Yes   No
+0   50  131
+1   21    2
+</code></pre></div></div>
+
+<p>위 예시에서 “0, No”항목의 값은 131입니다. “0, Yes”항목의 값은 50입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'Bob'</span><span class="p">:</span> <span class="p">[</span><span class="s">'I liked it.'</span><span class="p">,</span> <span class="s">'It was awful.'</span><span class="p">],</span> <span class="s">'Sue'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Pretty good.'</span><span class="p">,</span> <span class="s">'Bland.'</span><span class="p">]})</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             Bob           Sue
+0    I liked it.  Pretty good.
+1  It was awful.        Bland.
+</code></pre></div></div>
+<p>DataFrame 항목은 정수로 제한되지 않습니다.</p>
+
+<p>우리는 이러한 DataFrame 객체를 생성하기 위해 pd.DataFrame() 생성자를 사용하고 있습니다. 새로운 것을 선언하는 구문은 키가 열 이름(이 예시에서는 Bob, Sue)이고 값이 항목 목록인 사전입니다. 이것은 새로운 DataFrame을 구성하는 표준적인 방법이며 앞으로 가장 많이 접하게 될 것입니다.</p>
+
+<p>사전 목록 생성자는 열 레이블에 값을 할당하지만 행 레이블에 대해 0(0, 1, 2, 3, …)부터 오름차순 개수만 사용합니다. 상관없을수도 있지만, 우리는 이러한 레이블을 직접 할당하고 싶을 때도 있을겁니다.</p>
+
+<p>DataFrame에서 사용되는 행 레이블 목록을 인덱스(Index)라고합니다. 생성자에서 index 매개 변수를 사용하여 값을 할당 할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s">'Bob'</span><span class="p">:</span> <span class="p">[</span><span class="s">'I liked it.'</span><span class="p">,</span> <span class="s">'It was awful.'</span><span class="p">],</span> 
+        <span class="s">'Sue'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Pretty good.'</span><span class="p">,</span> <span class="s">'Bland.'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">'Product A'</span><span class="p">,</span> <span class="s">'Product B'</span><span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                     Bob           Sue
+Product A    I liked it.  Pretty good.
+Product B  It was awful.        Bland.
+</code></pre></div></div>
+
+<p><b>Series</b><br />
+대조적으로 Series는 일련의 데이터 값입니다. DataFrame이 테이블이면 Series는 목록입니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    1
+1    2
+2    3
+3    4
+4    5
+dtype: int64
+</code></pre></div></div>
+
+<p>Series는 본질적으로 DataFrame의 단일 열입니다. 따라서 DataFrame처럼 index 매개 변수를 사용하여 Series에 열 값을 할당 할 수 있습니다. 그러나 시리즈에는 열 이름이 없고 하나의 전체 이름만 있습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">'2015 Sales'</span><span class="p">,</span> <span class="s">'2016 Sales'</span><span class="p">,</span> <span class="s">'2017 Sales'</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s">'Product A'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2015 Sales    30
+2016 Sales    35
+2017 Sales    40
+Name: Product A, dtype: int64
+</code></pre></div></div>
+<p>Series와 DataFrame은 밀접하게 관련되어 있습니다. DataFrame을 실제로 “함께 묶인” Series로 생각하면 도움이됩니다.</p>
+
+<h4 id="reading-data-files">Reading data files</h4>
+<p>DataFrame 또는 Series를 직접 만들 수 있으면 편리합니다. 그러나 대부분의 경우 실제로 직접 데이터를 직접 생성하지는 않습니다. 대신 이미 존재하는 데이터로 작업 할 것입니다.</p>
+
+<p>데이터는 다양한 모양과 포멧으로 저장할 수 있습니다. 가장 기본적인 것은 csv 파일입니다. csv 파일을 열면 다음과 같은 결과가 나타납니다.</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Product A,Product B,Product C,
+30,21,9,
+35,34,1,
+41,11,11
+</code></pre></div></div>
+
+<p>csv 파일은 쉼표로 구분 된 값 테이블입니다.
+이제 dataset를 따로 설정하고 DataFrame으로 읽을 때 실제 dataset가 어떻게 보이는지 살펴 보겠습니다. pd.read_csv() 함수를 사용하여 데이터를 DataFrame으로 읽어들입니다.</p>
+
+<blockquote>
+  <ul>
+    <li><a href="https://www.kaggle.com/christopheiv/winemagdata130k?select=winemag-data-130k-v2.csv"><em>winemag-data-130k-v2.csv</em></a></li>
+  </ul>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine_reviews</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"input_data/winemag-data-130k-v2.csv"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>shape 속성을 사용하여 결과 DataFrame의 크기를 확인할 수 있습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine_reviews</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(129971, 14)
+</code></pre></div></div>
+
+<p>따라서 새로운 DataFrame에는 14개의 다른 열로 분할 된 약 130,000개의 레코드가 있습니다. 거의 2백만 개의 항목입니다!</p>
+
+<p>처음 5개 행을 가져 오는 head() 명령을 사용하여 결과 DataFrame의 내용을 검사 할 수 있습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine_reviews</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   Unnamed: 0   country  ...         variety               winery
+0           0     Italy  ...     White Blend              Nicosia
+1           1  Portugal  ...  Portuguese Red  Quinta dos Avidagos
+2           2        US  ...      Pinot Gris            Rainstorm
+3           3        US  ...        Riesling           St. Julian
+4           4        US  ...      Pinot Noir         Sweet Cheeks
+
+[5 rows x 14 columns]
+</code></pre></div></div>
+
+<p>pd.read_csv() 함수는 사용자가 30개 이상의 선택적 매개 변수와 함께 사용할 수 있습니다. 예를 들어 이 dataset에는 csv 파일에 기본 제공 index가 있지만 pandas가 자동으로 인식하지 못 했습니다. 이 때, pandas가 index로 해당 열을 사용하도록 만들기 위해 index_col을 지정할 수 있습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine_reviews</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"input_data/winemag-data-130k-v2.csv"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">wine_reviews</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    country  ...               winery
+0     Italy  ...              Nicosia
+1  Portugal  ...  Quinta dos Avidagos
+2        US  ...            Rainstorm
+3        US  ...           St. Julian
+4        US  ...         Sweet Cheeks
+
+[5 rows x 13 columns]
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="indexing-selecting--assigning">Indexing, Selecting &amp; Assigning</h3>
+<h4 id="native-accessors">Native accessors</h4>
+<p>네이티브 Python 개체는 데이터를 인덱싱하는 좋은 방법을 제공합니다. Pandas는 이 모든 것을 전달하므로 쉽게 시작할 수 있습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">reviews</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"input_data/winemag-data-130k-v2.csv"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">'max_rows'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="n">reviews</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         country  ...                winery
+0          Italy  ...               Nicosia
+1       Portugal  ...   Quinta dos Avidagos
+...          ...  ...                   ...
+129969    France  ...  Domaine Marcel Deiss
+129970    France  ...      Domaine Schoffit
+
+[129971 rows x 13 columns]
+</code></pre></div></div>
+
+<p>Python dictionary가 있으면 색인 ([]) 연산자를 사용하여 값에 액세스 할 수 있습니다. DataFrame의 열에 대해 동일한 작업을 수행 할 수 있습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">reviews</span><span class="p">[</span><span class="s">'country'</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0            Italy
+1         Portugal
+            ...   
+129969      France
+129970      France
+Name: country, Length: 129971, dtype: object
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">reviews</span><span class="p">[</span><span class="s">'country'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Italy'
+</code></pre></div></div>
+
+<h4 id="indexing-in-pandas">Indexing in pandas</h4>
+<p><b>Index-based selection</b><br />
+Pandas 인덱싱에는 두 가지 패러다임이 있습니다. 첫 번째는 인덱스 기반 선택입니다. 데이터의 숫자 위치에 따라 데이터를 선택합니다. iloc은 이 패러다임을 따릅니다.</p>
+
+<p>DataFrame에서 데이터의 첫 번째 행을 선택하려면 다음을 사용할 수 있습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">reviews</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>country                                                    Italy
+description    Aromas include tropical fruit, broom, brimston...
+                                     ...                        
+variety                                              White Blend
+winery                                                   Nicosia
+Name: 0, Length: 13, dtype: object
+</code></pre></div></div>
+
+<p>(계속)</p>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/ml">ml</a>
+</section>
+
+
+
+<!-- <section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section> -->
+
+<!-- <section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section> -->
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/ml/2021/03/15/data-visualization.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">Data Visualization</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+		</span>
+	</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">늒네의 개발일지</h3>
+
+    <div class="site-navigation">
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </div>
+
+    <div class="site-contact">
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:rlagnltn1357@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">rlagnltn1357@gmail.com</span>
+          </a>
+        </li>
+        
+          
+          <li>
+            <a href="https://github.com/kjb4494" title="">
+              <i class="fa fa-github"></i>
+              <span class="username">kjb4494</span>
+            </a>
+          </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+      <p><strong>Coding Test</strong></p>
+      <ul class="social-media-list">
+        
+          
+          <li>
+            <a href="https://github.com/kjb4494/baekjoon">백준 문제풀이 코드</a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://github.com/kjb4494/PythonProgrammers">프로그래머스 문제풀이 코드</a>
+          </li>
+          
+        
+      </ul>
+    </div>
+
+    <!-- <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">초보 개발자의 기록 보관소
+</p>
+    </div> -->
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<script src="//unpkg.com/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="//unpkg.com/tippy.js@5.2.1/dist/tippy-bundle.iife.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+	// Enable tooltips via Tippy.js
+	if (Array.isArray(window.tooltips)) {
+		window.tooltips.forEach(function(tooltip) {
+			var selector = tooltip[0];
+			var config = tooltip[1];
+			tippy(selector, config);
+		})
+	}
+});
+
+</script>
+
+
+
+
+
+
+  </body>
+
+</html>
