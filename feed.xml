@@ -6,9 +6,23 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 18 Mar 2021 15:45:12 +0900</pubDate>
-    <lastBuildDate>Thu, 18 Mar 2021 15:45:12 +0900</lastBuildDate>
+    <pubDate>Mon, 22 Mar 2021 09:44:40 +0900</pubDate>
+    <lastBuildDate>Mon, 22 Mar 2021 09:44:40 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Natural Language Processing</title>
+        <description>&lt;p&gt;데이터는 타임 스탬프, 센서 판독값, 이미지, 범주형 레이블 등 다양한 형태로 제공됩니다. 그러나 텍스트는 사용 방법을 아는 사람들에게 여전히 가장 귀중한 데이터입니다.&lt;/p&gt; &lt;p&gt;자연어 처리(NLP)에 대한 이 과정에서는 최고의 NLP 라이브러리인...</description>
+        <pubDate>Fri, 19 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/ml/2021/03/19/nlp.html</link>
+        <guid isPermaLink="true">http://localhost:4000/ml/2021/03/19/nlp.html</guid>
+        
+        <category>ml</category>
+        
+        
+        <category>ml</category>
+        
+      </item>
     
       <item>
         <title>Pandas</title>
@@ -140,24 +154,6 @@
         <pubDate>Sat, 20 Feb 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/python/2021/02/20/django-07.html</link>
         <guid isPermaLink="true">http://localhost:4000/python/2021/02/20/django-07.html</guid>
-        
-        <category>python</category>
-        
-        <category>django</category>
-        
-        <category>tutorial</category>
-        
-        
-        <category>python</category>
-        
-      </item>
-    
-      <item>
-        <title>Django 06편 - polls app 구현하기 3편</title>
-        <description>&lt;h3 id=&quot;템플릿에서-하드-코딩된-url을-제거하자&quot;&gt;템플릿에서 하드 코딩된 URL을 제거하자!&lt;/h3&gt; &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/polls/{{ question.id }}/&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ question.question_text }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt; &lt;p&gt;이 부분은 만약 polls의 url을 바꾸게 되면 템플릿에...</description>
-        <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/python/2021/02/18/django-06.html</link>
-        <guid isPermaLink="true">http://localhost:4000/python/2021/02/18/django-06.html</guid>
         
         <category>python</category>
         
