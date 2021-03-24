@@ -372,7 +372,7 @@ think		think		False
 
 <span class="c1"># Loading the spam data
 # ham is the label for non-spam messages
-</span><span class="n">spam</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'input_data/nlp-course/spam.csv'</span><span class="p">)</span>
+</span><span class="n">spam</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'input_data/spam.csv'</span><span class="p">)</span>
 <span class="n">spam</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  label                                               text
@@ -411,19 +411,25 @@ think		think		False
 
 <p>모델에 파이프를 제거하거나 추가 할 수 있습니다. 여기서 할 일은 파이프없이 빈 모델을 만드는 것입니다(모든 모델에는 항상 tokenizer가 있으므로 tokenizer는 제외). 그런 다음 TextCategorizer 파이프를 만들어 빈 모델에 추가합니다.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create an empty model
-</span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">blank</span><span class="p">(</span><span class="s">"en"</span><span class="p">)</span>
+</span><span class="kn">from</span> <span class="nn">spacy.lang.en</span> <span class="kn">import</span> <span class="n">English</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">English</span><span class="p">()</span>
 
 <span class="c1"># Create the TextCategorizer with exclusive classes and "bow" architecture
-</span><span class="n">textcat</span> <span class="o">=</span> <span class="n">nlp</span><span class="o">.</span><span class="n">create_pipe</span><span class="p">(</span>
+# https://spacy.io/api/language#create_pipe
+# https://spacy.io/api/architectures#TextCatBOW
+</span><span class="n">nlp</span><span class="o">.</span><span class="n">create_pipe</span><span class="p">(</span>
     <span class="s">"textcat"</span><span class="p">,</span>
     <span class="n">config</span><span class="o">=</span><span class="p">{</span>
-        <span class="s">"exclusive_classes"</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-        <span class="s">"architecture"</span><span class="p">:</span> <span class="s">"bow"</span>
+        <span class="s">'model'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'@architectures'</span><span class="p">:</span> <span class="s">'spacy.TextCatBOW.v1'</span><span class="p">,</span>
+            <span class="s">'exclusive_classes'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+            <span class="s">'ngram_size'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s">'no_output_layer'</span><span class="p">:</span> <span class="bp">False</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">)</span>
 
-<span class="c1"># Add the TextCategorizer to the empty model
-</span><span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="n">textcat</span><span class="p">)</span>
+<span class="n">textcat</span> <span class="o">=</span> <span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="s">'textcat'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>클래스가 ham 또는 spam이므로 “exclusive_classes”를 True로 설정합니다. 또한 bag of words(“bow”) 아키텍처로 구성했습니다. spaCy는 CNN(convolutional neural network) 아키텍처도 제공하지만 현재 필요한 것보다 더 복잡합니다.</p>
@@ -435,6 +441,42 @@ think		think		False
 </code></pre></div></div>
 
 <h4 id="training-a-text-categorizer-model">Training a Text Categorizer Model</h4>
+<p>다음으로 데이터의 레이블을 TextCategorizer에 필요한 형식으로 변환합니다. 각 문서에 대해 각 클래스에 대한 boolean 값의 dictionary를 만듭니다.</p>
+
+<p>예를 들어 텍스트가 “ham”이면 사전 {‘ham’: True, ‘spam’: False}이 필요합니다. 모델은 ‘cats’ key가 있는 다른 dictionary 내에서 이러한 레이블을 찾고 있습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">spam</span><span class="o">.</span><span class="n">iloc</span><span class="p">:</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="o">.</span><span class="n">make_doc</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">example</span> <span class="o">=</span> <span class="n">Example</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span>
+        <span class="n">doc</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="s">'cats'</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">'ham'</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="s">'ham'</span><span class="p">,</span>
+                <span class="s">'spam'</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="s">'spam'</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="n">train_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>이제 모델을 훈련 할 준비가 되었습니다. 먼저 nlp.begin_training()을 사용하여 최적화 프로그램을 만듭니다. spaCy는이 최적화 프로그램을 사용하여 모델을 업데이트합니다. 일반적으로 모델을 작은 배치(batch)로 훈련하는 것이 더 효율적입니다. spaCy는 훈련을 위해 미니 배치(minibatch)를 생성하는 생성기를 반환하는 미니 배치 함수를 제공합니다. 마지막으로 미니 배치는 텍스트와 레이블로 분할 된 다음 nlp.update와 함께 사용되어 모델의 매개 변수를 업데이트합니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">spacy</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">fix_random_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="o">.</span><span class="n">begin_training</span><span class="p">()</span>
+
+<span class="c1"># Iterate through minibatches
+# https://spacy.io/api/language#update
+</span><span class="n">losses</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
+    <span class="c1"># Create the batch generator with batch size = 8
+</span>    <span class="n">batches</span> <span class="o">=</span> <span class="n">minibatch</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="c1"># Iterate through minibatches
+</span>    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">batches</span><span class="p">:</span>
+        <span class="n">nlp</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">sgd</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">losses</span><span class="o">=</span><span class="n">losses</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span>
+</code></pre></div></div>
+
 <p>(계속)</p>
 
 </article>
