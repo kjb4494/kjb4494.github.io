@@ -6,9 +6,23 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 24 Mar 2021 19:01:39 +0900</pubDate>
-    <lastBuildDate>Wed, 24 Mar 2021 19:01:39 +0900</lastBuildDate>
+    <pubDate>Fri, 26 Mar 2021 14:45:05 +0900</pubDate>
+    <lastBuildDate>Fri, 26 Mar 2021 14:45:05 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Feature Engineering</title>
+        <description>&lt;p&gt;이 과정에서는 훌륭한 기계 학습 모델을 구축하는 가장 중요한 단계 중 하나 인 피쳐(feature) 엔지니어링에 대해 알아 봅니다. 다음 방법을 배우게됩니다.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;상호의존정보에서 가장 중요한 피쳐를 결정&lt;/li&gt; &lt;li&gt;여러 실제 문제...</description>
+        <pubDate>Thu, 25 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/ml/2021/03/25/feature-engineering.html</link>
+        <guid isPermaLink="true">http://localhost:4000/ml/2021/03/25/feature-engineering.html</guid>
+        
+        <category>ml</category>
+        
+        
+        <category>ml</category>
+        
+      </item>
     
       <item>
         <title>Natural Language Processing</title>
@@ -142,24 +156,6 @@
         <category>django</category>
         
         <category>tdd</category>
-        
-        
-        <category>python</category>
-        
-      </item>
-    
-      <item>
-        <title>Django 07편 - polls app 구현하기 4편</title>
-        <description>&lt;h3 id=&quot;제너릭-뷰로-리팩토링-해보자&quot;&gt;제너릭 뷰로 리팩토링 해보자!&lt;/h3&gt; &lt;blockquote&gt; &lt;ul&gt; &lt;li&gt;불필요한 레거시 뷰 중 일부를 삭제한다.&lt;/li&gt; &lt;li&gt;Django의 제너릭 뷰를 기반으로 새로운 뷰를 도입해본다.&lt;/li&gt; &lt;li&gt;URLconf를 수정한다.&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;ul&gt; &lt;li&gt;views.py 수정 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div...</description>
-        <pubDate>Sat, 20 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/python/2021/02/20/django-07.html</link>
-        <guid isPermaLink="true">http://localhost:4000/python/2021/02/20/django-07.html</guid>
-        
-        <category>python</category>
-        
-        <category>django</category>
-        
-        <category>tutorial</category>
         
         
         <category>python</category>
