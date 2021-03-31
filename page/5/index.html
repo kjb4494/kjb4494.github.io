@@ -191,10 +191,10 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/python/2021/02/15/django-02.html">Django 02편 - Dev&Prod 환경 분리하기</a>
+      <a class="post-link" href="/python/2021/02/15/django-03.html">Django 03편 - Logging</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>Dev&amp;Prod settings.py 만들기 기존 settings.py 파일명을 base_settings.py로 변경 dev_settings.py와 prod_settings.py 파일 추가 from .base_settings import * asgi.py와 wsgi.py 수정 os.environ.setdefault('DJANGO_SETTINGS_MODULE',...</p>
+      <p>로깅 설정 Django Logging Documentation dev_settings.py에 로깅 설정 추가 LOGGING = { 'version': 1, 'disable_existing_loggers': False, 'formatters': { 'debug_formatter': {...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 15, 2021</div>
@@ -220,28 +220,6 @@
     </section>
     <section class="post-meta">
       <div class="post-date">February 14, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/python">Python</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/python/2021/02/12/args-and-kwargs.html">파이썬의 *args와 **kwargs 매개변수</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>예제 코드 def args_test(*args, **kwargs): print(args) print(kwargs) result = 0 for arg in args: if isinstance(arg, int): result += arg...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 12, 2021</div>
       <div class="post-categories">
       in 
         
@@ -283,6 +261,28 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>들어가기 전… Python logging 파이썬 비동기 프로그래밍 비동기 프로그래밍과 로깅에 관련된 코드가 포함됨. 크롤러 크롤링(crawling) 혹은 스크레이핑(scraping)은 웹 페이지를 그대로...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 12, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/python">Python</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/python/2021/02/12/asynchronous-programming.html">파이썬 비동기 프로그래밍</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>동기 vs 비동기 코드 비교 동기 프로그래밍 코드 import requests import time def get_google_response(): start = time.time() res = requests.get('https://www.google.com')...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 12, 2021</div>

@@ -775,7 +775,19 @@ Name: MI Scores, dtype: float64
 <hr />
 
 <h3 id="clustering-with-k-means">Clustering With K-Means</h3>
-<p>(계속)</p>
+<p>이제부터 비지도 학습 알고리즘을 활용해봅시다. 비지도 알고리즘은 대상을 사용하지 않습니다. 대신, 그들의 목적은 특정 방식으로 피쳐의 구조를 나타내기 위해 데이터의 일부 속성을 학습하는 것입니다. 예측을 위한 피쳐 엔지니어링의 맥락에서 비지도 알고리즘은 “피쳐 발견” 기술이라 할 수 있습니다.</p>
+
+<p>클러스터링(Clustering)은 단순히 포인트가 서로 얼마나 유사한 지에 따라 그룹에 데이터 포인트를 할당하는 것을 의미합니다. 클러스터링 알고리즘은 말하자면 “유유상종”입니다.</p>
+
+<p>피쳐 엔지니어링에 사용되는 경우, 예를 들어 우리는 시장 부문을 대표하는 고객 그룹 또는 유사한 날씨 패턴을 공유하는 지리적 영역을 발견 할 수 있습니다. 클러스터 레이블 피쳐를 추가하면 기계 학습 모델이 공간 또는 근접성의 복잡한 관계를 풀 수 있습니다.</p>
+
+<h4 id="cluster-labels-as-a-feature">Cluster Labels as a Feature</h4>
+<p>단일 real-valued 피쳐에 적용되는 클러스터링은 기존의 “비닝(binning)”또는 “<a href="https://scikit-learn.org/stable/auto_examples/preprocessing/plot_discretization_classification.html"><em>이산화(discretization)</em></a>“변환처럼 작동합니다. 여러 피쳐에서 이는 “다차원 비닝”(벡터 양자화라고도 함)과 같습니다.</p>
+
+<p><img src="/assets/imgs/posts/ml/feature-engineering-009.png" alt="사진" />
+Left: Clustering a single feature. Right: Clustering across two features.</p>
+
+<p>데이터 프레임에 추가 된 클러스터 레이블의 피쳐는 다음과 같습니다.</p>
 
 </article>
 
