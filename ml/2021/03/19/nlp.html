@@ -476,8 +476,89 @@ think		think		False
         <span class="n">nlp</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">sgd</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">losses</span><span class="o">=</span><span class="n">losses</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span>
 </code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'textcat': 0.5549327614952294}
+{'textcat': 0.6942927120308386}
+{'textcat': 0.7603908179353354}
+{'textcat': 0.7798789901942472}
+{'textcat': 0.8150759574802218}
+{'textcat': 0.8868370061354872}
+{'textcat': 0.9019728956993387}
+{'textcat': 0.9116310472891854}
+{'textcat': 0.9546235444465657}
+{'textcat': 0.9629162331118234}
+</code></pre></div></div>
 
-<p>(계속)</p>
+<h4 id="making-predictions">Making Predictions</h4>
+<p>이제 학습 된 모델이 있으므로 predict() 메서드를 사용하여 예측할 수 있습니다. 입력 텍스트는 nlp.tokenizer로 토큰화해야합니다. 그런 다음 점수를 반환하는 predict 메서드에 토큰을 전달합니다. 점수는 입력 텍스트가 클래스에 속할 확률입니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Are you ready for the tea party????? It's gonna be wild"</span><span class="p">,</span>
+         <span class="s">"URGENT Reply to this message for GUARANTEED FREE TEA"</span> <span class="p">]</span>
+<span class="n">docs</span> <span class="o">=</span> <span class="p">[</span><span class="n">nlp</span><span class="o">.</span><span class="n">make_doc</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">texts</span><span class="p">]</span>
+    
+<span class="c1"># Use textcat to get the scores for each doc
+</span><span class="n">textcat</span> <span class="o">=</span> <span class="n">nlp</span><span class="o">.</span><span class="n">get_pipe</span><span class="p">(</span><span class="s">'textcat'</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">textcat</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+
+<span class="n">scores</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[9.9998641e-01, 1.3548736e-05],
+       [3.4928420e-03, 9.9650711e-01]], dtype=float32)
+</code></pre></div></div>
+
+<p>점수는 확률이 가장 높은 레이블을 선택하여 단일 클래스 또는 레이블을 예측하는 데 사용됩니다. scores.argmax로 가장 높은 확률의 인덱스를 얻은 다음 인덱스를 사용하여 textcat.labels에서 레이블 문자열을 가져옵니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># From the scores, find the label with the highest score/probability
+</span><span class="n">predicted_labels</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">[</span><span class="n">textcat</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">predicted_labels</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['ham', 'spam']
+</code></pre></div></div>
+<p>모델을 평가하는 것은 일단 예측이 이루어지면 간단합니다. 정확도를 측정하려면 일부 테스트 데이터에 대해 올바른 예측이 몇 개 이루어 졌는지 계산하고 총 예측 수로 나눈 값입니다.</p>
+
+<hr />
+
+<h3 id="word-vectorsword-embeddings">Word Vectors(Word Embeddings)</h3>
+<p>이 시점에서 텍스트에 대한 기계 학습은 먼저 텍스트를 숫자로 표현해야한다는 것을 알고 있습니다. 지금까지 bag of words 표현으로 이 작업을 수행했습니다. 그러나 일반적으로 단어 임베딩으로 더 잘할 수 있습니다.</p>
+
+<p>단어 임베딩(단어 벡터라고도 함)은 벡터가 해당 단어가 사용되는 방식 또는 의미에 해당하는 방식으로 각 단어를 숫자로 나타냅니다. 벡터 인코딩은 단어가 나타나는 컨텍스트를 고려하여 학습됩니다. 유사한 문맥에 나타나는 단어는 유사한 벡터를 갖습니다. 예를 들어, “표범”, “사자” 및 “호랑이”에 대한 벡터는 서로 가깝지만 “행성”과 “성”은 멀리 떨어져 있습니다.</p>
+
+<p>더 멋진 단어 사이의 관계는 수학 연산으로 조사 할 수 있습니다. “man”과 “woman”에 대한 벡터를 빼면 다른 벡터가 반환됩니다. “king”에 대한 벡터에 추가하면 결과는 “queen”에 대한 벡터에 가깝습니다.</p>
+
+<p><img src="/assets/imgs/posts/ml/nlp-001.png" alt="사진" /></p>
+
+<p>이러한 벡터는 기계 학습 모델의 피쳐로 사용할 수 있습니다. 단어 벡터는 일반적으로 bag of words 인코딩 위의 모델 성능을 향상시킵니다. spaCy는 Word2Vec이라는 모델에서 학습한 임베딩을 제공합니다. en_core_web_lg와 같은 대규모 언어 모델을 로드하여 액세스 할 수 있습니다. 그런 다음 .vector 속성의 토큰에서 사용할 수 있습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">spacy</span>
+
+<span class="c1"># Need to load the large model to get the vectors
+</span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en_core_web_lg'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Disabling other pipes because we don't need them and it'll speed up this part a bit
+</span><span class="n">text</span> <span class="o">=</span> <span class="s">"These vectors can be used as features for machine learning models."</span>
+<span class="k">with</span> <span class="n">nlp</span><span class="o">.</span><span class="n">disable_pipes</span><span class="p">():</span>
+    <span class="n">vectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">token</span><span class="o">.</span><span class="n">vector</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span>  <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)])</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vectors</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(12, 300)
+</code></pre></div></div>
+
+<p>이것은 각 단어에 대해 하나의 벡터가 있는 300차원 벡터입니다. 그러나 우리는 문서 수준(document-level) 레이블만 가지고 있으며 모델은 단어 수준(word-level) 임베딩을 사용할 수 없습니다. 따라서 전체 문서에 대한 벡터 표현이 필요합니다.</p>
+
+<p>모든 단어 벡터를 모델 학습에 사용할 수 있는 단일 문서 벡터로 결합하는 방법에는 여러 가지가 있습니다. 간단하고 놀랍도록 효과적인 방법은 단순히 문서의 각 단어에 대한 벡터를 평균화하는 것입니다. 그런 다음 이러한 문서 벡터를 모델링에 사용할 수 있습니다.</p>
+
+<p>spaCy는 doc.vector로 얻을 수 있는 평균 문서 벡터를 계산합니다. 다음은 스팸 데이터를 로드하고 문서 벡터로 변환하는 예입니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1"># Loading the spam data
+# ham is the label for non-spam messages
+</span><span class="n">spam</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'../input/nlp-course/spam.csv'</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">nlp</span><span class="o">.</span><span class="n">disable_pipes</span><span class="p">():</span>
+    <span class="n">doc_vectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">spam</span><span class="o">.</span><span class="n">text</span><span class="p">])</span>
+    
+<span class="n">doc_vectors</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(5572, 300)
+</code></pre></div></div>
 
 </article>
 
