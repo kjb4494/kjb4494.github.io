@@ -191,15 +191,15 @@ AWS는 IaaS로 시작해 점차 PaaS, SaaS로 발전함.
 역할을 부여하는게 가장 올바른 방법이기 때문에 우선순위가 높은 1~3은 적용하지않는다.
 - EC2 인스턴스 역할 부여하기
     1. 역할 생성하기
-        ![사진](/assets/imgs/posts/aws/developing-on-aws-1-001.png)
+        ![사진](/legacy/aws/developing-on-aws-1-001.png)
     1. 정책 연결하기
-        ![사진](/assets/imgs/posts/aws/developing-on-aws-1-002.png)
-        ![사진](/assets/imgs/posts/aws/developing-on-aws-1-003.png)
+        ![사진](/legacy/aws/developing-on-aws-1-002.png)
+        ![사진](/legacy/aws/developing-on-aws-1-003.png)
 
         서비스에 요구되는 권한 정책을 연결해준다.
     1. EC2에 역할 적용하기
-        ![사진](/assets/imgs/posts/aws/developing-on-aws-1-004.png)
-        ![사진](/assets/imgs/posts/aws/developing-on-aws-1-005.png)
+        ![사진](/legacy/aws/developing-on-aws-1-004.png)
+        ![사진](/legacy/aws/developing-on-aws-1-005.png)
 
         IAM 역할 수정으로 들어가 위에서 생성한, 정책이 연결된 역할을 적용시켜준다.
 
@@ -249,5 +249,5 @@ AWS는 IaaS로 시작해 점차 PaaS, SaaS로 발전함.
     - 메타데이터도 하나의 요청에 몰아서 쓰면 비용이 감소
 - 접근
     - 리소스 정책이 잘 부여되어있는지 확인
-        ![사진](/assets/imgs/posts/aws/developing-on-aws-1-006.png)
+        ![사진](/legacy/aws/developing-on-aws-1-006.png)
     - exist bucket 확인시 if문을 사용하지말고 try-except문을 이용해서 한 번의 요청만으로 처리할 것 - 요청 횟수 감소

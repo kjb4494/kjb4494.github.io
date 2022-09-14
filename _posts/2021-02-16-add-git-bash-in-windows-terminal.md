@@ -17,7 +17,7 @@ tags: [git, shell]
     "suppressApplicationTitle": true
 }
 ```
-![사진](/assets/imgs/posts/git/add-git-bash-in-windows-terminal-001.png)
+![사진](/legacy/git/add-git-bash-in-windows-terminal-001.png){: .normal}
 
 성공적으로 추가됐다. 이외에 더 필요한 프로필 설정이 있다면 [*공식 문서*](https://docs.microsoft.com/ko-kr/windows/terminal/customize-settings/profile-general)를 참고하자.
 

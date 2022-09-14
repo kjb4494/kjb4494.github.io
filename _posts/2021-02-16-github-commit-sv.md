@@ -79,6 +79,6 @@ gpgconf --kill gpg-agent
 ```shell
 git commit --allow-empty -S -m 'commit sv test'
 ```
-![사진](/assets/imgs/posts/git/github-commit-sv-001.png)
+![사진](/legacy/git/github-commit-sv-001.png)
 
 성공! X)

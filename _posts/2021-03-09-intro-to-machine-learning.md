@@ -31,7 +31,7 @@ tags: [python, ml]
 
 단순성을 위해 가장 간단한 의사 결정 트리부터 살펴보겠습니다.
 
-![사진](/assets/imgs/posts/ml/intro-to-machine-learning-001.png)
+![사진](/legacy/ml/intro-to-machine-learning-001.png)
 
 그것은 집을 단지 두 개의 범주로 나눕니다. 고려 대상 주택의 예상가격은 동일한 범주에 속하는 주택의 역사적 평균가격입니다.
 
@@ -42,13 +42,13 @@ tags: [python, ml]
 #### 의사 결정 트리 개선
 다음 두 가지 의사 결정 트리 중 부동산 교육 데이터를 적합(fitting)하여 얻을 가능성이 더 높은 것은 무엇입니까?
 
-![사진](/assets/imgs/posts/ml/intro-to-machine-learning-002.png)
+![사진](/legacy/ml/intro-to-machine-learning-002.png)
 
 왼쪽의 의사 결정 트리(1st Decision Tree)는 침실이 더 많은 주택이 침실이 적은 주택보다 높은 가격에 판매되는 경향이 있다는 현실을 포착하기 때문에 더 의미가 있을 수 있습니다. 이 모델의 가장 큰 단점은 화장실 수, lot size(집과 마당을 모두 포함시킨 크기), 위치 등 집값에 영향을 미치는 대부분의 요인을 포착하지 못한다는 것입니다.
 
 여러분은 더 많은 "분할(splits)"이 있는 트리를 사용하여 더 많은 요인을 수용할 수 있습니다. 이것들은 "더 깊은(deeper)" 트리라고 불립니다. 각 집 부지의 총 크기를 고려하는 의사 결정 트리는 다음과 같을 수 있습니다.
 
-![사진](/assets/imgs/posts/ml/intro-to-machine-learning-003.png)
+![사진](/legacy/ml/intro-to-machine-learning-003.png)
 
 의사 결정 트리를 추적하여 항상 해당 주택의 특성에 해당하는 경로를 선택하여 주택 가격을 예측합니다. 집의 예상 가격은 트리의 밑바닥에 있습니다. 우리가 예측하는 바닥의 지점을 리프(leaf)라고합니다.
 
@@ -392,7 +392,7 @@ print(mean_absolute_error(val_y, val_predictions))
 
 [*scikit-learn의 문서*](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html)에서 의사 결정 트리 모델에 많은 옵션이 있음을 알 수 있습니다. 가장 중요한 옵션은 트리의 깊이를 결정합니다. [*이 micro-course의 첫 번째 강의*](https://www.kaggle.com/dansbecker/how-models-work)에서 트리의 깊이는 예측을 하기 전에 얼마나 많은 분할을 하는지에 대한 척도라는 것을 상기하십시오. 이것은 비교적 얕은 트리입니다.
 
-![사진](/assets/imgs/posts/ml/intro-to-machine-learning-004.png)
+![사진](/legacy/ml/intro-to-machine-learning-004.png)
 
 실제로 트리가 최상위 레벨(모든 집)과 리프(leaf) 사이에 10 개의 분할을 갖는 것은 드문 일이 아닙니다. 트리가 깊어짐에 따라 dataset는 더 적은 수의 집이 있는 리프(leaf)로 나뉩니다. 트리에 1 개의 분할 만있는 경우 데이터를 2 개의 그룹으로 나눕니다. 각 그룹이 다시 분할되면 우리는 4 그룹의 집을 얻습니다. 각각을 다시 분할하면 8 개의 그룹이 생성됩니다. 각 레벨에서 더 많은 분할을 추가하여 그룹 수를 계속 두 배로 늘리면 10 레벨에 도달 할 때까지 210 개의 주택 그룹이 생깁니다. 1024 개의 리프(leaf)입니다.
 
@@ -404,7 +404,7 @@ print(mean_absolute_error(val_y, val_predictions))
 
 검증 데이터에서 추정 한 새 데이터의 정확성에 관심이 있으므로 과소적합과 과적합 사이의 최적 지점을 찾고 싶습니다. 시각적으로 우리는 (빨간색) 검증 곡선의 낮은 지점을 원합니다.
 
-![사진](/assets/imgs/posts/ml/intro-to-machine-learning-005.png)
+![사진](/legacy/ml/intro-to-machine-learning-005.png)
 
 #### 예시
 트리 깊이를 제어하기 위한 몇 가지 대안이 있으며 많은 경우 트리를 통과하는 일부 경로가 다른 경로보다 더 큰 깊이를 가질 수 있습니다. 그러나 max_leaf_nodes 인수는 과적 합과 과소 적합을 제어하는 ​​매우 합리적인 방법을 제공합니다. 모델이 만들 수있는 잎이 많을수록 위 그래프의 적합하지 않은 영역에서 과적 합 영역으로 더 많이 이동합니다.

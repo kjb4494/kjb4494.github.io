@@ -265,7 +265,7 @@ sns.distplot(scaled_data, ax=ax[1])
 ax[1].set_title("Scaled data")
 ```
 
-![사진](/assets/imgs/posts/ml/data-cleaning-001.png)
+![사진](/legacy/ml/data-cleaning-001.png)
 
 데이터의 모양은 변경되지 않았지만 0에서 8 범위가 0에서 1 사이로 스케일링 되었습니다.
 
@@ -287,7 +287,7 @@ sns.distplot(normalized_data[0], ax=ax[1])
 ax[1].set_title("Normalized data")
 ```
 
-![사진](/assets/imgs/posts/ml/data-cleaning-002.png)
+![사진](/legacy/ml/data-cleaning-002.png)
 
 데이터의 모양이 변경되었습니다. 정규화하기 전에는 거의 L자 모양이었습니다. 그러나 정규화 후에는 종의 윤곽선(bell curve)처럼 보입니다.
 
@@ -445,7 +445,7 @@ day_of_month_landslides = day_of_month_landslides.dropna()
 sns.distplot(day_of_month_landslides, kde=False, bins=31)
 ```
 
-![사진](/assets/imgs/posts/ml/data-cleaning-003.png)
+![사진](/legacy/ml/data-cleaning-003.png)
 
 와우, 날짜 데이터를 올바르게 파싱한 것 같습니다! 이 그래프는 기대한 결과물입니다!
 

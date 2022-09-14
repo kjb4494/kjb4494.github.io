@@ -8,7 +8,8 @@ tags: [terminal, theme]
 
 ### 프로필 설정하기
 - 설정 파일 Open
-    ![사진](/assets/imgs/posts/룩덕질/windows-terminal-theme-001.png)
+
+  ![사진](/legacy/룩덕질/windows-terminal-theme-001.png){: .normal}
 
 - 테마 스키마 추가
     ```json

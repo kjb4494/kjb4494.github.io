@@ -28,11 +28,11 @@ tags: [python, ml]
 
 여기서 핵심 아이디어는 피쳐에 적용하는 변환(transformation)이 본질적으로 모델 자체의 일부가 된다는 것입니다. 한 면의 길이에서 토지의 정사각형 구획 가격을 예측하려한다고 가정해보십시오. 선형 모델을 길이에 직접 피팅(fitting)하면 결과가 좋지 않습니다. 관계가 선형이 아니기 때문입니다.
 
-![사진](/assets/imgs/posts/ml/feature-engineering-001.png)
+![사진](/legacy/ml/feature-engineering-001.png)
 
 그러나 'Area'를 얻기 위해 Length 피쳐를 제곱하면 선형 관계가 생성됩니다. 피쳐 세트에 Area를 추가하면 이 선형 모델이 이제 포물선에 맞을 수 있습니다.
 
-![사진](/assets/imgs/posts/ml/feature-engineering-002.png)
+![사진](/legacy/ml/feature-engineering-002.png)
 
 이는 피쳐 엔지니어링에 투자 된 시간에 비해 높은 성과를 내는 모습을 보여줍니다. 모델이 학습 할 수 없는 관계가 무엇이든 변환을 통해 우리가 직접 만들어 제공해 줄 수 있습니다. 피쳐 세트를 개발할 때 최상의 성능을 달성하기 위해 모델이 사용할 수 있는 정보에 대해 생각하십시오.
 
@@ -141,7 +141,7 @@ MAE Score with Ratio Features: 7.948
 
 다음은 Ames Housing 데이터의 예입니다. 그림은 집의 외관 품질과 판매 가격 간의 관계를 보여줍니다. 각 점은 집을 나타냅니다.
 
-![사진](/assets/imgs/posts/ml/feature-engineering-003.png)
+![사진](/legacy/ml/feature-engineering-003.png)
 
 그림에서 ExterQual의 값을 알면 해당 SalePrice에 대해 더 확실하게 알 수 있습니다. ExterQual의 각 범주는 SalePrice를 특정 범위 내로 집중시키는 경향이 있습니다. ExterQual이 SalePrice와 함께 가지고 있는 상호 정보는 ExterQual의 4가지 값을 인수한 SalePrice의 평균 불확실성 감소입니다. 예를 들어 Fair는 Typical보다 덜 자주 발생하므로 Fair는 MI 점수에서 가중치가 더 적습니다.
 
@@ -152,7 +152,7 @@ MAE Score with Ratio Features: 7.948
 
 다음 그림은 MI값이 피쳐와 대상과의 연관성의 종류 및 정도에 해당하는 방식에 대한 아이디어를 제공합니다.
 
-![사진](/assets/imgs/posts/ml/feature-engineering-004.png)
+![사진](/legacy/ml/feature-engineering-004.png)
 
 상호의존정보를 적용 할 때 기억해야 할 사항은 다음과 같습니다.
 - MI는 자체적으로 고려되는 대상의 예측 변수로서 피쳐의 상대적 잠재력을 이해하는 데 도움이 될 수 있습니다.
@@ -253,7 +253,7 @@ plt.figure(dpi=100, figsize=(8, 5))
 plot_mi_scores(mi_scores)
 ```
 
-![사진](/assets/imgs/posts/ml/feature-engineering-005.png)
+![사진](/legacy/ml/feature-engineering-005.png)
 
 데이터 시각화는 유틸리티 순위에 대한 훌륭한 후속 조치입니다. 이 두 가지를 자세히 살펴 보겠습니다.
 
@@ -264,14 +264,14 @@ import seaborn as sns
 sns.relplot(x="curb-weight", y="price", data=df)
 ```
 
-![사진](/assets/imgs/posts/ml/feature-engineering-006.png)
+![사진](/legacy/ml/feature-engineering-006.png)
 
 fuel_type 피쳐는 MI 점수가 상당히 낮지만 그림에서 볼 수 있듯이 horsepower 피쳐 내에서 다른 추세를 가진 두 price 인구를 명확하게 구분합니다. 이것은 fuel_type이 상호의존작용 효과에 기여하지만 결과적으론 중요하지 않을 수 있음을 나타냅니다. 피쳐를 결정하기 전에 MI 점수에서 중요하지 않은 상호의존작용 효과를 조사하는 것이 좋습니다. 도메인 지식은 여기에서 많은 지침을 제공 할 수 있습니다.
 ```python
 sns.lmplot(x="horsepower", y="price", hue="fuel-type", data=df)
 ```
 
-![사진](/assets/imgs/posts/ml/feature-engineering-007.png)
+![사진](/legacy/ml/feature-engineering-007.png)
 
 데이터 시각화는 피쳐 엔지니어링 도구 상자에 추가된 훌륭한 기능입니다. 상호의존정보와 같은 유틸리티 메트릭과 함께 이와 같은 시각화는 데이터에서 중요한 관계를 발견하는 데 도움이 될 수 있습니다.
 
@@ -399,7 +399,7 @@ sns.kdeplot(accidents.wind_speed, shade=True, ax=axs[0])
 sns.kdeplot(accidents.log_wind_speed, shade=True, ax=axs[1])
 ```
 
-![사진](/assets/imgs/posts/ml/feature-engineering-008.png)
+![사진](/legacy/ml/feature-engineering-008.png)
 
 #### Counts
 어떤 것의 존재 또는 부재를 설명하는 특징들은 종종 질병의 위험 요소들의 집합으로 나타납니다. count를 생성하여 이러한 피쳐를 집계 할 수 있습니다.
@@ -603,7 +603,7 @@ df_valid[["coverage", "average_claim"]].head(10)
 #### Cluster Labels as a Feature
 단일 real-valued 피쳐에 적용되는 클러스터링은 기존의 "비닝(binning)"또는 "[*이산화(discretization)*](https://scikit-learn.org/stable/auto_examples/preprocessing/plot_discretization_classification.html)"변환처럼 작동합니다. 여러 피쳐에서 이는 "다차원 비닝"(벡터 양자화라고도 함)과 같습니다.
 
-![사진](/assets/imgs/posts/ml/feature-engineering-009.png)
+![사진](/legacy/ml/feature-engineering-009.png)
 Left: Clustering a single feature. Right: Clustering across two features.
 
 데이터 프레임에 추가 된 클러스터 레이블의 피쳐는 다음과 같습니다.
@@ -619,7 +619,7 @@ Longitude   Latitude    Cluster
 
 클러스터 레이블 추가에 대한 동기 부여 아이디어는 클러스터가 피쳐 간의 복잡한 관계를 더 간단한 청크(chunk)로 분할한다는 것입니다. 그런 다음 우리 모델은 복잡한 전체를 한 번에 배워야하는 대신 더 간단한 청크를 하나씩 학습 할 수 있습니다. 이것이 "분할 및 정복(divide and conquer)" 전략입니다.
 
-![사진](/assets/imgs/posts/ml/feature-engineering-010.png)
+![사진](/legacy/ml/feature-engineering-010.png)
 
 그림은 클러스터링이 어떻게 단순 선형 모델을 개선 할 수 있는지 보여줍니다. YearBuilt와 SalePrice 간의 곡선 관계는 이러한 종류의 모델에 비해 너무 복잡합니다. 그러나 더 작은 청크에서는 관계가 거의 선형 적이며 모델이 더 쉽게 학습 할 수 있습니다.
 
@@ -632,7 +632,7 @@ k-평균 군집화(k-means clustering)는 일반적인 직선 거리(즉, 유클
 
 위의 [*Ames*](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data) 데이터 세트에 대한 클러스터링은 k-평균 클러스터링입니다. 다음은 테살레이션과 중심점이 표시된 그림입니다.
 
-![사진](/assets/imgs/posts/ml/feature-engineering-011.jpeg)
+![사진](/legacy/ml/feature-engineering-011.jpeg)
 
 k-평균 알고리즘이 클러스터를 학습하는 방법과 이것이 피쳐 엔지니어링에 대해 의미하는 바를 검토해 보겠습니다. 우리는 scikit-learn 구현의 세 가지 매개 변수인 n_clusters, max_iter, n_init에 초점을 맞출 것입니다.
 
@@ -646,7 +646,7 @@ k-평균 알고리즘이 클러스터를 학습하는 방법과 이것이 피쳐
 
 아래 애니메이션은 작동중인 알고리즘을 보여줍니다. 초기 중심점에 대한 결과의 의존성과 수렴까지 반복하는 것의 중요성을 보여줍니다.
 
-![사진](/assets/imgs/posts/ml/feature-engineering-012.gif)
+![사진](/legacy/ml/feature-engineering-012.gif)
 
 많은 클러스터의 경우 max_iter를, 복잡한 데이터 세트의 경우 n_init를 늘려야 할 수 있습니다. 일반적으로 직접 선택해야하는 유일한 매개 변수는 n_clusters(즉, k)입니다. 피쳐 집합에 대한 최상의 분할은 사용중인 모델과 예측하려는 항목에 따라 다르므로 모든 하이퍼 파라미터처럼 조정하는 것이 가장 좋습니다(예 : 교차 유효성 검사(cross-validation)를 통해).
 
@@ -708,13 +708,13 @@ X.head()
 sns.relplot(x="longitude", y="latitude", hue="cluster", data=X, height=6)
 ```
 
-![사진](/assets/imgs/posts/ml/feature-engineering-013.png)
+![사진](/legacy/ml/feature-engineering-013.png)
 
 
 이 데이터 세트의 대상은 median_house_value(
 평균 주택 가치)입니다. 이 box-plots은 각 군집 내의 대상 분포를 보여줍니다. 클러스터링이 정보를 제공하는 경우 이러한 분포는 대부분 median_house_value에서 분리되어야합니다.
 
-![사진](/assets/imgs/posts/ml/feature-engineering-014.png)
+![사진](/legacy/ml/feature-engineering-014.png)
 
 ---
 
@@ -727,13 +727,13 @@ sns.relplot(x="longitude", y="latitude", hue="cluster", data=X, height=6)
 
 이 데이터에는 전복이 서로 다른 경향을 나타내는 "변이 축(axes of variation)"이 있다고 생각할 수 있습니다. 그림에서 이러한 축은 데이터의 자연적인 치수를 따라 이어지는 수직선으로 나타나며, 각 원래 피쳐에 대해 하나의 축이 있습니다.
 
-![사진](/assets/imgs/posts/ml/feature-engineering-015.png)
+![사진](/legacy/ml/feature-engineering-015.png)
 
 종종 이러한 변형 축에 이름을 지정할 수 있습니다. 더 긴 축은 "Size(크기)" 구성 요소(component)라고 할 수 있습니다. 작은 height와 작은 diameter(왼쪽 아래)는 큰 height와 큰 diameter(오른쪽 위)과 대조됩니다. 짧은 축은 "Shape(모양)" 구성 요소라고 할 수 있습니다. 작은 height와 큰 diameter(평평한 모양)이 큰 height와 작은 diameter(둥근 모양)과 대조됩니다.
 
 전복을 'Height'와 'Diameter'으로 설명하는 대신 'Size'와 'Shape'로 설명 할 수 있습니다. 사실 이것은 PCA의 전체 개념입니다. 원래 기능으로 데이터를 설명하는 대신 변형 축으로 데이터를 설명합니다. 변형의 축이 새로운 피쳐가 됩니다.
 
-![사진](/assets/imgs/posts/ml/feature-engineering-016.png)
+![사진](/legacy/ml/feature-engineering-016.png)
 
 새로운 피쳐 PCA 구조는 실제로 원래 피쳐의 선형 조합(가중 합계)입니다.
 ```text
@@ -754,7 +754,7 @@ Diameter                0.707       -0.707
 
 PCA는 또한 각 성분의 변동량(amount of variation)을 알려줍니다. 그림에서 Shape 성분보다 Size 성분을 따라 데이터에 더 많은 변동이 있음을 알 수 있습니다. PCA는 각 성분의 % explained variance를 통해 이를 정확하게 만듭니다.
 
-![사진](/assets/imgs/posts/ml/feature-engineering-017.png)
+![사진](/legacy/ml/feature-engineering-017.png)
 
 (크기는 높이와 지름 간의 차이의 약 96%를 차지하고 모양은 약 4%를 차지합니다.)
 
@@ -890,7 +890,7 @@ curb-weight  0.507342  0.185804 -0.657153 -0.525577
 
 성분 부하의 부호와 크기는 캡처 된 변동의 종류를 알려줍니다. 첫 번째 성분(PC1)은 연비가 좋지 않은 크고 강력한 차량과 연비가 좋은 더 작고 경제적인 차량 간의 대조를 보여줍니다. 이것을 "Luxury/Economy" 축이라고 부를 수 있습니다. 다음 그림은 우리가 선택한 네 가지 피쳐가 대부분 Luxury/Economy 축을 따라 다양하다는 것을 보여줍니다.
 
-![사진](/assets/imgs/posts/ml/feature-engineering-018.png)
+![사진](/legacy/ml/feature-engineering-018.png)
 
 성분의 MI 점수도 살펴보겠습니다. 당연히 PC1은 매우 유익하지만 나머지 성분은 작은 차이에도 불구하고 여전히 price와 상당한 관계가 있습니다. 이러한 성분을 조사하는 것은 주요 Luxury/Economy 축에서 포착되지 않은 관계를 찾는 데 유용 할 수 있습니다.
 ```python
@@ -935,7 +935,7 @@ df["sports_or_wagon"] = X['curb-weight'] / X.horsepower
 sns.regplot(x="sports_or_wagon", y='price', data=df, order=2)
 ```
 
-![사진](/assets/imgs/posts/ml/feature-engineering-019.png)
+![사진](/legacy/ml/feature-engineering-019.png)
 
 ---
 
@@ -990,7 +990,7 @@ weight = n / (n + m)
 
 여기서 n은 해당 범주가 데이터에서 발생하는 총 횟수입니다. 매개 변수 m은 "평활 인자(smoothing factor)"를 결정합니다. m 값이 클수록 전체 추정치에 더 많은 가중치가 부여됩니다.
 
-![사진](/assets/imgs/posts/ml/feature-engineering-020.png)
+![사진](/legacy/ml/feature-engineering-020.png)
 
 Automobiles 데이터 세트의 make에는 chevrolet이 있는 3대의 자동차가 있습니다. m=2.0을 선택하면 chevrolet 카테고리는 평균 chevrolet 가격의 60%에 전체 평균 가격의 40%를 더한 값으로 인코딩됩니다.
 ```text
@@ -1072,6 +1072,6 @@ ax.set_xlabel("Rating")
 ax.legend(labels=['Zipcode', 'Rating'])
 ```
 
-![사진](/assets/imgs/posts/ml/feature-engineering-021.png)
+![사진](/legacy/ml/feature-engineering-021.png)
 
 인코딩 된 Zipcode 피쳐의 배포는 대략 실제 등급의 분포를 따르며, 이는 영화 감상자들이 우리의 대상 인코딩이 유용한 정보를 캡처 할 수 있을만큼 zipcode에서 zipcode까지 등급이 충분히 달랐음을 의미합니다.

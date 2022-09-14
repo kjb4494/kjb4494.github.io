@@ -10,7 +10,7 @@ tags: [python, jupyter-notebook]
 - [*jupyter docker images*](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html)
     자신에게 맞는 docker image를 선택한다.
 
-    ![사진](/assets/imgs/posts/ml/jupyter-notebook-001.png)
+    ![사진](/legacy/ml/jupyter-notebook-001.png)
 
     내가 사용할 도커 이미지는 jupyter/tensorflow-notebook 이다.
 
@@ -73,12 +73,12 @@ tags: [python, jupyter-notebook]
     ```
     쥬피터 서버가 열리면 콘솔에 출력된 토큰값을 이용해서 로그인할 수 있다. 하지만 다음 로그인을 위해서 패스워드를 설정해주자.
 
-    ![사진](/assets/imgs/posts/ml/jupyter-notebook-002.png)
+    ![사진](/legacy/ml/jupyter-notebook-002.png)
 
     여기까지 했으면 콘솔창에서 ctrl+c를 눌러 빠져나와도 된다.
 
 ### 쥬피터 노트북 사용해보기
-![사진](/assets/imgs/posts/ml/jupyter-notebook-003.png)
+![사진](/legacy/ml/jupyter-notebook-003.png)
 
 - 서버 닫기
     ```shell
@@ -99,7 +99,7 @@ tags: [python, jupyter-notebook]
     docker start jupyter-notebook
     ```
 
-    ![사진](/assets/imgs/posts/ml/jupyter-notebook-004.png)
+    ![사진](/legacy/ml/jupyter-notebook-004.png)
 
     서버를 다시 열었을 때 이전 단계에서 패스워드 설정을 했다면 패스워드로 로그인할 수 있다.
     만약 패스워드 설정을 하지 않았다면 아래 명령어를 이용해 토큰을 확인할 수 있다.
@@ -108,5 +108,5 @@ tags: [python, jupyter-notebook]
     docker logs jupyter-notebook
     ```
 - 쥬피터 노트북 사용 예시
-    ![사진](/assets/imgs/posts/ml/jupyter-notebook-005.png)
-    ![사진](/assets/imgs/posts/ml/jupyter-notebook-006.png)
+    ![사진](/legacy/ml/jupyter-notebook-005.png)
+    ![사진](/legacy/ml/jupyter-notebook-006.png)
