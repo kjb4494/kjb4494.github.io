@@ -6,7 +6,7 @@ categories: [자바, Spring]
 tags: [java, spring, backend, toy-project]
 ---
 
-### 토이 프로젝트 시작 계기
+## 토이 프로젝트 시작 계기
 처음에는 작았던 프로젝트의 규모가 점점 커지기 시작하면서 프로젝트 구조에서 불편함을 느끼기 시작했습니다.
 
 그 이유는 바로 공통(Common) 모듈... cms 와 web, mobile api 를 만들기 위해서 Entity, Repository, 서비스 레이어 등 공통으로 사용할만한 것들을 Common 모듈에 전부 때려박은 것이 불행의 시작이었습니다 ㅠㅠ...
@@ -16,7 +16,7 @@ tags: [java, spring, backend, toy-project]
 그러다가 우아한형제들 기술블로그에서 [_멀티모듈 설계 이야기_](https://techblog.woowahan.com/2637/)라는 글을 발견했습니다. `공통(Common) 모듈의 저주`... 지금 프로젝트가 딱 이 상황이더군요 ㅠㅠ... 저자분께서 멀티 모듈 설계 노하우를 정말 깔끔하게 설명해주신 덕분에 이 글을 참고해서 `잘 설계된 작은 프로젝트`를 만들어보자는 생각을 하게됐습니다. :)
 
 
-### 프로젝트 시작하기
+## 프로젝트 시작하기
 위 글을 참고하여 크게 5개 모듈 종류로 나누었습니다.
 - servers (apllication)
 - clients (in system available)
@@ -116,7 +116,7 @@ dependencies {
 
 실행 후 `http://localhost:8080/` 에 접속했을 때 `Whitelabel Error Page` 가 나오면 준비는 끝났습니다~ XD
 
-### Tomcat -> Undertow
+## Tomcat -> Undertow
 이제 `Tomcat` 을 `Undertow` 로 교체해보겠습니다.
 ```gradle
 // Use undertow instead tomcat.
