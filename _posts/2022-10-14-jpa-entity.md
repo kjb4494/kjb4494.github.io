@@ -8,7 +8,7 @@ tags: [java, spring, backend, toy-project, jpa]
 
 JPA에서 연관관계를 매핑할 때는 3가지를 고려해야합니다.
 
-첫번째로는 `다중성`입니다. 즉, 연관관계가 다대일(ManyToOne)인지, 일대다(OneToMany)인지, 일대일(OneToOne)인지, 다대다(ManyToMany)인지를 정하는 것입니다. 이와 관련해서 일대일(OneToOne)에서 연관관계의 주인이 아닌 엔티티를 가져올 때 Lazy Loading이 동작하지않는 문제, 일대다(OneToMany)에서 Fetch 페이징을 시도할 때 발생하는 문제와 Lazy Loading에서 발생하는 n+1 select 문제, 다대다(ManyToMany)의 구조적 문제를 다뤄볼 예정입니다.
+첫번째로는 `다중성`입니다. 즉, 연관관계가 다대일(ManyToOne)인지, 일대다(OneToMany)인지, 일대일(OneToOne)인지, 다대다(ManyToMany)인지를 정하는 것입니다. 이와 관련해서 일대일(OneToOne)에서 연관관계의 주인이 아닌 엔티티를 가져올 때 Lazy Loading이 동작하지않는 문제, 다대다(ManyToMany)의 구조적 문제까지 다뤄볼 예정입니다.
 
 두번째로는 `단방향으로 할 것인지, 양방향으로 할 것인지`입니다. 관계형 데이터베이스의 테이블은 원래부터 양방향으로 참조가 가능한 구조입니다. 하지만 JAVA는 객체지향언어이기 때문에 결국 JPA에서 다루는 것은 `객체`입니다. 객체간의 관계는 일방통행이기 때문에 양방향 참조를 하고싶다면 단방향 매핑 2개를 만들어줘야합니다. 하지만 단방향으로만 맺어도 테이블 매핑은 완료됩니다. 양방향으로 참조하는 엔티티 연관관계가 많아질수록 프로젝트가 복잡해질 수 있기 때문에 저는 엔티티 설계시엔 단방향으로 맺고, 추후에 필요해질 경우 양방향으로 맺어주고 있습니다.
 
@@ -107,15 +107,80 @@ public class BoardComment {
 }
 ```
 
-Post와 Comment는 일대다(ManyToOne) 연관관계를 가지고있습니다. Comment 엔티티 객체가 주인이기 때문에 주인이 아닌 Post에는 mappedBy 속성을 사용하고 Comment 객체에서 Post의 필드이름인 `post`를 값으로 줬습니다. (`@OneToMany(mappedBy = "post")`)
+### mappedBy
+
+Post와 Comment는 일대다(ManyToOne) 연관관계를 가지고있습니다. Comment 엔티티 객체가 주인이기 때문에 주인이 아닌 Post에는 `mappedBy` 속성을 사용하고 Comment 객체에서 Post의 필드이름인 `post`를 값으로 줬습니다. (`@OneToMany(mappedBy = "post")`)
+
+### 지연로딩(Lazy Loading)
 
 `@ManyToOne(fetch = FetchType.LAZY)`는 Comment를 데이터베이스에서 가져올 때 Post를 동시 참조하지않고 나중에 Post를 사용할 때 참조해서 가져오도록하는 설정입니다. 만약 사용하지도않는데 Comment를 가져올때마다 Post까지 검색하면 데이터베이스의 부담도 그만큼 커질 것입니다. X(
 
+### @JoinColumn
+
 `@JoinColumn(name = "post_idx", insertable = false, updatable = false)`는 post_idx 컬럼값으로 Post를 참조하되 해당 필드를 이용해 insert 하거나 update 하지는 않겠다는 뜻입니다. 즉 read only 필드로 사용하겠다는 뜻이죠.
+
+### @Id
 
 `@Id`는 해당 필드가 기본키라는 뜻입니다. `JPA에서 기본키는 무조건 존재해야합니다.`
 
-`@GeneratedValue`는 기본키를 자동으로 생성할 때 어떤 전략을 사용할 것인지를 명시합니다. `GenerationType.IDENTITY`는 기본키 생성을 데이터베이스에 위임하는 방식입니다. 따라서 insert 할 때 필드값을 따로 명시하지않아도 데이터베이스가 자동으로 `AUTO_INCREMENT`로 기본키를 생성해줍니다. 그 외의 전략은 차후에 자세히 설명해보겠습니다. :D
+### @GeneratedValue
+
+`@GeneratedValue`는 기본키를 자동으로 생성할 때 어떤 전략을 사용할 것인지를 명시합니다. `GenerationType.IDENTITY`는 기본키 생성을 데이터베이스에 위임하는 방식입니다. 따라서 insert 할 때 필드값을 따로 명시하지않아도 데이터베이스가 자동으로 `AUTO_INCREMENT`로 기본키를 생성해줍니다.
+
+`기본키를 직접 할당해 개발자가 관리할 경우 이 어노테이션은 사용하지않습니다.` 자동 생성 전략은 위에서 사용한 `IDENTITY` 외에 `SEQUENCE`, `TABLE` 전략이 있습니다. 자동 생성 전략이 이처럼 다양한 이유는 데이터베이스 벤더마다 지원하는 방식이 다르기 때문입니다. 예를 들어 오라클 데이터베이스는 시퀀스를 제공하지만 MySQL은 시퀀스를 제공하지 않죠. 따라서 MySQL에서 SEQUENCE를 사용하고싶다면 별도의 테이블을 생성해 시퀀스를 흉내내야합니다. 이 경우 오라클 데이터베이스는 SEQUENCE 전략을, MySQL는 TABLE 전략을 사용하면 됩니다. 전략을 `AUTO`로 설정할 경우 선택한 데이터베이스 방언에 따라 자동으로 설정해줍니다. 예를 들어 오라클 데이터베이스를 사용하면 SEQUENCE를, MySQL을 선택하면 IDENTITY를 사용합니다. `AUTO`의 장점은 데이터베이스를 변경해도 코드를 수정할 필요가 없다는 것입니다. 하지만 되도록이면 `AUTO`로 설정하지않고 사용할 전략을 제대로 명시해주는게 좋습니다.
+
+JPA는 엔티티가 영속 상태로 만들기 위해선 식별자가 반드시 필요합니다. 하지만 `IDENTITY` 전략을 사용하면 인스턴스가 데이터베이스에 저장된 후에야 식별자를 구할 수 있기 때문에 em.persist()를 호출하는 즉시 insert sql문이 전달됩니다. 이러한 메커니즘 때문에 `IDENTITY 전략을 사용하는 엔티티는 쓰기 지연이 동작하지 않습니다`.
+
+### @Convert
+
+`@Convert`는 엔티티의 필드값을 데이터베이스에 저장할 때 또는 데이터베이스의 값을 엔티티의 필드값으로 가져올 때 어떻게 변환할지를 명시합니다.
+
+아래는 statusCode 필드의 converter로 사용된 StatusCodeConverter.class 입니다.
+
+{: file='StatusCodeConverter.java'}
+
+```java
+public class StatusCodeConverter implements AttributeConverter<StatusCode, Byte> {
+    @Override
+    public Byte convertToDatabaseColumn(StatusCode attribute) {
+        if (attribute == null) return null;
+        return attribute.getCode();
+    }
+
+    @Override
+    public StatusCode convertToEntityAttribute(Byte dbData) {
+        if (dbData == null) return null;
+        return StatusCode.getByCode(dbData);
+    }
+}
+```
+
+{: file='StatusCode.java'}
+
+```java
+public enum StatusCode {
+    Private((byte)0),
+    Public((byte)1),
+    Deleted((byte)2);
+
+    final private byte code;
+
+    StatusCode(byte code) {
+        this.code = code;
+    }
+
+    public byte getCode() {
+        return code;
+    }
+
+    public static StatusCode getByCode(byte code) {
+        for (StatusCode statusCode: StatusCode.values()) {
+            if (statusCode.code == code) return statusCode;
+        }
+        return null;
+    }
+}
+```
 
 ## 일대일(OneToOne)
 
@@ -145,7 +210,11 @@ public class PostDetail {
 }
 ```
 
-### CASCADE
+### MapsId
+
+JPA에서는 테이블간 연관 관계를 맺을 때 기본적으로 두 테이블 중 하나에 외래키를 생성합니다. `MapsId`는 `기본키를 외래키로 사용할거니까 외래키 따로 만들지마!`라고 명시함으로써 불필요한 컬럼 생성을 막아줍니다.
+
+### Cascade
 
 `@OneToOne(mappedBy = "post", cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)` Post와 PostDetail 엔티티는 같은 기본키 값을 사용하며 insert와 delete가 함께 일어나기 때문에 `cascade` 옵션을 사용했습니다. `cascade`는 엔티티를 영속화할 때 연관된 엔티티도 함께 영속화시켜주는 `영속성 전이(transitive persistence)`를 제공해줍니다. 즉, `부모 엔티티를 저장할 때 자식 엔티티도 함께 저장`할 수 있게됩니다.
 
@@ -352,3 +421,9 @@ public class UserRoleKey implements Serializable {
 ```
 
 보시다싶이 식별자 클래스는 `equals`, `hashCode`를 구현해야합니다. 이건 Intellij 등 IDE에서 자동으로 생성할 수 있습니다.
+
+---
+
+여기까지가 JPA를 만져보기 위한 최소한의 엔티티 설정 방법들입니다. :D
+
+앞으로 일대다 관계의 참조객체를 Fetch해서 페이징할 때 주의할 점과 n+1 문제 등을 다뤄보겠습니다~
