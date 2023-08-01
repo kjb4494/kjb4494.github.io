@@ -2,8 +2,8 @@
 title: JPA 이야기 02 편 - 다양한 연관관계 매핑
 author: kjb4494
 date: 2022-10-14 16:00:00 +0900
-categories: [자바, Spring]
-tags: [java, spring, backend, toy-project, jpa]
+categories: [Backend, Java Spring]
+tags: [java, spring, backend, jpa]
 ---
 
 JPA에서 연관관계를 매핑할 때는 3가지를 고려해야합니다.

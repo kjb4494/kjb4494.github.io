@@ -2,7 +2,7 @@
 title: Vue 3 프로젝트 생성 및 개발환경 세팅하기
 author: kjb4494
 date: 2022-05-17 00:00:00 +0900
-categories: [프론트엔드, Vue 3]
+categories: [Frontend, VueJs]
 tags: [vue3, typescript, pinia, vite]
 ---
 
@@ -55,6 +55,7 @@ ide 는 당연하지만 vscode 를 사용했다. 타입스크립트를 사용함
     export default component;
   }
   ```
+
   {: file='/src/shims-vue.d.ts'}
 
   위와 같이 shims-vue.d.ts 파일을 추가해주는 것으로 해결했다.
@@ -79,6 +80,7 @@ ide 는 당연하지만 vscode 를 사용했다. 타입스크립트를 사용함
     }
   }
   ```
+
   {: file='.eslintrc.cjs'}
 
 - vue 파일에서 import 시 모듈을 찾지 못 하는 현상
@@ -93,6 +95,7 @@ ide 는 당연하지만 vscode 를 사용했다. 타입스크립트를 사용함
     }
   }
   ```
+
   {: file='tsconfig.json'}
 
   compilerOptions 설정을 추가해준다.

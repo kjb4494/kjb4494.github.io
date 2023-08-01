@@ -2,8 +2,8 @@
 title: AWS Lambda에 Node.js Express 애플리케이션 배포하기
 author: kjb4494
 date: 2023-08-01 14:00:00 +0900
-categories: [javascript, nodejs]
-tags: [nodejs, backend, toy-project, aws lambda]
+categories: [Backend, Nodejs Express]
+tags: [nodejs, backend, aws lambda]
 ---
 
 안녕하세요! 오늘은 클라우드 컴퓨팅에서 가장 핵심적인 서비스 중 하나인 AWS Lambda에 Node.js 기반의 Express 애플리케이션을 배포하는 방법에 대해 알아보려고 합니다.

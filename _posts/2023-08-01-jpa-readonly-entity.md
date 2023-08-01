@@ -2,8 +2,8 @@
 title: JPA 이야기 03 편 - 읽기 전용 엔티티 만들기
 author: kjb4494
 date: 2023-08-01 12:00:00 +0900
-categories: [자바, Spring]
-tags: [java, spring, backend, toy-project, jpa]
+categories: [Backend, Java Spring]
+tags: [java, spring, backend, jpa]
 ---
 
 이 글에서는 JPA(Jakarta Persistence API)에서 읽기 전용 엔티티를 만드는 방법에 대해 다뤄보겠습니다.
