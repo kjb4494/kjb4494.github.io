@@ -241,7 +241,11 @@ module.exports.hello = async (event) => {
 
 그런데, 우리가 작성한 Express 애플리케이션이 AWS Lambda에서 잘 작동하도록 이 핸들러 함수를 수정해야 합니다. 우리의 목표는 `handler.js` 파일을 수정하여 AWS Lambda에서 Express 애플리케이션을 실행할 수 있게 하는 것입니다. 여기서는 `serverless-http` 라이브러리를 사용하여 우리의 Express 애플리케이션을 AWS Lambda 환경에서 실행 가능하도록 변환해 보겠습니다.
 
-먼저, `app.js` 파일의 내용을 `handler.js`에 그대로 복사합니다. 그리고 상단에 `serverless-http` 모듈을 불러오는 코드를 추가합니다.
+```bash
+$ npm install serverless-http
+```
+
+먼저, `serverless-http` 라이브러리를 설치해주시고 `app.js` 파일의 내용을 `handler.js`에 그대로 복사합니다. 그리고 상단에 `serverless-http` 모듈을 불러오는 코드를 추가합니다.
 
 ```javascript
 var serverless = require("serverless-http"); // Add this line
@@ -266,11 +270,10 @@ module.exports.app = serverless(app);
 
 ### 로컬에서 Serverless 코드 테스트하기
 
-하지만! AWS Lambda에 배포하기 전에, 로컬 환경에서 우리의 코드가 잘 동작하는지 확인하려면 `serverless-offline`과 `serverless-http` 패키지를 설치해야 합니다. 이 두 패키지를 설치하면 Serverless 프레임워크를 사용하여 로컬 환경에서 Lambda 함수를 시뮬레이션할 수 있습니다.
+하지만! AWS Lambda에 배포하기 전에, 로컬 환경에서 우리의 코드가 잘 동작하는지 확인하려면 `serverless-offline` 패키지를 설치해야 합니다. 이 패키지를 설치하면 Serverless 프레임워크를 사용하여 로컬 환경에서 Lambda 함수를 시뮬레이션할 수 있습니다.
 
 ```bash
 $ npm install serverless-offline --save-dev
-$ npm install serverless-http --save-dev
 ```
 
 다음으로 `serverless.yml` 파일을 열고 아래와 같이 내용을 수정합니다.

@@ -66,6 +66,24 @@ public class ExtendedRepositoryImpl<T, ID extends Serializable> extends SimpleJp
 }
 ```
 
+## ExtendedRepository 설정하기
+
+`ExtendedRepository`를 사용하려면, 애플리케이션 모듈의 `DataSourceConfig`에 `repositoryBaseClass` 설정이 필요합니다. 이 설정은 `ExtendedRepositoryImpl`를 사용하도록 지시하는 역할을 합니다. 아래 코드에서는 이를 적용한 예시를 확인할 수 있습니다.
+
+```java
+@Configuration
+@EnableTransactionManagement
+@EnableJpaRepositories(
+        repositoryBaseClass = ExtendedRepositoryImpl.class,
+        entityManagerFactoryRef = "petDiaryMembershipEntityManagerFactory",
+        transactionManagerRef = "petDiaryMembershipTransactionManager",
+        basePackages = {"com.petdiary.domain.rdspetdiarymembershipdb.repository"}
+)
+public class DataSourceConfig {
+    // 기타 설정은 여기에 추가...
+}
+```
+
 ## ExtendedRepository 사용하기
 
 이제 도메인 모듈의 Repository에서 `ExtendedRepository`를 상속받아 사용할 수 있습니다. 다음은 `MemberRepository`에서 사용한 예제 코드입니다.
