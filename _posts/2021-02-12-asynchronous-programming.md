@@ -2,7 +2,7 @@
 title: 파이썬 비동기 프로그래밍
 author: kjb4494
 date: 2021-02-12 16:00:00 +0900
-categories: [파이썬, Basic]
+categories: [Python]
 tags: [python, async]
 ---
 

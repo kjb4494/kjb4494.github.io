@@ -2,7 +2,7 @@
 title: Python Anaconda 설치하기
 author: kjb4494
 date: 2021-02-11 15:00:00 +0900
-categories: [파이썬, Basic]
+categories: [Python]
 tags: [python, anaconda]
 ---
 

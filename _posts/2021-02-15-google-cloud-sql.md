@@ -2,7 +2,7 @@
 title: Google Cloud SQL
 author: kjb4494
 date: 2021-02-15 16:00:00 +0900
-categories: [클라우드, GCP]
+categories: [Cloud Platform, GCP]
 tags: [cloud, gcp]
 ---
 

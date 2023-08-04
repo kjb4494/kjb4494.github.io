@@ -2,7 +2,7 @@
 title: docker로 쥬피터 노트북 사용하기
 author: kjb4494
 date: 2021-03-10 13:00:00 +0900
-categories: [파이썬, Basic]
+categories: [Python]
 tags: [python, jupyter-notebook]
 ---
 

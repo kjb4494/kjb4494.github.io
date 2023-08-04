@@ -2,7 +2,7 @@
 title: 파이썬의 *args와 **kwargs 매개변수
 author: kjb4494
 date: 2021-02-12 15:00:00 +0900
-categories: [파이썬, Basic]
+categories: [Python]
 tags: [python, args, kwargs]
 ---
 

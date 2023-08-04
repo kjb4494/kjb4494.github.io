@@ -2,7 +2,7 @@
 title: Developing on AWS 1일차
 author: kjb4494
 date: 2021-03-03 13:00:00 +0900
-categories: [클라우드, AWS]
+categories: [Cloud Platform, AWS]
 tags: [cloud, aws]
 ---
 

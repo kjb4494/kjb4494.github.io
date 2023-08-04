@@ -2,7 +2,7 @@
 title: Google Cloud SDK 설치하기
 author: kjb4494
 date: 2021-02-15 15:00:00 +0900
-categories: [클라우드, GCP]
+categories: [Cloud Platform, GCP]
 tags: [cloud, gcp]
 ---
 ### 설치 방법

@@ -2,7 +2,7 @@
 title: Data Cleaning
 author: kjb4494
 date: 2021-04-05 13:00:00 +0900
-categories: [파이썬, ML]
+categories: [Machine Learning]
 tags: [python, ml]
 ---
 

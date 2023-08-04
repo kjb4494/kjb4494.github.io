@@ -2,7 +2,7 @@
 title: Intro to Machine Learning
 author: kjb4494
 date: 2021-03-09 13:00:00 +0900
-categories: [파이썬, ML]
+categories: [Machine Learning]
 tags: [python, ml]
 ---
 
