@@ -34,8 +34,9 @@ List<Post> posts = em.createQuery("SELECT p FROM Post p JOIN FETCH p.comments", 
 `@EntityGraph`를 사용하여 필요한 속성만 선택적으로 즉시 로딩할 수 있습니다.
 
 ```java
-@EntityGraph(attributePaths = {"comments"})
-List<Post> posts = postRepository.findAll();
+@EntityGraph(attributePaths = "comments")
+@Query("SELECT p FROM Post p")
+List<Post> findAllWithComments();
 ```
 
 ### 3. **Batch Size**
@@ -140,4 +141,4 @@ spring.jpa.open-in-view=false
 
 ## 결론
 
-JPA는 Spring의 ORM으로서, 개발자에게 데이터베이스 작업을 간단하게 만들어주는 많은 기능을 제공합니다. 그러나 n+1과 같은 성능 문제에 직면할 경우, 위에서 소개한 해결 방법들을 적용하여 성능을 최적화할 수 있습니다. 실제 환경에서의 테스트와 측정을 통해 최적의 설정을 하는 것이 좋을 것 같습니다. :)
+JPA는 Spring의 ORM으로서, 데이터베이스 작업을 단순화하면서 개발자에게 편리한 수단을 제공합니다. 하지만 막상 도입하려고하면 n+1 같은 성능상 문제들을 직면하게 됩니다. 이 글이 문제를 해결하는데 조금이나마 도움이 되었으면 좋겠습니다. 😊
