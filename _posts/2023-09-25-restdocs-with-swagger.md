@@ -1,5 +1,5 @@
 ---
-title: RestDocs를 Swagger UI로 문서화 해보자
+title: RestDocs + Swagger UI로 API 문서화하기
 author: kjb4494
 date: 2023-09-25 11:00:00 +0900
 categories: [Backend, Java Spring]
