@@ -4,6 +4,7 @@ author: kjb4494
 date: 2021-02-10 15:33:00 +0900
 categories: [기타, 블로그]
 tags: [git, github, blog]
+hidden: true
 ---
 
 ### 동기

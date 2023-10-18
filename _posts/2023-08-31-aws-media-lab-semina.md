@@ -3,7 +3,7 @@ title: AWS Media Lab 세미나 후기
 author: kjb4494
 date: 2023-08-31 18:00:00 +0900
 categories: [Cloud Platform, AWS]
-tags: [Cloud Platform, AWS, Media Labs]
+tags: [cloud, aws, media labs]
 hidden: true
 ---
 

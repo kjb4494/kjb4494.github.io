@@ -3,7 +3,7 @@ title: Vue 3 프로젝트 생성 및 개발환경 세팅하기
 author: kjb4494
 date: 2022-05-17 00:00:00 +0900
 categories: [Frontend, VueJs]
-tags: [vue3, typescript, pinia, vite]
+tags: [vue, typescript, pinia, vite]
 ---
 
 ### Vue 프로젝트 생성하기

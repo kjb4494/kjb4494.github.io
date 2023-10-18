@@ -4,6 +4,7 @@ author: cotes
 date: 2019-08-09 20:55:00 +0800
 categories: [기타, 블로그]
 tags: [getting started]
+hidden: true
 ---
 
 ## Prerequisites
