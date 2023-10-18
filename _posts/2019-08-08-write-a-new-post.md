@@ -23,12 +23,12 @@ Basically, you need to fill the [Front Matter](https://jekyllrb.com/docs/front-m
 title: TITLE
 date: YYYY-MM-DD HH:MM:SS +/-TTTT
 categories: [TOP_CATEGORIE, SUB_CATEGORIE]
-tags: [TAG]     # TAG names should always be lowercase
+tags: [TAG] # TAG names should always be lowercase
 ---
 ```
 
 > The posts' _layout_ has been set to `post` by default, so there is no need to add the variable _layout_ in the Front Matter block.
-{: .prompt-tip }
+> {: .prompt-tip }
 
 ### Timezone of Date
 
@@ -57,7 +57,8 @@ Add author information in `_data/authors.yml` (If your website doesn't have this
   twitter: <twitter_of_author>
   url: <homepage_of_author>
 ```
-{: file="_data/authors.yml" }
+
+{: file="\_data/authors.yml" }
 
 And then set up the custom author in the post's YAML block:
 
@@ -68,7 +69,7 @@ author: <author_id>
 ```
 
 > Another benefit of reading the author information from the file `_data/authors.yml`{: .filepath } is that the page will have the meta tag `twitter:creator`, which enriches the [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution) and is good for SEO.
-{: .prompt-info }
+> {: .prompt-info }
 
 ## Table of Contents
 
@@ -112,7 +113,7 @@ mermaid: true
 ---
 ```
 
-Then you can use it like other markdown languages: surround the graph code with ```` ```mermaid ```` and ```` ``` ````.
+Then you can use it like other markdown languages: surround the graph code with ` ```mermaid ` and ` ``` `.
 
 ## Images
 
@@ -121,9 +122,10 @@ Then you can use it like other markdown languages: surround the graph code with 
 Add italics to the next line of an image，then it will become the caption and appear at the bottom of the image:
 
 ```markdown
-![img-description](/path/to/image)
+![img-description](/assets/img/posts/path/to/image)
 _Image Caption_
 ```
+
 {: .nolineno}
 
 ### Size
@@ -131,15 +133,17 @@ _Image Caption_
 In order to prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image:
 
 ```markdown
-![Desktop View](/assets/img/sample/mockup.png){: width="700" height="400" }
+![Desktop View](/assets/img/posts/sample/mockup.png){: width="700" height="400" }
 ```
+
 {: .nolineno}
 
 Starting from _Chirpy v5.0.0_, `height` and `width` support abbreviations (`height` → `h`, `width` → `w`). The following example has the same effect as the above:
 
 ```markdown
-![Desktop View](/assets/img/sample/mockup.png){: w="700" h="400" }
+![Desktop View](/assets/img/posts/sample/mockup.png){: w="700" h="400" }
 ```
+
 {: .nolineno}
 
 ### Position
@@ -147,29 +151,32 @@ Starting from _Chirpy v5.0.0_, `height` and `width` support abbreviations (`heig
 By default, the image is centered, but you can specify the position by using one of the classes `normal`, `left`, and `right`.
 
 > Once the position is specified, the image caption should not be added.
-{: .prompt-warning }
+> {: .prompt-warning }
 
 - **Normal position**
 
   Image will be left aligned in below sample:
 
   ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .normal }
+  ![Desktop View](/assets/img/posts/sample/mockup.png){: .normal }
   ```
+
   {: .nolineno}
 
 - **Float to the left**
 
   ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .left }
+  ![Desktop View](/assets/img/posts/sample/mockup.png){: .left }
   ```
+
   {: .nolineno}
 
 - **Float to the right**
 
   ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .right }
+  ![Desktop View](/assets/img/posts/sample/mockup.png){: .right }
   ```
+
   {: .nolineno}
 
 ### Shadow
@@ -177,8 +184,9 @@ By default, the image is centered, but you can specify the position by using one
 The screenshots of the program window can be considered to show the shadow effect, and the shadow will be visible in the `light` mode:
 
 ```markdown
-![Desktop View](/assets/img/sample/mockup.png){: .shadow }
+![Desktop View](/assets/img/posts/sample/mockup.png){: .shadow }
 ```
+
 {: .nolineno}
 
 ### CDN URL
@@ -188,22 +196,25 @@ If you host the images on the CDN, you can save the time of repeatedly writing t
 ```yaml
 img_cdn: https://cdn.com
 ```
-{: file='_config.yml' .nolineno}
+
+{: file='\_config.yml' .nolineno}
 
 Once `img_cdn` is assigned, the CDN URL will be added to the path of all images (images of site avatar and posts) starting with `/`.
 
 For instance, when using images:
 
 ```markdown
-![The flower](/path/to/flower.png)
+![The flower](/assets/img/posts/path/to/flower.png)
 ```
+
 {: .nolineno}
 
 The parsing result will automatically add the CDN prefix `https://cdn.com` before the image path:
 
 ```html
-<img src="https://cdn.com/path/to/flower.png" alt="The flower">
+<img src="https://cdn.com/path/to/flower.png" alt="The flower" />
 ```
+
 {: .nolineno}
 
 ### Image Path
@@ -215,6 +226,7 @@ When a post contains many images, it will be a time-consuming task to repeatedly
 img_path: /img/path/
 ---
 ```
+
 {: .nolineno }
 
 And then, the image source of Markdown can write the file name directly:
@@ -222,13 +234,15 @@ And then, the image source of Markdown can write the file name directly:
 ```md
 ![The flower](flower.png)
 ```
+
 {: .nolineno }
 
 The output will be:
 
 ```html
-<img src="/img/path/flower.png" alt="The flower">
+<img src="/img/path/flower.png" alt="The flower" />
 ```
+
 {: .nolineno }
 
 ### Preview Image
@@ -239,15 +253,15 @@ If you want to add an image to the top of the post contents, specify the attribu
 ---
 image:
   path: /path/to/image/file
-  width: 1000   # in pixels
-  height: 400   # in pixels
+  width: 1000 # in pixels
+  height: 400 # in pixels
   alt: image alternative text
 ---
 ```
 
 Except for `alt`, all other options are necessary, especially the `width` and `height`, which are related to user experience and web page loading performance. The above section "[Size](#size)" also mentions this.
 
-Starting from _Chirpy v5.0.0_, the attributes `height` and `width` can be abbreviated: `height` → `h`, `width` → `w`. In addition, the [`img_path`](#image-path) can also be passed to the preview image, that is, when it has been set, the  attribute `path` only needs the image file name.
+Starting from _Chirpy v5.0.0_, the attributes `height` and `width` can be abbreviated: `height` → `h`, `width` → `w`. In addition, the [`img_path`](#image-path) can also be passed to the preview image, that is, when it has been set, the attribute `path` only needs the image file name.
 
 Starting from _Chirpy v5.2.0_, the property for the preview image is changed to `image.path`. If upgrading the theme from a prior version, you will have to update posts' metadata to use new image property.
 
@@ -267,8 +281,9 @@ There are several types of prompts: `tip`, `info`, `warning`, and `danger`. They
 
 ```md
 > Example line for prompt.
-{: .prompt-info }
+> {: .prompt-info }
 ```
+
 {: .nolineno }
 
 ## Syntax
@@ -278,6 +293,7 @@ There are several types of prompts: `tip`, `info`, `warning`, and `danger`. They
 ```md
 `inline code part`
 ```
+
 {: .nolineno }
 
 ### Filepath Hightlight
@@ -285,11 +301,12 @@ There are several types of prompts: `tip`, `info`, `warning`, and `danger`. They
 ```md
 `/path/to/a/file.extend`{: .filepath}
 ```
+
 {: .nolineno }
 
 ### Code Block
 
-Markdown symbols ```` ``` ```` can easily create a code block as follows:
+Markdown symbols ` ``` ` can easily create a code block as follows:
 
 ````md
 ```
@@ -299,7 +316,7 @@ This is a plaintext code snippet.
 
 #### Specifying Language
 
-Using ```` ```{language} ```` you will get a code block with syntax highlight:
+Using ` ```{language} ` you will get a code block with syntax highlight:
 
 ````markdown
 ```yaml
@@ -308,7 +325,7 @@ key: value
 ````
 
 > The Jekyll tag `{% highlight %}` is not compatible with this theme.
-{: .prompt-danger }
+> {: .prompt-danger }
 
 #### Line Number
 
@@ -318,6 +335,7 @@ By default, all languages except `plaintext`, `console`, and `terminal` will dis
 ```shell
 echo 'No more line numbers!'
 ```
+
 {: .nolineno }
 ````
 
@@ -329,6 +347,7 @@ You may have noticed that the code language will be displayed at the top of the 
 ```shell
 # content
 ```
+
 {: file="path/to/file" }
 ````
 
@@ -338,11 +357,13 @@ If you want to display the **Liquid** snippet, surround the liquid code with `{%
 
 ````markdown
 {% raw %}
+
 ```liquid
 {% if product.title contains 'Pack' %}
   This product's title contains the word Pack.
 {% endif %}
 ```
+
 {% endraw %}
 ````
 

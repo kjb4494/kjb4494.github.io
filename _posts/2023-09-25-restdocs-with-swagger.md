@@ -697,7 +697,7 @@ public class SwaggerTestCtrlTests extends CtrlTestConfig {
 3. **문서화**
    - 이 요청과 응답은 문서화되며, 엔드포인트에 대한 간단한 설명이 포함됩니다.
 
-![사진](/2023-09-25/스크린샷%202023-09-25%20오후%205.39.44.png)
+![사진](/assets/img/posts/2023-09-25/스크린샷%202023-09-25%20오후%205.39.44.png)
 
 위의 두 메서드 모두, 테스트 수행 후에는 문서화를 위한 코드가 포함되어 있어, 이 테스트를 실행하면 위 그림처럼 API 문서도 자동으로 생성됩니다. `RestDocumentationRequestBuilders`, `PayloadDocumentation`, 및 `ResourceDocumentation` 클래스를 사용하여 요청과 응답, 그리고 API 리소스를 문서화합니다.
 
@@ -730,7 +730,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 ResourceHandler를 설정했다면 이제 Swagger UI를 적용하는 방법은 간단합니다. 위에서 Gradle에서 작성한 swagger 태스크를 실행하면 openapi3.yaml을 생성해주기 때문에 우리가 할 일은 그저 [_swagger-ui static file들_](https://github.com/swagger-api/swagger-ui/tree/master/dist)을 매핑시켜주는 일뿐입니다.
 
-![사진](/2023-09-25/스크린샷%202023-09-25%20오후%205.56.44.png)
+![사진](/assets/img/posts/2023-09-25/스크린샷%202023-09-25%20오후%205.56.44.png)
 
 단, `swagger-ui.html`과 `swagger-initializer.js`는 프로젝트에 맞게 수정해주셔야합니다!
 
@@ -802,27 +802,27 @@ window.onload = function () {
 
 이제 모든 준비가 끝났습니다! swagger 태스크를 실행하고 로컬 서버를 실행하면 `http://localhost:8081/swagger-ui.html`에서 아래와 같은 아름다운 Swagger 문서 페이지가 나타날겁니다!
 
-![사진](/2023-09-25/스크린샷%202023-09-25%20오후%206.10.23.png)
+![사진](/assets/img/posts/2023-09-25/스크린샷%202023-09-25%20오후%206.10.23.png)
 
 ### Parameters
 
 테스트 코드에서 설정한대로 Parameters 정보를 넣을 수 있습니다.
 
-![사진](/2023-09-25/스크린샷%202023-09-25%20오후%206.14.08.png)
+![사진](/assets/img/posts/2023-09-25/스크린샷%202023-09-25%20오후%206.14.08.png)
 
 ### Schema
 
 마찬가지로 `fieldWithPath`로 정의해준 스키마 정보도 제대로 나옵니다.
 
-![사진](/2023-09-25/스크린샷%202023-09-25%20오후%206.14.28.png)
+![사진](/assets/img/posts/2023-09-25/스크린샷%202023-09-25%20오후%206.14.28.png)
 
 ### Authorize
 
 로그인이 필요한 페이지일 경우 Authorize 버튼을 눌러 다음과 같이 토큰 값을 넣어줄 수 있습니다.
 
-![사진](/2023-09-25/스크린샷%202023-09-25%20오후%206.14.59.png)
-![사진](/2023-09-25/스크린샷%202023-09-25%20오후%206.15.23.png)
-![사진](/2023-09-25/스크린샷%202023-09-25%20오후%206.15.37.png)
+![사진](/assets/img/posts/2023-09-25/스크린샷%202023-09-25%20오후%206.14.59.png)
+![사진](/assets/img/posts/2023-09-25/스크린샷%202023-09-25%20오후%206.15.23.png)
+![사진](/assets/img/posts/2023-09-25/스크린샷%202023-09-25%20오후%206.15.37.png)
 
 ### Error Case Docs
 
@@ -850,7 +850,7 @@ public void testSignupAlreadyExistsEmail() throws Exception {
 }
 ```
 
-![사진](/2023-09-25/스크린샷%202023-09-25%20오후%206.23.44.png)
+![사진](/assets/img/posts/2023-09-25/스크린샷%202023-09-25%20오후%206.23.44.png)
 
 ## 결론
 

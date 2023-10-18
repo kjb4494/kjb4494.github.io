@@ -14,7 +14,7 @@ Master-Slave 구조는 이름에서 알 수 있듯이 데이터베이스를 'Mas
 
 ## ReplicationRoutingDataSource 클래스
 
-`ReplicationRoutingDataSource`는 `AbstractRoutingDataSource`를 상속받아 `determineCurrentLookupKey()` 메서드를 오버라이드하는 클래스입니다. 현재 트랜잭션이 읽기 전용인지 확인하여 읽기 전용이면 Slave를, 그렇지 않으면 Master를 리턴합니다. 
+`ReplicationRoutingDataSource`는 `AbstractRoutingDataSource`를 상속받아 `determineCurrentLookupKey()` 메서드를 오버라이드하는 클래스입니다. 현재 트랜잭션이 읽기 전용인지 확인하여 읽기 전용이면 Slave를, 그렇지 않으면 Master를 리턴합니다.
 
 다음은 `ReplicationRoutingDataSource` 클래스의 예시 코드입니다.
 
@@ -45,7 +45,7 @@ public class ReplicationRoutingDataSource extends AbstractRoutingDataSource {
 
 ## DataSourceConfig 클래스
 
-`DataSourceConfig` 클래스에서는 `ReplicationRoutingDataSource`를 설정하고, Master와 Slave의 DataSource를 정의합니다. 
+`DataSourceConfig` 클래스에서는 `ReplicationRoutingDataSource`를 설정하고, Master와 Slave의 DataSource를 정의합니다.
 
 아래 코드는 `DataSourceConfig` 클래스의 예시입니다.
 
@@ -105,7 +105,7 @@ public class DataSourceConfig {
 
 ## DataSource Properties 클래스
 
-DataSource 설정을 위한 프로퍼티들을 저장하는 `PetDiaryMembershipMasterDataSourceProperties`와 `PetDiaryMembershipSlaveDataSourceProperties` 클래스입니다. 
+DataSource 설정을 위한 프로퍼티들을 저장하는 `PetDiaryMembershipMasterDataSourceProperties`와 `PetDiaryMembershipSlaveDataSourceProperties` 클래스입니다.
 
 `@ConfigurationProperties` 어노테이션을 사용하여 application.yml 또는 application.properties 파일의 특정 프로퍼티들을 매핑합니다. 이 예제에서는 "pet-diary-membership.master.datasource"와 "pet-diary-membership.slave.datasource"라는 prefix를 갖는 프로퍼티들을 매핑하였습니다.
 
@@ -153,11 +153,11 @@ public class PetDiaryMembershipSlaveDataSourceProperties {
 }
 ```
 
-이렇게 설정된 프로퍼티들은 앞서 설명한 `DataSourceConfig` 클래스에서 각 Master와 Slave DataSource를 설정하는데 사용됩니다. 
+이렇게 설정된 프로퍼티들은 앞서 설명한 `DataSourceConfig` 클래스에서 각 Master와 Slave DataSource를 설정하는데 사용됩니다.
 
 ## Application 모듈 DataSourceConfig 설정
 
-마지막으로 각 애플리케이션 모듈에서 `DataSourceConfig`를 설정합니다. 
+마지막으로 각 애플리케이션 모듈에서 `DataSourceConfig`를 설정합니다.
 
 다음은 애플리케이션 모듈에서의 `DataSourceConfig` 설정 예제 코드입니다.
 
@@ -220,7 +220,7 @@ public class DataSourceConfig {
 
 Master-Slave 구조를 적용하게 되면, 데이터의 읽기와 쓰기를 어디에서 처리할지 결정해야 합니다. 일반적으로 쓰기 작업은 Master에서, 읽기 작업은 Slave에서 처리하도록 설정합니다.
 
-그렇다면 Spring에서는 어떻게 이를 구현할까요? 
+그렇다면 Spring에서는 어떻게 이를 구현할까요?
 
 바로 `@Transactional` 어노테이션을 사용하면 됩니다. 이 어노테이션은 메소드 또는 클래스에 적용할 수 있으며, 해당 범위에서의 데이터베이스 작업이 하나의 트랜잭션으로 처리되도록 합니다.
 
@@ -235,12 +235,12 @@ Master-Slave 구조를 적용하게 되면, 데이터의 읽기와 쓰기를 어
 ```java
 @Service
 public class SomeService {
-    
+
     @Transactional(readOnly = true)
     public SomeData getSomeData() {
         // 데이터 읽기 작업 수행
     }
-    
+
     @Transactional
     public void updateSomeData(SomeData someData) {
         // 데이터 쓰기 작업 수행

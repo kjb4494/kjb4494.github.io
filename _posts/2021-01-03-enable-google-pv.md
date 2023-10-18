@@ -7,7 +7,6 @@ tags: [google analytics, pageviews]
 hidden: true
 ---
 
-
 This post is to enable Page Views on the [**Chirpy**][chirpy-homepage] theme based blog that you just built. This requires technical knowledge and it's recommended to keep the `google_analytics.pv.*` empty unless you have a good reason. If your website has low traffic, the page views count would discourage you to write more blogs. With that said, let's start with the setup.
 
 ## Set up Google Analytics
@@ -34,23 +33,24 @@ With your property created, you now need to set up Data Stream to track your blo
 
 It should look like this:
 
-![google-analytics-data-stream](/2021-01-03/01-google-analytics-data-stream.png){: width="1086" height="542"}
+![google-analytics-data-stream](/assets/img/posts/2021-01-03/01-google-analytics-data-stream.png){: width="1086" height="542"}
 
 Now, click on the new data stream and grab the **Measurement ID**. It should look something like `G-V6XXXXXXXX`. Copy this to your `_config.yml`{: .filepath} file:
 
 ```yaml
 google_analytics:
-  id: 'G-V6XXXXXXX'   # fill in your Google Analytics ID
+  id: "G-V6XXXXXXX" # fill in your Google Analytics ID
   # Google Analytics pageviews report settings
   pv:
-    proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
-    cache_path:       # the local PV cache data, friendly to visitors from GFW region
+    proxy_endpoint: # fill in the Google Analytics superProxy endpoint of Google App Engine
+    cache_path: # the local PV cache data, friendly to visitors from GFW region
 ```
-{: file="_config.yml"}
+
+{: file="\_config.yml"}
 
 When you push these changes to your blog, you should start seeing the traffic on your Google Analytics. Play around with the Google Analytics dashboard to get familiar with the options available as it takes like 5 mins to pick up your changes. You should now be able to monitor your traffic in real time.
 
-![google-analytics-realtime](/2021-01-03/02-google-analytics-realtime.png){: width="616" height="557"}
+![google-analytics-realtime](/assets/img/posts/2021-01-03/02-google-analytics-realtime.png){: width="616" height="557"}
 
 ## Setup Page Views
 
@@ -114,72 +114,73 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 
 1. Clone the **Google Analytics superProxy** project on Github: <https://github.com/googleanalytics/google-analytics-super-proxy> to your local.
 
-2.  Remove the first 2 lines in the [`src/app.yaml`{: .filepath}](https://github.com/googleanalytics/google-analytics-super-proxy/blob/master/src/app.yaml#L1-L2) file:
+2. Remove the first 2 lines in the [`src/app.yaml`{: .filepath}](https://github.com/googleanalytics/google-analytics-super-proxy/blob/master/src/app.yaml#L1-L2) file:
 
-    ```diff
-    - application: your-project-id
-    - version: 1
-    ```
+   ```diff
+   - application: your-project-id
+   - version: 1
+   ```
 
 3. In `src/config.py`{: .filepath}, add the `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET` that you gathered from your App Engine Dashboard.
 
-4.  Enter any random key for `XSRF_KEY`, your `config.py`{: .filepath} should look similar to this
+4. Enter any random key for `XSRF_KEY`, your `config.py`{: .filepath} should look similar to this
 
-    ```python
-    #!/usr/bin/python2.7
+   ```python
+   #!/usr/bin/python2.7
 
-    __author__ = 'pete.frisella@gmail.com (Pete Frisella)'
+   __author__ = 'pete.frisella@gmail.com (Pete Frisella)'
 
-    # OAuth 2.0 Client Settings
-    AUTH_CONFIG = {
-      'OAUTH_CLIENT_ID': 'YOUR_CLIENT_ID',
-      'OAUTH_CLIENT_SECRET': 'YOUR_CLIENT_SECRET',
-      'OAUTH_REDIRECT_URI': '%s%s' % (
-        'https://chirpy-test-XXXXXX.ue.r.appspot.com',
-        '/admin/auth'
-      )
-    }
+   # OAuth 2.0 Client Settings
+   AUTH_CONFIG = {
+     'OAUTH_CLIENT_ID': 'YOUR_CLIENT_ID',
+     'OAUTH_CLIENT_SECRET': 'YOUR_CLIENT_SECRET',
+     'OAUTH_REDIRECT_URI': '%s%s' % (
+       'https://chirpy-test-XXXXXX.ue.r.appspot.com',
+       '/admin/auth'
+     )
+   }
 
-    # XSRF Settings
-    XSRF_KEY = 'OnceUponATimeThereLivedALegend'
-    ```
-    {: file="src/config.py"}
+   # XSRF Settings
+   XSRF_KEY = 'OnceUponATimeThereLivedALegend'
+   ```
 
-    > You can configure a custom domain instead of `https://PROJECT_ID.REGION_ID.r.appspot.com`.
-    > But, for the sake of keeping it simple, we will be using the Google provided default URL.
-    {: .prompt-info }
+   {: file="src/config.py"}
 
-5.  From inside the `src/`{: .filepath} directory, deploy the app
+   > You can configure a custom domain instead of `https://PROJECT_ID.REGION_ID.r.appspot.com`.
+   > But, for the sake of keeping it simple, we will be using the Google provided default URL.
+   > {: .prompt-info }
 
-    ```console
-    [root@bc96abf71ef8 src]# gcloud app deploy
-    Services to deploy:
+5. From inside the `src/`{: .filepath} directory, deploy the app
 
-    descriptor:      [/tmp/google-analytics-super-proxy/src/app.yaml]
-    source:          [/tmp/google-analytics-super-proxy/src]
-    target project:  [chirpy-test-XXXX]
-    target service:  [default]
-    target version:  [VESRION_NUM]
-    target url:      [https://chirpy-test-XXXX.ue.r.appspot.com]
+   ```console
+   [root@bc96abf71ef8 src]# gcloud app deploy
+   Services to deploy:
+
+   descriptor:      [/tmp/google-analytics-super-proxy/src/app.yaml]
+   source:          [/tmp/google-analytics-super-proxy/src]
+   target project:  [chirpy-test-XXXX]
+   target service:  [default]
+   target version:  [VESRION_NUM]
+   target url:      [https://chirpy-test-XXXX.ue.r.appspot.com]
 
 
-    Do you want to continue (Y/n)? Y
+   Do you want to continue (Y/n)? Y
 
-    Beginning deployment of service [default]...
-    ╔════════════════════════════════════════════════════════════╗
-    ╠═ Uploading 1 file to Google Cloud Storage                 ═╣
-    ╚════════════════════════════════════════════════════════════╝
-    File upload done.
-    Updating service [default]...done.
-    Setting traffic split for service [default]...done.
-    Deployed service [default] to [https://chirpy-test-XXXX.ue.r.appspot.com]
+   Beginning deployment of service [default]...
+   ╔════════════════════════════════════════════════════════════╗
+   ╠═ Uploading 1 file to Google Cloud Storage                 ═╣
+   ╚════════════════════════════════════════════════════════════╝
+   File upload done.
+   Updating service [default]...done.
+   Setting traffic split for service [default]...done.
+   Deployed service [default] to [https://chirpy-test-XXXX.ue.r.appspot.com]
 
-    You can stream logs from the command line by running:
-    $ gcloud app logs tail -s default
+   You can stream logs from the command line by running:
+   $ gcloud app logs tail -s default
 
-    To view your application in the web browser run:
-    $ gcloud app browse
-    ```
+   To view your application in the web browser run:
+   $ gcloud app browse
+   ```
 
 6. Visit the deployed service. Add a `/admin` to the end of the URL.
 
@@ -189,7 +190,7 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 
 If everything went good, you'll get this screen:
 
-![superProxy-deployed](/2021-01-03/03-superProxy-deployed.png){: width="1366" height="354"}
+![superProxy-deployed](/assets/img/posts/2021-01-03/03-superProxy-deployed.png){: width="1366" height="354"}
 
 ### Create Google Analytics Query
 
@@ -214,24 +215,25 @@ After <kbd>Run Query</kbd>, copy the generated contents of **API Query URI** at 
 
 After the query is saved on GAE, a **Public Endpoint** (public access address) will be generated, and we will get the query result in JSON format when accessing it. Finally, click <kbd>Enable Endpoint</kbd> in **Public Request Endpoint** to make the query effective, and click <kbd>Start Scheduling</kbd> in **Scheduling** to start the scheduled task.
 
-![superproxy-query](/2021-01-03/04-superproxy-query.png){: width="1100" height="126"}
+![superproxy-query](/assets/img/posts/2021-01-03/04-superproxy-query.png){: width="1100" height="126"}
 
 ## Configure Chirpy to Display Page View
 
 Once all the hard part is done, it is very easy to enable the Page View on Chirpy theme. Your superProxy dashboard should look something like below and you can grab the required values.
 
-![superproxy-dashboard](/2021-01-03/05-superproxy-dashboard.png){: width="1210" height="694"}
+![superproxy-dashboard](/assets/img/posts/2021-01-03/05-superproxy-dashboard.png){: width="1210" height="694"}
 
 Update the `_config.yml`{: .filepath} file of [**Chirpy**][chirpy-homepage] project with the values from your dashboard, to look similar to the following:
 
 ```yaml
 google_analytics:
-  id: 'G-V6XXXXXXX'   # fill in your Google Analytics ID
+  id: "G-V6XXXXXXX" # fill in your Google Analytics ID
   pv:
-    proxy_endpoint: 'https://PROJECT_ID.REGION_ID.r.appspot.com/query?id=<ID FROM SUPER PROXY>'
-    cache_path:       # the local PV cache data, friendly to visitors from GFW region
+    proxy_endpoint: "https://PROJECT_ID.REGION_ID.r.appspot.com/query?id=<ID FROM SUPER PROXY>"
+    cache_path: # the local PV cache data, friendly to visitors from GFW region
 ```
-{: file="_config.yml"}
+
+{: file="\_config.yml"}
 
 Now, you should see the Page View enabled on your blog.
 

@@ -26,12 +26,12 @@ And then copy the remaining image files (`.PNG`{: .filepath} and `.ICO`{: .filep
 
 The following table will help you understand the changes to the favicon files:
 
-| File(s)             | From Online Tool                  | From Chirpy |
-|---------------------|:---------------------------------:|:-----------:|
-| `*.PNG`             | ✓                                 | ✗           |
-| `*.ICO`             | ✓                                 | ✗           |
+| File(s) | From Online Tool | From Chirpy |
+| ------- | :--------------: | :---------: |
+| `*.PNG` |        ✓         |      ✗      |
+| `*.ICO` |        ✓         |      ✗      |
 
->  ✓ means keep, ✗ means delete.
-{: .prompt-info }
+> ✓ means keep, ✗ means delete.
+> {: .prompt-info }
 
 The next time you build the site, the favicon will be replaced with a customized edition.
