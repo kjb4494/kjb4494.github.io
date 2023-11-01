@@ -52,3 +52,16 @@ order: 4
        - Swagger 3
        - VueJS (CMS, Web Frontend)
        - Jenkins
+
+### 토이프로젝트
+
+- [_StreamSnatcher_](https://kjb4494.github.io/posts/aws-media-lab-semina/)
+  - Python 3.9
+  - PyQt5
+- [_PetDiary (Backend)_](https://github.com/pet-diary-tft/pet-diary)
+  - Spring Boot 3
+  - [_RestDocs + Swagger_](https://kjb4494.github.io/posts/restdocs-with-swagger/)
+  - [_Grafana_](https://kjb4494.github.io/posts/grafana/)
+  - Prometheus
+  - Loki
+  - Promtail
