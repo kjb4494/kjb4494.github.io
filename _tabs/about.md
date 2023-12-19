@@ -53,12 +53,13 @@ order: 4
        - VueJS (CMS, Web Frontend)
        - Jenkins
 
-### 토이프로젝트
+### 최근 토이프로젝트
 
 - [_StreamSnatcher_](https://kjb4494.github.io/posts/aws-media-lab-semina/)
   - Python 3.9
   - PyQt5
 - [_PetDiary (Backend)_](https://github.com/pet-diary-tft/pet-diary)
+  - [_Test Server Docs_](https://swagger.kjb4494.site/)
   - Spring Boot 3
   - [_RestDocs + Swagger_](https://kjb4494.github.io/posts/restdocs-with-swagger/)
   - [_Grafana_](https://kjb4494.github.io/posts/grafana/)
