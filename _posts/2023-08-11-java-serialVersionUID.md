@@ -2,7 +2,7 @@
 title: Java serialVersionUID
 author: kjb4494
 date: 2023-08-11 23:00:00 +0900
-categories: [Java]
+categories: [CS, Java]
 tags: [java, serialVersionUID]
 ---
 
